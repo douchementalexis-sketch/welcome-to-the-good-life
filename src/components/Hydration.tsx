@@ -7,6 +7,14 @@ export default function Hydration() {
   const max = 8;
   const percentage = (water / max) * 100;
 
+  const handleWater = () => {
+    if (water >= max) {
+      setWater(0);
+    } else {
+      setWater(water + 1);
+    }
+  };
+
   return (
     <div>
       <p
@@ -53,11 +61,7 @@ export default function Hydration() {
           fontWeight: "bold",
           cursor: "pointer",
         }}
-        onClick={() => {
-          if (water < max) {
-            setWater(water + 1);
-          }
-        }}
+        onClick={handleWater}
       >
         💧 Ajouter un verre
       </button>
