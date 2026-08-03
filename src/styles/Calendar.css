@@ -1,109 +1,103 @@
-.calendar{
-
-    margin-top:30px;
-
+.calendar {
+  margin-top: var(--space-lg);
 }
 
-.calendar-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:30px;
-
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
 }
 
-.calendar-header h2{
-
-    color:var(--text);
-
+.calendar-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 28px;
+  text-transform: capitalize;
 }
 
-.calendar-header button{
+.calendar-header button {
+  width: 46px;
+  height: 46px;
 
-    width:42px;
+  border: none;
+  border-radius: 50%;
 
-    height:42px;
+  background: var(--primary);
+  color: white;
 
-    border:none;
+  font-size: 18px;
+  font-weight: bold;
 
-    border-radius:50%;
-
-    background:var(--primary);
-
-    color:white;
-
-    font-size:18px;
-
+  cursor: pointer;
+  transition: 0.25s;
 }
 
-.calendar-weekdays{
-
-    display:grid;
-
-    grid-template-columns:repeat(7,1fr);
-
-    text-align:center;
-
-    margin-bottom:15px;
-
-    font-weight:bold;
-
+.calendar-header button:hover {
+  transform: scale(1.05);
 }
 
-.calendar-grid{
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
 
-    display:grid;
+  margin-bottom: 15px;
 
-    grid-template-columns:repeat(7,1fr);
+  text-align: center;
 
-    gap:10px;
-
+  font-weight: bold;
+  color: var(--text);
 }
 
-.calendar-day{
-
-    background:white;
-
-    border-radius:18px;
-
-    box-shadow:var(--shadow);
-
-    border:1px solid var(--border);
-
-    min-height:80px;
-
-    padding:8px;
-
-    transition:.25s;
-
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
 }
 
-.calendar-day:hover{
+.calendar-day {
+  min-height: 90px;
 
-    transform:translateY(-2px);
+  background: var(--card);
 
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  padding: 8px;
+
+  transition: 0.25s;
+
+  cursor: pointer;
 }
 
-.day-number{
-
-    font-weight:bold;
-
-    margin-bottom:8px;
-
+.calendar-day:hover {
+  transform: translateY(-3px);
 }
 
-.day-icons{
+.day-number {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--text);
+}
 
-    font-size:12px;
+.day-icons {
+  margin-top: 10px;
 
-    display:flex;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
 
-    justify-content:center;
+  font-size: 14px;
+}
 
-    gap:4px;
+.today {
+  border: 2px solid var(--primary);
+  background: var(--primary-light);
+}
 
+.empty-day {
+  min-height: 90px;
 }

@@ -1,0 +1,65 @@
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+.modal{
+
+    width:min(420px,90vw);
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+
+    animation:popup .25s ease;
+}
+
+.modal h2{
+
+    margin-bottom:20px;
+
+}
+
+.modal button{
+
+    margin-top:20px;
+
+    width:100%;
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.9);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
