@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { AppContext } from "../../context/AppContext";
+import { MOODS } from "../../constants/moods";
 
 type Props = {
   day: number;
@@ -15,10 +16,10 @@ export default function CalendarDay({
 }: Props) {
   const { days } = useContext(AppContext);
 
-  const current = days.find(
-    (item) =>
-      Number(item.date.split("-")[2]) === day
-  );
+  const current = days.find((item) => {
+    const dayNumber = Number(item.date.split("-")[2]);
+    return dayNumber === day;
+  });
 
   return (
     <button
@@ -30,33 +31,29 @@ export default function CalendarDay({
         {day}
       </div>
 
-      {current ? (
-        <div className="day-content">
-
-          <div className="badge water">
-            💧 {current.water}
-          </div>
-
-          <div className="badge mood">
-            {["😞","😐","🙂","😁","🤩"][current.mood]}
-          </div>
-
-          {current.workoutDone && (
-            <div className="badge workout">
-              ✅
+      <div className="day-content">
+        {current ? (
+          <>
+            <div className="badge water">
+              💧 {current.water}/8
             </div>
-          )}
 
-        </div>
-      ) : (
-        <div className="day-content">
+            <div className="badge mood">
+              {MOODS[current.mood].emoji}
+            </div>
 
+            {current.workoutDone && (
+              <div className="badge workout">
+                ✅
+              </div>
+            )}
+          </>
+        ) : (
           <div className="badge empty">
             —
           </div>
-
-        </div>
-      )}
+        )}
+      </div>
     </button>
   );
 }
