@@ -1,11 +1,11 @@
 import BottomNavigation from "../components/BottomNavigation";
 
-export default function Statistics() {
+export default function Calendar() {
   return (
     <div className="home">
-      <h1>📊 Statistiques</h1>
+      <h1>📅 Calendrier</h1>
 
-      <p>Les statistiques arriveront bientôt.</p>
+      <p>Bienvenue dans le calendrier.</p>
 
       <BottomNavigation />
     </div>
