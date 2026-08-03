@@ -1,4 +1,4 @@
-import "../styles/DayModal.css";
+import "../../styles/DayModal.css";
 
 import { dayData } from "../../data/dailyData";
 
