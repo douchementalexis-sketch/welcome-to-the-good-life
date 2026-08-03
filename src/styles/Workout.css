@@ -1,0 +1,36 @@
+.workout p {
+  margin-bottom: 12px;
+  color: var(--text-light);
+  font-size: 16px;
+}
+
+.workout strong {
+  color: var(--text);
+}
+
+.workout-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+
+  border: none;
+  border-radius: var(--radius);
+
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+
+  transition: .25s;
+}
+
+.workout-button:hover {
+  transform: translateY(-2px);
+}
+
+.workout-button.done {
+  background: #2e7d32;
+}
+
+.workout-button.todo {
+  background: var(--primary);
+}

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
+import "../styles/Hydration.css";
+
 export default function Hydration() {
   const { water, setWater } = useContext(AppContext);
 
@@ -16,55 +18,26 @@ export default function Hydration() {
   };
 
   return (
-    <div>
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: 18,
-          fontWeight: "bold",
-          color: "#355f4b",
-          marginBottom: 18,
-        }}
-      >
-        {water} / {max} verres
-      </p>
+    <div className="hydration">
 
-      <div
-        style={{
-          width: "100%",
-          height: 18,
-          background: "#dfe9e2",
-          borderRadius: 20,
-          overflow: "hidden",
-          marginBottom: 22,
-        }}
-      >
+      <div className="hydration-count">
+        {water} / {max} verres
+      </div>
+
+      <div className="hydration-bar">
         <div
-          style={{
-            width: `${percentage}%`,
-            height: "100%",
-            background: "#4d7b62",
-            transition: ".3s",
-          }}
+          className="hydration-progress"
+          style={{ width: `${percentage}%` }}
         />
       </div>
 
       <button
-        style={{
-          width: "100%",
-          padding: "14px",
-          border: "none",
-          borderRadius: 12,
-          background: "#4d7b62",
-          color: "white",
-          fontSize: 16,
-          fontWeight: "bold",
-          cursor: "pointer",
-        }}
+        className="hydration-button"
         onClick={handleWater}
       >
         💧 Ajouter un verre
       </button>
+
     </div>
   );
 }

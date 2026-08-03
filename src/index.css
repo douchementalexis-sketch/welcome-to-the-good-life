@@ -1,20 +1,61 @@
+/* ========================= */
+/* Welcome to the Good Life  */
+/* ========================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
-  background: #f8f6f2;
-  font-family: Inter, Arial, sans-serif;
-  color: #222;
+  background: var(--background);
+  color: var(--text);
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
+  font: inherit;
   cursor: pointer;
   transition: 0.25s;
 }
 
 button:hover {
-  transform: scale(1.03);
+  transform: translateY(-2px);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
+}
+
+p {
+  color: var(--text-light);
+  line-height: 1.6;
 }

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
+import "../styles/Mood.css";
+
 const moods = [
   { emoji: "😞", text: "Journée difficile", value: 20 },
   { emoji: "😐", text: "Ça va", value: 40 },
@@ -15,73 +17,37 @@ export default function Mood() {
   const currentMood = moods[mood];
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          marginBottom: 22,
-        }}
-      >
+    <div className="mood">
+
+      <div className="mood-emojis">
         {moods.map((item, index) => (
           <span
             key={index}
             onClick={() => setMood(index)}
-            style={{
-              cursor: "pointer",
-              fontSize: 24,
-              transition: ".25s",
-              transform: mood === index ? "scale(1.2)" : "scale(1)",
-              opacity: mood === index ? 1 : 0.45,
-            }}
+            className={`mood-emoji ${
+              mood === index ? "active" : ""
+            }`}
           >
             {item.emoji}
           </span>
         ))}
       </div>
 
-      <div
-        style={{
-          width: "100%",
-          height: 18,
-          background: "#dfe9e2",
-          borderRadius: 20,
-          overflow: "hidden",
-          marginBottom: 18,
-        }}
-      >
+      <div className="mood-bar">
         <div
-          style={{
-            width: `${currentMood.value}%`,
-            height: "100%",
-            background: "#4d7b62",
-            transition: ".3s",
-          }}
+          className="mood-progress"
+          style={{ width: `${currentMood.value}%` }}
         />
       </div>
 
-      <p
-        style={{
-          textAlign: "center",
-          fontWeight: "bold",
-          color: "#355f4b",
-          fontSize: 17,
-          marginBottom: 8,
-        }}
-      >
+      <div className="mood-percent">
         {currentMood.value} %
-      </p>
+      </div>
 
-      <p
-        style={{
-          textAlign: "center",
-          color: "#666",
-          fontSize: 15,
-          margin: 0,
-        }}
-      >
+      <div className="mood-text">
         {currentMood.emoji} {currentMood.text}
-      </p>
+      </div>
+
     </div>
   );
 }

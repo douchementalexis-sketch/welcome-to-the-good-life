@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
+import "../styles/Stats.css";
+
 const moods = [
   { emoji: "😞", text: "Journée difficile" },
   { emoji: "😐", text: "Ça va" },
@@ -13,100 +15,46 @@ export default function Stats() {
   const { water, workoutDone, mood } = useContext(AppContext);
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3,1fr)",
-        gap: 18,
-        marginBottom: 35,
-      }}
-    >
-      <div
-        style={{
-          background: "#fff",
-          borderRadius: 20,
-          padding: 18,
-          textAlign: "center",
-          boxShadow: "0 6px 18px rgba(0,0,0,.06)",
-        }}
-      >
-        <div style={{ fontSize: 32 }}>💧</div>
+    <div className="stats-grid">
 
-        <h2
-          style={{
-            margin: "8px 0",
-            color: "#355f4b",
-          }}
-        >
+      <div className="stat-card">
+        <div className="stat-icon">💧</div>
+
+        <div className="stat-value">
           {water}/8
-        </h2>
+        </div>
 
-        <p
-          style={{
-            margin: 0,
-            color: "#777",
-            fontSize: 14,
-          }}
-        >
+        <div className="stat-title">
           Hydratation
-        </p>
+        </div>
       </div>
 
-      <div
-        style={{
-          background: "#fff",
-          borderRadius: 20,
-          padding: 18,
-          textAlign: "center",
-          boxShadow: "0 6px 18px rgba(0,0,0,.06)",
-        }}
-      >
-        <div style={{ fontSize: 32 }}>🏋️</div>
+      <div className="stat-card">
+        <div className="stat-icon">🏋️</div>
 
-        <h2 style={{ margin: "8px 0" }}>
+        <div className="stat-value">
           {workoutDone ? "✅" : "❌"}
-        </h2>
+        </div>
 
-        <p
-          style={{
-            margin: 0,
-            color: "#777",
-            fontSize: 14,
-          }}
-        >
+        <div className="stat-title">
           Séance
-        </p>
+        </div>
       </div>
 
-      <div
-        style={{
-          background: "#fff",
-          borderRadius: 20,
-          padding: 18,
-          textAlign: "center",
-          boxShadow: "0 6px 18px rgba(0,0,0,.06)",
-        }}
-      >
-        <div
-          style={{
-            fontSize: 40,
-            marginBottom: 8,
-          }}
-        >
+      <div className="stat-card">
+        <div className="stat-icon">
           {moods[mood].emoji}
         </div>
 
-        <p
-          style={{
-            margin: 0,
-            color: "#355f4b",
-            fontWeight: "bold",
-            fontSize: 14,
-          }}
-        >
+        <div className="stat-value">
           {moods[mood].text}
-        </p>
+        </div>
+
+        <div className="stat-title">
+          Ressenti
+        </div>
       </div>
+
     </div>
   );
 }

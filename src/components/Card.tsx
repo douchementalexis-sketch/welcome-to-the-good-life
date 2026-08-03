@@ -1,4 +1,4 @@
-import "./Card.css";
+import "../styles/Card.css";
 
 type CardProps = {
   title: string;
@@ -7,10 +7,10 @@ type CardProps = {
 
 export default function Card({ title, children }: CardProps) {
   return (
-    <div className="card">
+    <section className="card">
       <h3>{title}</h3>
 
       {children}
-    </div>
+    </section>
   );
 }

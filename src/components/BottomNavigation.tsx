@@ -1,47 +1,29 @@
+import "../styles/BottomNavigation.css";
+
 export default function BottomNavigation() {
   return (
-    <nav
-      style={{
-        position: "sticky",
-        bottom: 20,
-        marginTop: 30,
-        background: "white",
-        borderRadius: "20px",
-        padding: "18px",
-        display: "flex",
-        justifyContent: "space-around",
-        boxShadow: "0 10px 30px rgba(0,0,0,.12)",
-      }}
-    >
-      <div style={{ textAlign: "center", cursor: "pointer" }}>
-        🏠
-        <br />
-        <small>Accueil</small>
+    <nav className="bottom-nav">
+
+      <div className="nav-item active">
+        <div className="nav-icon">🏠</div>
+        <div className="nav-label">Accueil</div>
       </div>
 
-      <div style={{ textAlign: "center", cursor: "pointer" }}>
-        💪
-        <br />
-        <small>Sport</small>
+      <div className="nav-item">
+        <div className="nav-icon">📅</div>
+        <div className="nav-label">Calendrier</div>
       </div>
 
-      <div style={{ textAlign: "center", cursor: "pointer" }}>
-        🍎
-        <br />
-        <small>Nutrition</small>
+      <div className="nav-item">
+        <div className="nav-icon">📊</div>
+        <div className="nav-label">Statistiques</div>
       </div>
 
-      <div style={{ textAlign: "center", cursor: "pointer" }}>
-        📈
-        <br />
-        <small>Suivi</small>
+      <div className="nav-item">
+        <div className="nav-icon">👤</div>
+        <div className="nav-label">Profil</div>
       </div>
 
-      <div style={{ textAlign: "center", cursor: "pointer" }}>
-        👤
-        <br />
-        <small>Profil</small>
-      </div>
     </nav>
   );
 }

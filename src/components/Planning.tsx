@@ -1,75 +1,36 @@
 import { planning } from "../data/planning";
 
+import "../styles/Planning.css";
+
 export default function Planning() {
   const upcoming = planning.slice(1);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 12,
-      }}
-    >
+    <div className="planning">
+
       {upcoming.map((session) => (
+
         <div
           key={session.id}
-          style={{
-            background: "#f9f9f9",
-            borderRadius: 16,
-            padding: "14px 18px",
-            border: "1px solid #ececec",
-            boxShadow: "0 3px 10px rgba(0,0,0,.04)",
-          }}
+          className="planning-card"
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 8,
-            }}
-          >
-            <h3
-              style={{
-                margin: 0,
-                color: "#4d7b62",
-                fontSize: 16,
-              }}
-            >
-              📅 {session.day}
-            </h3>
-
-            <span
-              style={{
-                color: "#888",
-                fontSize: 13,
-              }}
-            >
-              🕒 {session.hour}
-            </span>
+          <div className="planning-day">
+            📅 {session.day}
           </div>
 
-          <p
-            style={{
-              margin: "0 0 8px 0",
-              fontWeight: 600,
-              fontSize: 15,
-            }}
-          >
+          <div className="planning-title">
             {session.title}
-          </p>
+          </div>
 
-          <span
-            style={{
-              color: "#777",
-              fontSize: 13,
-            }}
-          >
-            ⏱ {session.duration}
-          </span>
+          <div className="planning-footer">
+            <span>🕒 {session.hour}</span>
+
+            <span>⏱ {session.duration}</span>
+          </div>
         </div>
+
       ))}
+
     </div>
   );
 }
