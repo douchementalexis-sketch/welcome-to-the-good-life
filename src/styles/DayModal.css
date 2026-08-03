@@ -1,162 +1,240 @@
-.modal-overlay{
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
 
-position:fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-inset:0;
+  padding: 16px;
 
-background:rgba(0,0,0,.45);
-
-backdrop-filter:blur(6px);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:999;
-
+  z-index: 999;
 }
+
+.modal {
+  width: 100%;
+  max-width: 520px;
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background: #fff;
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
+
+  animation: popup .25s ease;
+
+  box-sizing: border-box;
+}
+
+.modal h2 {
+  margin: 0 0 24px;
+  text-align: center;
+  color: var(--text);
+}
+
+.modal-section {
+  margin-bottom: 22px;
+}
+
+.modal-section h3 {
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+
+  padding: 14px;
+
+  border-radius: 16px;
+  border: 1px solid var(--border);
+
+  background: var(--card);
+
+  color: var(--text);
+
+  font: inherit;
+
+  resize: vertical;
+
+  box-sizing: border-box;
+
+  transition: .2s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.workout-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-weight: 600;
+}
+
+.workout-label input {
+  width: 22px;
+  height: 22px;
+}
+
+.modal-button {
+  width: 100%;
+
+  padding: 16px;
+
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.modal-button:hover {
+  transform: translateY(-2px);
+}
+
+.editor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.editor-button {
+  width: 46px;
+  height: 46px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 22px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition: .2s;
+}
+
+.editor-button:hover {
+  transform: scale(1.05);
+}
+
+.editor-value {
+  flex: 1;
+
+  text-align: center;
+
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.mood-editor {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mood-button {
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f3f3f3;
+
+  cursor: pointer;
+
+  font-size: 24px;
+
+  transition: .2s;
+}
+
+.mood-button.selected {
+  background: var(--primary);
+  transform: scale(1.08);
+}
+
+@media (max-width:768px){
 
 .modal{
 
-width:min(520px,92vw);
+padding:18px;
 
-background:white;
+border-radius:20px;
 
-border-radius:28px;
-
-padding:30px;
-
-box-shadow:0 25px 60px rgba(0,0,0,.25);
-
-animation:popup .25s ease;
+max-height:92vh;
 
 }
 
 .modal h2{
 
-margin-top:0;
-
-margin-bottom:25px;
-
-color:var(--text);
+font-size:22px;
 
 }
 
 .modal-section{
 
-margin-bottom:22px;
-
-}
-
-.modal-section h3{
-
-margin-bottom:10px;
-
-color:var(--primary);
-
-}
-
-textarea{
-
-width:100%;
-
-padding:12px;
-
-border-radius:14px;
-
-border:1px solid #ddd;
-
-font:inherit;
-
-resize:none;
-
-box-sizing:border-box;
-
-}
-
-.modal-button{
-
-width:100%;
-
-padding:15px;
-
-border:none;
-
-border-radius:16px;
-
-background:var(--primary);
-
-color:white;
-
-font-size:17px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.modal-button:hover{
-
-transform:translateY(-2px);
-
-}
-
-.editor-row{
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-gap:20px;
-
-}
-
-.editor-button{
-
-width:48px;
-
-height:48px;
-
-border:none;
-
-border-radius:50%;
-
-background:var(--primary);
-
-color:white;
-
-font-size:24px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.editor-button:hover{
-
-transform:scale(1.08);
+margin-bottom:18px;
 
 }
 
 .editor-value{
 
-flex:1;
+font-size:18px;
 
-text-align:center;
+}
+
+.editor-button{
+
+width:40px;
+height:40px;
+
+font-size:20px;
+
+}
+
+.mood-button{
+
+width:42px;
+height:42px;
 
 font-size:22px;
 
-font-weight:bold;
+}
+
+textarea{
+
+min-height:90px;
+
+}
 
 }
 
@@ -165,15 +243,13 @@ font-weight:bold;
 from{
 
 opacity:0;
-
-transform:scale(.92);
+transform:scale(.9);
 
 }
 
 to{
 
 opacity:1;
-
 transform:scale(1);
 
 }

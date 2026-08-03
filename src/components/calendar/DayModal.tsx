@@ -16,7 +16,7 @@ export default function DayModal({
   day,
   onClose,
 }: Props) {
-  const { days } = useContext(AppContext);
+  const { days, updateDay } = useContext(AppContext);
 
   if (day === null) {
     return null;
@@ -65,7 +65,11 @@ export default function DayModal({
                 <input
                   type="checkbox"
                   checked={selected.workoutDone}
-                  readOnly
+                  onChange={(e) =>
+                    updateDay(selected.date, {
+                      workoutDone: e.target.checked,
+                    })
+                  }
                 />
 
                 Séance effectuée
@@ -77,8 +81,13 @@ export default function DayModal({
 
               <textarea
                 rows={5}
-                defaultValue={selected.notes}
+                value={selected.notes}
                 placeholder="Écris une note..."
+                onChange={(e) =>
+                  updateDay(selected.date, {
+                    notes: e.target.value,
+                  })
+                }
               />
             </div>
           </>
@@ -119,7 +128,7 @@ export default function DayModal({
           className="modal-button"
           onClick={onClose}
         >
-          💾 Enregistrer
+          Fermer
         </button>
       </div>
     </div>

@@ -10,7 +10,7 @@ import {
   getDaysInMonth,
   getFirstDayOfMonth,
 } from "../utils/calendar";
-
+import "./Home.css";
 import "../styles/Calendar.css";
 
 export default function Calendar() {
