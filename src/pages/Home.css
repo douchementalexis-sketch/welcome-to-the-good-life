@@ -1,0 +1,35 @@
+.home {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f6f2 0%, #eef3ee 100%);
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.hero {
+  width: 100%;
+  max-width: 850px;
+}
+
+.message {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+button {
+  width: 100%;
+  background: #4d7b62;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .25s;
+}
+
+button:hover {
+  background: #355f4b;
+}
