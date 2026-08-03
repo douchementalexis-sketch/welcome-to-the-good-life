@@ -1,14 +1,16 @@
 .home {
   min-height: 100vh;
   background: linear-gradient(180deg, #f8f6f2 0%, #eef3ee 100%);
+
   display: flex;
   justify-content: center;
-  padding: 50px 20px;
+
+  padding: 40px 16px;
 }
 
 .hero {
   width: 100%;
-  max-width: 850px;
+  max-width: 900px;
 }
 
 .message {
@@ -19,17 +21,44 @@
 
 button {
   width: 100%;
+
   background: #4d7b62;
   color: white;
+
   border: none;
+
   padding: 16px;
+
   border-radius: 14px;
+
   font-size: 17px;
   font-weight: bold;
+
   cursor: pointer;
+
   transition: .25s;
 }
 
 button:hover {
   background: #355f4b;
+}
+
+/* ========================= */
+/* Mobile */
+/* ========================= */
+
+@media (max-width:768px){
+
+.home{
+
+padding:16px 8px 90px;
+
+}
+
+.hero{
+
+max-width:100%;
+
+}
+
 }

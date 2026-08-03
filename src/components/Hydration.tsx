@@ -1,34 +1,57 @@
 import { useContext } from "react";
+
 import { AppContext } from "../context/AppContext";
+import { getTodayDate } from "../utils/date";
 
 import "../styles/Hydration.css";
 
 export default function Hydration() {
-  const { water, setWater } = useContext(AppContext);
+  const { days, updateDay } =
+    useContext(AppContext);
+
+  const today = getTodayDate();
+console.log(today);
+  const current =
+    days.find(
+      (day) => day.date === today
+    ) ?? {
+      water: 0,
+    };
 
   const max = 8;
-  const percentage = (water / max) * 100;
 
-  const handleWater = () => {
-    if (water >= max) {
-      setWater(0);
-    } else {
-      setWater(water + 1);
-    }
-  };
+  const percentage =
+    (current.water / max) * 100;
+
+  function handleWater() {
+
+    const next =
+      current.water >= max
+        ? 0
+        : current.water + 1;
+
+    updateDay(today, {
+      water: next,
+    });
+
+  }
 
   return (
     <div className="hydration">
 
       <div className="hydration-count">
-        {water} / {max} verres
+        {current.water} / {max} verres
       </div>
 
       <div className="hydration-bar">
+
         <div
           className="hydration-progress"
-          style={{ width: `${percentage}%` }}
+          style={{
+            width: `${percentage}%`,
+          }}
         />
+
       </div>
 
       <button

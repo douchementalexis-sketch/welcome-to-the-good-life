@@ -1,29 +1,19 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
+import { dayData } from "../data/dailyData";
+import type { DayData } from "../types/DayData";
 
 type AppContextType = {
-  water: number;
-  setWater: React.Dispatch<React.SetStateAction<number>>;
+  days: DayData[];
 
-  workoutDone: boolean;
-  setWorkoutDone: React.Dispatch<React.SetStateAction<boolean>>;
-
-  mood: number;
-  setMood: React.Dispatch<React.SetStateAction<number>>;
-
-  resetDay: () => void;
+  updateDay: (
+    date: string,
+    updates: Partial<DayData>
+  ) => void;
 };
 
 export const AppContext = createContext<AppContextType>({
-  water: 0,
-  setWater: () => {},
-
-  workoutDone: false,
-  setWorkoutDone: () => {},
-
-  mood: 2,
-  setMood: () => {},
-
-  resetDay: () => {},
+  days: [],
+  updateDay: () => {},
 });
 
 export function AppProvider({
@@ -31,49 +21,47 @@ export function AppProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [water, setWater] = useState(() => {
-    const saved = localStorage.getItem("water");
-    return saved ? Number(saved) : 0;
-  });
+  const [days, setDays] = useState<DayData[]>(dayData);
 
-  const [workoutDone, setWorkoutDone] = useState(() => {
-    const saved = localStorage.getItem("workoutDone");
-    return saved === "true";
-  });
+  function updateDay(
+    date: string,
+    updates: Partial<DayData>
+  ) {
+    setDays((previous) => {
+      const exists = previous.some(
+        (day) => day.date === date
+      );
 
-  const [mood, setMood] = useState(() => {
-    const saved = localStorage.getItem("mood");
-    return saved ? Number(saved) : 2;
-  });
+      if (exists) {
+        return previous.map((day) =>
+          day.date === date
+            ? {
+                ...day,
+                ...updates,
+              }
+            : day
+        );
+      }
 
-  useEffect(() => {
-    localStorage.setItem("water", water.toString());
-  }, [water]);
+      const newDay: DayData = {
+        id: date,
+        date,
+        water: 0,
+        mood: 2,
+        workoutDone: false,
+        notes: "",
+        ...updates,
+      };
 
-  useEffect(() => {
-    localStorage.setItem("workoutDone", workoutDone.toString());
-  }, [workoutDone]);
-
-  useEffect(() => {
-    localStorage.setItem("mood", mood.toString());
-  }, [mood]);
-
-  const resetDay = () => {
-    setWater(0);
-    setWorkoutDone(false);
-    setMood(2);
-  };
+      return [...previous, newDay];
+    });
+  }
 
   return (
     <AppContext.Provider
       value={{
-        water,
-        setWater,
-        workoutDone,
-        setWorkoutDone,
-        mood,
-        setMood,
-        resetDay,
+        days,
+        updateDay,
       }}
     >
       {children}

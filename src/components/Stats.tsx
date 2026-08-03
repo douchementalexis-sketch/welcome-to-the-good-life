@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { getTodayDate } from "../utils/date";
 
 import "../styles/Stats.css";
 
@@ -12,7 +13,16 @@ const moods = [
 ];
 
 export default function Stats() {
-  const { water, workoutDone, mood } = useContext(AppContext);
+  const { days } = useContext(AppContext);
+
+  const today = getTodayDate();
+
+  const current =
+    days.find((day) => day.date === today) ?? {
+      water: 0,
+      mood: 2,
+      workoutDone: false,
+    };
 
   return (
     <div className="stats-grid">
@@ -21,7 +31,7 @@ export default function Stats() {
         <div className="stat-icon">💧</div>
 
         <div className="stat-value">
-          {water}/8
+          {current.water}/8
         </div>
 
         <div className="stat-title">
@@ -33,7 +43,7 @@ export default function Stats() {
         <div className="stat-icon">🏋️</div>
 
         <div className="stat-value">
-          {workoutDone ? "✅" : "❌"}
+          {current.workoutDone ? "✅" : "❌"}
         </div>
 
         <div className="stat-title">
@@ -43,11 +53,11 @@ export default function Stats() {
 
       <div className="stat-card">
         <div className="stat-icon">
-          {moods[mood].emoji}
+          {moods[current.mood].emoji}
         </div>
 
         <div className="stat-value">
-          {moods[mood].text}
+          {moods[current.mood].text}
         </div>
 
         <div className="stat-title">

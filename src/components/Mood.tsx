@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { getTodayDate } from "../utils/date";
 
 import "../styles/Mood.css";
 
@@ -12,9 +13,16 @@ const moods = [
 ];
 
 export default function Mood() {
-  const { mood, setMood } = useContext(AppContext);
+  const { days, updateDay } = useContext(AppContext);
 
-  const currentMood = moods[mood];
+  const today = getTodayDate();
+
+  const current =
+    days.find((day) => day.date === today) ?? {
+      mood: 2,
+    };
+
+  const currentMood = moods[current.mood];
 
   return (
     <div className="mood">
@@ -23,9 +31,13 @@ export default function Mood() {
         {moods.map((item, index) => (
           <span
             key={index}
-            onClick={() => setMood(index)}
+            onClick={() =>
+              updateDay(today, {
+                mood: index,
+              })
+            }
             className={`mood-emoji ${
-              mood === index ? "active" : ""
+              current.mood === index ? "active" : ""
             }`}
           >
             {item.emoji}
@@ -36,7 +48,9 @@ export default function Mood() {
       <div className="mood-bar">
         <div
           className="mood-progress"
-          style={{ width: `${currentMood.value}%` }}
+          style={{
+            width: `${currentMood.value}%`,
+          }}
         />
       </div>
 

@@ -1,65 +1,181 @@
 .modal-overlay{
 
-    position:fixed;
+position:fixed;
 
-    inset:0;
+inset:0;
 
-    background:rgba(0,0,0,.45);
+background:rgba(0,0,0,.45);
 
-    display:flex;
+backdrop-filter:blur(6px);
 
-    justify-content:center;
+display:flex;
 
-    align-items:center;
+justify-content:center;
 
-    z-index:1000;
+align-items:center;
+
+z-index:999;
 
 }
 
 .modal{
 
-    width:min(420px,90vw);
+width:min(520px,92vw);
 
-    background:white;
+background:white;
 
-    border-radius:24px;
+border-radius:28px;
 
-    padding:25px;
+padding:30px;
 
-    box-shadow:0 20px 40px rgba(0,0,0,.2);
+box-shadow:0 25px 60px rgba(0,0,0,.25);
 
-    animation:popup .25s ease;
+animation:popup .25s ease;
+
 }
 
 .modal h2{
 
-    margin-bottom:20px;
+margin-top:0;
+
+margin-bottom:25px;
+
+color:var(--text);
 
 }
 
-.modal button{
+.modal-section{
 
-    margin-top:20px;
+margin-bottom:22px;
 
-    width:100%;
+}
+
+.modal-section h3{
+
+margin-bottom:10px;
+
+color:var(--primary);
+
+}
+
+textarea{
+
+width:100%;
+
+padding:12px;
+
+border-radius:14px;
+
+border:1px solid #ddd;
+
+font:inherit;
+
+resize:none;
+
+box-sizing:border-box;
+
+}
+
+.modal-button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:16px;
+
+background:var(--primary);
+
+color:white;
+
+font-size:17px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.modal-button:hover{
+
+transform:translateY(-2px);
+
+}
+
+.editor-row{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:20px;
+
+}
+
+.editor-button{
+
+width:48px;
+
+height:48px;
+
+border:none;
+
+border-radius:50%;
+
+background:var(--primary);
+
+color:white;
+
+font-size:24px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.editor-button:hover{
+
+transform:scale(1.08);
+
+}
+
+.editor-value{
+
+flex:1;
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:bold;
+
 }
 
 @keyframes popup{
 
-    from{
+from{
 
-        transform:scale(.9);
+opacity:0;
 
-        opacity:0;
+transform:scale(.92);
 
-    }
+}
 
-    to{
+to{
 
-        transform:scale(1);
+opacity:1;
 
-        opacity:1;
+transform:scale(1);
 
-    }
+}
 
 }
