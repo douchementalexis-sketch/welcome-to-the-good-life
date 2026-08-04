@@ -1,85 +1,93 @@
 .home {
+
   min-height: 100vh;
-  background: linear-gradient(180deg, #f8f6f2 0%, #eef3ee 100%);
 
-  display: flex;
-  justify-content: center;
-
-  padding: 40px 16px 120px;
-
-  box-sizing: border-box;
-}
-
-.hero {
   width: 100%;
-  max-width: 900px;
-
-  margin: 0 auto;
 
   padding-bottom: 100px;
-}
-
-.message {
-  color: #666;
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
-
-button {
-  width: 100%;
-
-  background: #4d7b62;
-  color: white;
-
-  border: none;
-
-  padding: 16px;
-
-  border-radius: 14px;
-
-  font-size: 17px;
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition: 0.25s;
-}
-
-button:hover {
-  background: #355f4b;
-}
-
-/* ========================= */
-/* Tablette */
-/* ========================= */
-
-@media (max-width: 1024px) {
-
-.hero{
-  max-width: 760px;
-}
 
 }
 
-/* ========================= */
-/* Mobile */
-/* ========================= */
+
+
+
+
+.hero {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding-bottom: 30px;
+
+}
+
+
+
+
+
+/*
+  Espacement entre les grandes sections
+*/
+
+.home .card {
+
+  margin-bottom: 0;
+
+}
+
+
+
+
+
+/*
+  Bloc Hydratation + Humeur
+*/
+
+.home-grid {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 24px;
+
+}
+
+
+
+
+
+/*
+  Responsive mobile
+*/
 
 @media (max-width: 768px) {
 
-.home{
-  padding: 16px 10px 110px;
-}
 
-.hero{
-  width: 100%;
-  max-width: 100%;
-  padding-bottom: 100px;
-}
+  .hero {
 
-button{
-  padding: 14px;
-  font-size: 16px;
-}
+    gap: 28px;
+
+    padding-left: 12px;
+
+    padding-right: 12px;
+
+  }
+
+
+
+
+
+  .home-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+
+  }
+
 
 }

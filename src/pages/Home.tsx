@@ -11,8 +11,6 @@ import BottomNavigation from "../components/BottomNavigation";
 
 import TodayWorkout from "../components/home/TodayWorkout";
 
-import SaveDayButton from "../components/SaveDayButton";
-
 
 export default function Home() {
 
@@ -38,7 +36,6 @@ export default function Home() {
 
 
         <Card title="🌸 Bonjour Rachel">
-
 
 
           <div
@@ -96,8 +93,8 @@ export default function Home() {
 
 
 
-          </div>
 
+          </div>
 
 
 
@@ -136,13 +133,14 @@ export default function Home() {
 
             gridTemplateColumns:"1fr 1fr",
 
-            gap:16,
+            gap:24,
 
             marginBottom:24,
 
           }}
 
         >
+
 
 
 
@@ -154,8 +152,6 @@ export default function Home() {
 
 
           </Card>
-
-
 
 
 
@@ -181,7 +177,6 @@ export default function Home() {
 
 
 
-
         <Card title="📝 Notes du jour">
 
 
@@ -194,14 +189,8 @@ export default function Home() {
 
 
 
-
-        <SaveDayButton />
-
-
-
-
-
       </div>
+
 
 
 
@@ -215,5 +204,6 @@ export default function Home() {
 
 
   );
+
 
 }
