@@ -16,11 +16,12 @@ export default function Planning() {
 
 
 
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 2; i++) {
 
 
     const nextDate =
       new Date(today);
+
 
 
     nextDate.setDate(
@@ -30,7 +31,13 @@ export default function Planning() {
 
 
     const dateString =
-      nextDate.toISOString().split("T")[0];
+      `${nextDate.getFullYear()}-${String(
+        nextDate.getMonth() + 1
+      ).padStart(2, "0")}-${String(
+        nextDate.getDate()
+      ).padStart(2, "0")}`;
+
+
 
 
 
@@ -39,15 +46,17 @@ export default function Planning() {
 
 
 
+
+
     upcoming.push({
 
-      id:i,
+      id: i,
 
       day:
         nextDate.toLocaleDateString(
           "fr-FR",
           {
-            weekday:"long"
+            weekday: "long",
           }
         ),
 
@@ -75,10 +84,13 @@ export default function Planning() {
       type:
         workout.id,
 
+
     });
 
 
   }
+
+
 
 
 
@@ -122,6 +134,7 @@ export default function Planning() {
       {upcoming.map((session)=>(
 
 
+
         <div
 
           key={session.id}
@@ -144,16 +157,21 @@ export default function Planning() {
 
 
 
+
             <div>
 
 
 
               <div className="planning-day">
 
-                {session.day.charAt(0).toUpperCase() +
-                 session.day.slice(1)}
+                {
+                  session.day.charAt(0).toUpperCase()
+                  +
+                  session.day.slice(1)
+                }
 
               </div>
+
 
 
 
@@ -175,7 +193,10 @@ export default function Planning() {
 
 
 
+
+
           <div className="planning-right">
+
 
 
             <span>
@@ -183,6 +204,7 @@ export default function Planning() {
               {session.hour}
 
             </span>
+
 
 
 
@@ -198,6 +220,7 @@ export default function Planning() {
 
 
 
+
         </div>
 
 
@@ -207,6 +230,7 @@ export default function Planning() {
 
 
     </div>
+
 
 
   );
