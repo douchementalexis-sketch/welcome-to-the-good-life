@@ -4,32 +4,31 @@ import {
 
 
 import {
+  useNavigate,
+} from "react-router-dom";
+
+
+import {
   AuthContext,
 } from "../context/AuthContext";
 
 
 
-export default function CoachDashboard() {
+
+
+export default function CoachDashboard(){
+
+
+
+  const navigate =
+    useNavigate();
 
 
 
   const {
     logout,
-  } = useContext(AuthContext);
-
-
-
-
-
-  async function handleLogout(){
-
-
-    await logout();
-
-
-  }
-
-
+  } =
+    useContext(AuthContext);
 
 
 
@@ -44,7 +43,7 @@ export default function CoachDashboard() {
 
         minHeight:"100vh",
 
-        padding:"30px",
+        padding:30,
 
         background:"#f7f7f2",
 
@@ -88,11 +87,11 @@ export default function CoachDashboard() {
 
           background:"#fff",
 
-          padding:"25px",
+          padding:25,
 
-          borderRadius:"20px",
+          borderRadius:20,
 
-          marginTop:"30px",
+          marginTop:30,
 
         }}
 
@@ -116,15 +115,16 @@ export default function CoachDashboard() {
 
             background:"#f4f7f2",
 
-            padding:"20px",
+            padding:20,
 
-            borderRadius:"15px",
+            borderRadius:15,
 
-            marginTop:"20px",
+            marginTop:20,
 
           }}
 
         >
+
 
 
           <h3>
@@ -144,19 +144,29 @@ export default function CoachDashboard() {
 
 
 
+
           <button
+
+            onClick={() =>
+              navigate(
+                "/client-followup"
+              )
+            }
+
 
             style={{
 
               padding:"12px 20px",
 
-              borderRadius:"12px",
+              borderRadius:12,
 
               border:"none",
 
               background:"#355F4B",
 
               color:"white",
+
+              cursor:"pointer",
 
             }}
 
@@ -179,27 +189,25 @@ export default function CoachDashboard() {
 
 
 
+
       <button
 
-        onClick={handleLogout}
+        onClick={logout}
+
 
         style={{
 
-          marginTop:"40px",
+          marginTop:40,
 
           padding:"14px 25px",
 
-          borderRadius:"12px",
+          borderRadius:12,
 
           border:"none",
 
           background:"#b23b3b",
 
           color:"white",
-
-          fontSize:"16px",
-
-          cursor:"pointer",
 
         }}
 
@@ -211,11 +219,10 @@ export default function CoachDashboard() {
 
 
 
-
-
     </div>
 
 
   );
+
 
 }

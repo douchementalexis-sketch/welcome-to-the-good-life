@@ -35,6 +35,8 @@ import WorkoutSession from "./pages/WorkoutSession";
 
 import CoachDashboard from "./pages/CoachDashboard";
 
+import ClientFollowUp from "./pages/ClientFollowUp";
+
 
 
 
@@ -45,8 +47,11 @@ function HomeRedirect(){
 
 
   const {
+
     user,
+
     role,
+
   } = useContext(AuthContext);
 
 
@@ -54,6 +59,7 @@ function HomeRedirect(){
 
 
   // Pas connecté
+
   if(!user){
 
 
@@ -76,7 +82,8 @@ function HomeRedirect(){
 
 
 
-  // Coach
+
+  // Compte coach Alexis
 
   if(role === "COACH"){
 
@@ -94,7 +101,8 @@ function HomeRedirect(){
 
 
 
-  // Client
+
+  // Compte cliente Rachel
 
   return (
 
@@ -154,6 +162,8 @@ export default function App(){
 
 
 
+
+
             <Route
 
               path="/"
@@ -165,6 +175,8 @@ export default function App(){
               }
 
             />
+
+
 
 
 
@@ -186,6 +198,8 @@ export default function App(){
 
 
 
+
+
             <Route
 
               path="/statistics"
@@ -197,6 +211,8 @@ export default function App(){
               }
 
             />
+
+
 
 
 
@@ -218,6 +234,8 @@ export default function App(){
 
 
 
+
+
             <Route
 
               path="/workout"
@@ -225,6 +243,24 @@ export default function App(){
               element={
 
                 <WorkoutSession />
+
+              }
+
+            />
+
+
+
+
+
+
+
+            <Route
+
+              path="/client-followup"
+
+              element={
+
+                <ClientFollowUp />
 
               }
 
@@ -251,7 +287,6 @@ export default function App(){
 
 
   );
-
 
 
 }
