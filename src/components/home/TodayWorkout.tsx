@@ -35,7 +35,6 @@ export default function TodayWorkout() {
 
   const {
     days,
-    updateDay,
   } = useContext(AppContext);
 
 
@@ -86,32 +85,6 @@ export default function TodayWorkout() {
 
   const finished =
     current?.workoutDone ?? false;
-
-
-
-
-
-
-
-  function handleSaveWorkout(){
-
-
-    updateDay(
-
-      today,
-
-      {
-
-        workoutDone:true,
-
-      }
-
-    );
-
-
-  }
-
-
 
 
 
@@ -212,6 +185,8 @@ export default function TodayWorkout() {
 
 
 
+
+
         <div className="info-card">
 
 
@@ -281,7 +256,9 @@ export default function TodayWorkout() {
 
 
 
+
         <div className="progress-bar">
+
 
 
           <div
@@ -295,6 +272,8 @@ export default function TodayWorkout() {
             }}
 
           />
+
+
 
         </div>
 
@@ -316,50 +295,13 @@ export default function TodayWorkout() {
 
       >
 
-        ▶ Commencer la séance
 
-      </button>
+        {
+          finished
 
+          ? "✅ Séance terminée"
 
-
-
-
-
-
-      <button
-
-        onClick={handleSaveWorkout}
-
-        style={{
-
-          marginTop:12,
-
-          width:"100%",
-
-          padding:"12px",
-
-          borderRadius:12,
-
-          border:"none",
-
-          background:"#355F4B",
-
-          color:"#fff",
-
-          cursor:"pointer",
-
-          fontSize:16,
-
-        }}
-
-      >
-
-        {finished
-
-          ? "✅ Séance enregistrée"
-
-          : "💾 Enregistrer la séance"
-
+          : "▶ Commencer la séance"
         }
 
 

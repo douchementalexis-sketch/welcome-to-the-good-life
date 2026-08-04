@@ -5,6 +5,7 @@ import { getTodayDate } from "../utils/date";
 
 import "../styles/Notes.css";
 
+
 export default function Notes() {
 
 
@@ -23,7 +24,7 @@ export default function Notes() {
     days.find(
       (day) => day.date === today
     ) ?? {
-      notes: "",
+      notes:"",
     };
 
 
@@ -34,29 +35,19 @@ export default function Notes() {
     value:string
   ) {
 
-    updateDay(today, {
 
-      notes:value,
+    updateDay(
 
-    });
+      today,
 
-  }
+      {
+        notes:value,
+      }
 
+    );
 
-
-
-
-
-  function handleSave(){
-
-    updateDay(today, {
-
-      notes: current.notes,
-
-    });
 
   }
-
 
 
 
@@ -83,41 +74,6 @@ export default function Notes() {
         }
 
       />
-
-
-
-      <button
-
-        onClick={handleSave}
-
-        style={{
-
-          marginTop:12,
-
-          width:"100%",
-
-          padding:"12px",
-
-          borderRadius:12,
-
-          border:"none",
-
-          background:"#355F4B",
-
-          color:"#fff",
-
-          fontSize:16,
-
-          cursor:"pointer",
-
-        }}
-
-      >
-
-        💾 Enregistrer
-
-      </button>
-
 
 
     </div>

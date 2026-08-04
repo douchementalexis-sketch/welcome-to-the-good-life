@@ -18,10 +18,12 @@ import {
 export default function SaveDayButton(){
 
 
+
   const {
     days,
     updateDay,
   } = useContext(AppContext);
+
 
 
 
@@ -30,10 +32,12 @@ export default function SaveDayButton(){
 
 
 
+
   const current =
     days.find(
-      (day) => day.date === today
+      (day)=>day.date===today
     );
+
 
 
 
@@ -45,10 +49,12 @@ export default function SaveDayButton(){
 
 
 
-  async function handleSave(){
 
 
-    await updateDay(
+  function handleSave(){
+
+
+    updateDay(
 
       today,
 
@@ -59,7 +65,7 @@ export default function SaveDayButton(){
 
 
         mood:
-          current?.mood ?? 2,
+          current?.mood ?? 0,
 
 
         notes:
@@ -76,7 +82,9 @@ export default function SaveDayButton(){
 
 
 
+
     setSaved(true);
+
 
 
 
@@ -94,87 +102,62 @@ export default function SaveDayButton(){
 
 
 
+
   return (
 
 
-    <div
+    <button
+
+      onClick={handleSave}
 
       style={{
 
+        width:"100%",
+
         marginTop:25,
 
-        marginBottom:30,
+        marginBottom:25,
+
+        padding:"16px",
+
+        borderRadius:15,
+
+        border:"none",
+
+        background:
+
+          saved
+
+          ? "#4CAF50"
+
+          : "#355F4B",
+
+
+        color:"#fff",
+
+        fontSize:17,
+
+        fontWeight:"bold",
+
+        cursor:"pointer",
 
       }}
 
     >
 
 
-
-      <button
-
-        onClick={handleSave}
-
-        style={{
-
-          width:"100%",
-
-          padding:"16px",
-
-          borderRadius:"15px",
-
-          border:"none",
-
-          background:"#355F4B",
-
-          color:"white",
-
-          fontSize:"17px",
-
-          fontWeight:"bold",
-
-          cursor:"pointer",
-
-        }}
-
-      >
-
-        💾 Enregistrer ma journée
-
-      </button>
-
-
-
-
-
       {
-        saved &&
 
-        <p
+        saved
 
-          style={{
+        ? "✅ Journée enregistrée"
 
-            textAlign:"center",
-
-            color:"#355F4B",
-
-            marginTop:12,
-
-            fontWeight:"bold",
-
-          }}
-
-        >
-
-          ✅ Journée enregistrée
-
-        </p>
+        : "💾 Enregistrer ma journée"
 
       }
 
 
-
-    </div>
+    </button>
 
 
   );
