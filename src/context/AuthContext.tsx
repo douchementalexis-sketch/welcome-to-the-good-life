@@ -17,9 +17,12 @@ import {
 } from "../lib/supabase";
 
 
+
 type AuthContextType = {
 
   user: User | null;
+
+  role: string | null;
 
   login: (
     email: string,
@@ -31,10 +34,15 @@ type AuthContextType = {
 };
 
 
+
+
+
 export const AuthContext =
   createContext<AuthContextType>({
 
     user: null,
+
+    role: null,
 
     login: async () => {},
 
@@ -44,73 +52,272 @@ export const AuthContext =
 
 
 
+
+
+
+
 export function AuthProvider({
+
   children,
+
 }: {
+
   children: ReactNode;
+
 }) {
 
 
-  const [user, setUser] =
-    useState<User | null>(null);  useEffect(() => {
 
-    async function getSession() {
-
-      const {
-        data,
-      } = await supabase.auth.getSession();
+  const [
+    user,
+    setUser,
+  ] = useState<User | null>(null);
 
 
-      setUser(
-        data.session?.user ?? null
-      );
+
+
+  const [
+    role,
+    setRole,
+  ] = useState<string | null>(null);
+
+
+
+
+
+
+
+
+  async function loadProfile(
+
+    currentUser: User | null
+
+  ) {
+
+
+
+    if (!currentUser) {
+
+      setRole(null);
+
+      return;
 
     }
 
 
+
+
+
+    const {
+      data,
+      error,
+    } =
+      await supabase
+        .from("profiles")
+        .select("role")
+        .eq(
+          "id",
+          currentUser.id
+        )
+        .maybeSingle();
+
+
+
+
+
+
+    if (error) {
+
+      console.error(
+        "ERREUR PROFIL :",
+        error
+      );
+
+      setRole(null);
+
+      return;
+
+    }
+
+
+
+
+
+    if (!data) {
+
+      console.error(
+        "AUCUN PROFIL TROUVE POUR :",
+        currentUser.id
+      );
+
+      setRole(null);
+
+      return;
+
+    }
+
+
+
+
+
+    console.log(
+      "ROLE UTILISATEUR :",
+      data.role
+    );
+
+
+
+    setRole(
+      data.role
+    );
+
+
+  }
+
+
+
+
+
+
+
+
+
+  useEffect(() => {
+
+
+
+    async function getSession() {
+
+
+
+      const {
+        data,
+      } =
+        await supabase.auth.getSession();
+
+
+
+
+      const currentUser =
+        data.session?.user ?? null;
+
+
+
+
+      setUser(
+        currentUser
+      );
+
+
+
+
+      await loadProfile(
+        currentUser
+      );
+
+
+    }
+
+
+
+
+
+
     getSession();
+
+
+
+
+
 
 
     const {
       data: listener,
     } =
       supabase.auth.onAuthStateChange(
-        (_event, session) => {
+
+
+        async (
+          _event,
+          session
+        ) => {
+
+
+
+          const currentUser =
+            session?.user ?? null;
+
+
+
 
           setUser(
-            session?.user ?? null
+            currentUser
           );
 
+
+
+
+          await loadProfile(
+            currentUser
+          );
+
+
+
         }
+
+
+
       );
+
+
+
+
 
 
     return () => {
 
+
       listener.subscription.unsubscribe();
 
+
     };
+
 
 
   }, []);
 
 
 
+
+
+
+
+
+
   async function login(
+
     email: string,
+
     password: string
+
   ) {
+
+
 
     const {
       error,
     } =
-      await supabase.auth.signInWithPassword({
+      await supabase.auth
+        .signInWithPassword({
 
-        email,
+          email,
 
-        password,
+          password,
 
-      });
+        });
+
+
+
 
 
     if (error) {
@@ -119,37 +326,66 @@ export function AuthProvider({
 
     }
 
+
   }
+
+
+
+
+
 
 
 
   async function logout() {
 
+
     await supabase.auth.signOut();
+
+
+    setUser(null);
+
+    setRole(null);
+
 
   }
 
 
 
+
+
+
+
+
+
   return (
+
 
     <AuthContext.Provider
 
+
       value={{
 
+
         user,
+
+        role,
 
         login,
 
         logout,
 
+
       }}
+
 
     >
 
+
       {children}
 
+
     </AuthContext.Provider>
+
 
   );
 

@@ -13,36 +13,100 @@ import {
 import AppProvider from "./context/AppProvider";
 
 
-import ProtectedRoute from "./components/ProtectedRoute";
+import {
+  useContext,
+} from "react";
+
+
+import {
+  AuthContext,
+} from "./context/AuthContext";
+
 
 
 import Login from "./pages/Login";
 
 import Home from "./pages/Home";
+
 import Calendar from "./pages/Calendar";
+
 import Statistics from "./pages/Statistics";
+
 import Profile from "./pages/Profile";
+
 import WorkoutSession from "./pages/WorkoutSession";
 
+import CoachDashboard from "./pages/CoachDashboard";
 
 
-export default function App() {
+
+
+
+function HomeRedirect(){
+
+
+  const {
+    role,
+  } = useContext(AuthContext);
+
+
+
+
+
+  if(role === "COACH"){
+
+
+    return (
+
+      <CoachDashboard />
+
+    );
+
+
+  }
+
+
+
 
 
   return (
 
+    <Home />
+
+  );
+
+
+}
+
+
+
+
+
+
+
+
+
+export default function App(){
+
+
+
+  return (
+
+
+
     <AuthProvider>
+
 
 
       <AppProvider>
 
 
+
         <BrowserRouter>
 
 
+
           <Routes>
-
-
 
 
 
@@ -51,12 +115,12 @@ export default function App() {
               path="/login"
 
               element={
+
                 <Login />
+
               }
 
             />
-
-
 
 
 
@@ -68,18 +132,11 @@ export default function App() {
 
               element={
 
-                <ProtectedRoute>
-
-                  <Home />
-
-                </ProtectedRoute>
+                <HomeRedirect />
 
               }
 
             />
-
-
-
 
 
 
@@ -91,17 +148,11 @@ export default function App() {
 
               element={
 
-                <ProtectedRoute>
-
-                  <Calendar />
-
-                </ProtectedRoute>
+                <Calendar />
 
               }
 
             />
-
-
 
 
 
@@ -113,17 +164,11 @@ export default function App() {
 
               element={
 
-                <ProtectedRoute>
-
-                  <Statistics />
-
-                </ProtectedRoute>
+                <Statistics />
 
               }
 
             />
-
-
 
 
 
@@ -135,17 +180,11 @@ export default function App() {
 
               element={
 
-                <ProtectedRoute>
-
-                  <Profile />
-
-                </ProtectedRoute>
+                <Profile />
 
               }
 
             />
-
-
 
 
 
@@ -157,11 +196,7 @@ export default function App() {
 
               element={
 
-                <ProtectedRoute>
-
-                  <WorkoutSession />
-
-                </ProtectedRoute>
+                <WorkoutSession />
 
               }
 
@@ -174,14 +209,20 @@ export default function App() {
           </Routes>
 
 
+
         </BrowserRouter>
+
 
 
       </AppProvider>
 
 
+
     </AuthProvider>
 
+
+
   );
+
 
 }
