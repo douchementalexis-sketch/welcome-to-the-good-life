@@ -4,6 +4,11 @@ import {
 
 
 import {
+  Navigate,
+} from "react-router-dom";
+
+
+import {
   AuthContext,
 } from "../context/AuthContext";
 
@@ -14,26 +19,70 @@ import CoachDashboard from "./CoachDashboard";
 
 
 
+
+
 export default function HomeRedirect(){
 
 
+
   const {
+    user,
     role,
   } = useContext(AuthContext);
 
 
 
 
-  if(role === "COACH"){
 
-    return <CoachDashboard />;
+
+
+  if(!user){
+
+
+    return (
+
+      <Navigate
+
+        to="/login"
+
+        replace
+
+      />
+
+    );
+
 
   }
 
 
 
 
-  return <Home />;
+
+
+
+  if(role === "COACH"){
+
+
+    return (
+
+      <CoachDashboard />
+
+    );
+
+
+  }
+
+
+
+
+
+
+
+  return (
+
+    <Home />
+
+  );
 
 
 }
