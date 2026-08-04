@@ -2,11 +2,13 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
 
 
 import {
   AuthProvider,
+  AuthContext,
 } from "./context/AuthContext";
 
 
@@ -16,11 +18,6 @@ import AppProvider from "./context/AppProvider";
 import {
   useContext,
 } from "react";
-
-
-import {
-  AuthContext,
-} from "./context/AuthContext";
 
 
 
@@ -42,16 +39,44 @@ import CoachDashboard from "./pages/CoachDashboard";
 
 
 
+
+
 function HomeRedirect(){
 
 
   const {
+    user,
     role,
   } = useContext(AuthContext);
 
 
 
 
+
+  // Pas connecté
+  if(!user){
+
+
+    return (
+
+      <Navigate
+
+        to="/login"
+
+        replace
+
+      />
+
+    );
+
+
+  }
+
+
+
+
+
+  // Coach
 
   if(role === "COACH"){
 
@@ -68,6 +93,8 @@ function HomeRedirect(){
 
 
 
+
+  // Client
 
   return (
 
@@ -107,6 +134,7 @@ export default function App(){
 
 
           <Routes>
+
 
 
 
@@ -223,6 +251,7 @@ export default function App(){
 
 
   );
+
 
 
 }
