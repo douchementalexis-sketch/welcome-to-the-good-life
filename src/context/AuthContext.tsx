@@ -20,16 +20,26 @@ import {
 
 type AuthContextType = {
 
+
   user: User | null;
+
 
   role: string | null;
 
+
+
   login: (
-    email: string,
-    password: string
+
+    email:string,
+
+    password:string
+
   ) => Promise<void>;
 
+
+
   logout: () => Promise<void>;
+
 
 };
 
@@ -37,18 +47,28 @@ type AuthContextType = {
 
 
 
+
+
 export const AuthContext =
-  createContext<AuthContextType>({
 
-    user: null,
+createContext<AuthContextType>({
 
-    role: null,
 
-    login: async () => {},
+  user:null,
 
-    logout: async () => {},
 
-  });
+  role:null,
+
+
+  login:async()=>{},
+
+
+  logout:async()=>{},
+
+
+});
+
+
 
 
 
@@ -60,26 +80,34 @@ export function AuthProvider({
 
   children,
 
-}: {
+}:{
 
-  children: ReactNode;
+  children:ReactNode;
 
 }) {
 
 
 
   const [
+
     user,
-    setUser,
+
+    setUser
+
   ] = useState<User | null>(null);
 
 
 
 
+
   const [
+
     role,
-    setRole,
+
+    setRole
+
   ] = useState<string | null>(null);
+
 
 
 
@@ -90,85 +118,119 @@ export function AuthProvider({
 
   async function loadProfile(
 
-    currentUser: User | null
+    currentUser:User | null
 
-  ) {
+  ){
 
 
 
-    if (!currentUser) {
+    if(!currentUser){
+
 
       setRole(null);
 
       return;
 
+
     }
+
+
 
 
 
 
 
     const {
+
       data,
+
       error,
-    } =
-      await supabase
-        .from("profiles")
-        .select("role")
-        .eq(
-          "id",
-          currentUser.id
-        )
-        .maybeSingle();
 
+    } = await supabase
 
+      .from("profiles")
 
+      .select("role")
 
+      .eq(
 
+        "id",
 
-    if (error) {
-
-      console.error(
-        "ERREUR PROFIL :",
-        error
-      );
-
-      setRole(null);
-
-      return;
-
-    }
-
-
-
-
-
-    if (!data) {
-
-      console.error(
-        "AUCUN PROFIL TROUVE POUR :",
         currentUser.id
+
+      )
+
+      .maybeSingle();
+
+
+
+
+
+
+
+    if(error){
+
+
+      console.error(
+
+        "ERREUR PROFIL :",
+
+        error
+
       );
+
 
       setRole(null);
 
       return;
 
+
     }
+
+
+
+
+
+
+
+    if(!data){
+
+
+      console.error(
+
+        "AUCUN PROFIL TROUVE"
+
+      );
+
+
+      setRole(null);
+
+      return;
+
+
+    }
+
 
 
 
 
 
     console.log(
+
       "ROLE UTILISATEUR :",
+
       data.role
+
     );
 
 
 
+
+
     setRole(
+
       data.role
+
     );
 
 
@@ -182,37 +244,50 @@ export function AuthProvider({
 
 
 
-  useEffect(() => {
 
 
 
-    async function getSession() {
+
+  useEffect(()=>{
+
+
+
+    async function getSession(){
 
 
 
       const {
+
         data,
-      } =
-        await supabase.auth.getSession();
+
+      } = await supabase.auth.getSession();
+
 
 
 
 
       const currentUser =
+
         data.session?.user ?? null;
 
 
 
 
+
       setUser(
+
         currentUser
+
       );
 
 
 
 
+
       await loadProfile(
+
         currentUser
+
       );
 
 
@@ -231,50 +306,63 @@ export function AuthProvider({
 
 
 
+
     const {
-      data: listener,
-    } =
-      supabase.auth.onAuthStateChange(
 
+      data:listener,
 
-        async (
-          _event,
-          session
-        ) => {
+    } = supabase.auth.onAuthStateChange(
 
 
 
-          const currentUser =
-            session?.user ?? null;
+      async (
+
+        _event,
+
+        session
+
+      )=>{
 
 
 
+        const currentUser =
 
-          setUser(
-            currentUser
-          );
-
-
-
-
-          await loadProfile(
-            currentUser
-          );
-
-
-
-        }
-
-
-
-      );
+          session?.user ?? null;
 
 
 
 
 
+        setUser(
 
-    return () => {
+          currentUser
+
+        );
+
+
+
+
+
+        await loadProfile(
+
+          currentUser
+
+        );
+
+
+
+      }
+
+
+
+    );
+
+
+
+
+
+
+    return ()=>{
 
 
       listener.subscription.unsubscribe();
@@ -284,7 +372,13 @@ export function AuthProvider({
 
 
 
-  }, []);
+
+
+  },[]);
+
+
+
+
 
 
 
@@ -296,37 +390,38 @@ export function AuthProvider({
 
   async function login(
 
-    email: string,
+    email:string,
 
-    password: string
+    password:string
 
-  ) {
+  ){
 
 
 
     const {
+
       error,
-    } =
-      await supabase.auth
-        .signInWithPassword({
 
-          email,
+    } = await supabase.auth.signInWithPassword({
 
-          password,
+      email,
 
-        });
+      password,
 
+    });
 
 
 
 
-    if (error) {
+
+    if(error){
 
       throw error;
 
     }
 
 
+
   }
 
 
@@ -336,18 +431,60 @@ export function AuthProvider({
 
 
 
-  async function logout() {
 
 
-    await supabase.auth.signOut();
+
+
+
+  async function logout(){
+
+
+
+    const {
+
+      error,
+
+    } = await supabase.auth.signOut();
+
+
+
+
+
+    if(error){
+
+
+      console.error(
+
+        "ERREUR LOGOUT :",
+
+        error
+
+      );
+
+
+    }
+
+
+
+
 
 
     setUser(null);
 
+
     setRole(null);
 
 
+
+
+
+    window.location.href="/login";
+
+
   }
+
+
+
 
 
 
@@ -360,34 +497,46 @@ export function AuthProvider({
   return (
 
 
+
     <AuthContext.Provider
+
 
 
       value={{
 
 
+
         user,
+
 
         role,
 
+
         login,
 
+
         logout,
+
 
 
       }}
 
 
+
     >
+
 
 
       {children}
 
 
+
     </AuthContext.Provider>
 
 
+
   );
+
 
 
 }
