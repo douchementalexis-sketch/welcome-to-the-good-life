@@ -5,14 +5,15 @@ import { getTodayDate } from "../utils/date";
 import "../styles/Stats.css";
 
 const moods = [
-  { emoji: "😞", text: "Journée difficile" },
-  { emoji: "😐", text: "Ça va" },
-  { emoji: "🙂", text: "Je me sens bien" },
-  { emoji: "😁", text: "Très bonne journée" },
-  { emoji: "🤩", text: "Je suis au top !" },
+  { emoji: "😞", text: "Difficile" },
+  { emoji: "😐", text: "Moyenne" },
+  { emoji: "🙂", text: "Bien" },
+  { emoji: "😁", text: "Très bien" },
+  { emoji: "🤩", text: "Au top" },
 ];
 
 export default function Stats() {
+
   const { days } = useContext(AppContext);
 
   const today = getTodayDate();
@@ -24,10 +25,16 @@ export default function Stats() {
       workoutDone: false,
     };
 
+  const completedWorkouts = days.filter(
+    (day) => day.workoutDone
+  ).length;
+
   return (
+
     <div className="stats-grid">
 
-      <div className="stat-card">
+      <div className="stat-card water-card">
+
         <div className="stat-icon">💧</div>
 
         <div className="stat-value">
@@ -37,21 +44,25 @@ export default function Stats() {
         <div className="stat-title">
           Hydratation
         </div>
+
       </div>
 
-      <div className="stat-card">
+      <div className="stat-card workout-card">
+
         <div className="stat-icon">🏋️</div>
 
         <div className="stat-value">
-          {current.workoutDone ? "✅" : "❌"}
+          {completedWorkouts}
         </div>
 
         <div className="stat-title">
-          Séance
+          Séances
         </div>
+
       </div>
 
-      <div className="stat-card">
+      <div className="stat-card mood-card">
+
         <div className="stat-icon">
           {moods[current.mood].emoji}
         </div>
@@ -61,10 +72,27 @@ export default function Stats() {
         </div>
 
         <div className="stat-title">
-          Ressenti
+          Humeur
         </div>
+
+      </div>
+
+      <div className="stat-card streak-card">
+
+        <div className="stat-icon">🔥</div>
+
+        <div className="stat-value">
+          0
+        </div>
+
+        <div className="stat-title">
+          Série
+        </div>
+
       </div>
 
     </div>
+
   );
+
 }

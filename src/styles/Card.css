@@ -1,31 +1,121 @@
-.card {
-  background: var(--card);
+/* =======================================
+   CARDS
+======================================= */
 
-  border-radius: var(--radius);
+.card{
 
-  padding: var(--space-md);
+  background:var(--card);
 
-  margin-bottom: var(--space-lg);
+  border-radius:var(--radius-lg);
 
-  box-shadow: var(--shadow);
+  padding:var(--space-lg);
 
-  border: 1px solid var(--border);
+  box-shadow:var(--shadow-md);
 
-  transition: 0.25s;
+  border:1px solid rgba(0,0,0,.04);
+
+  transition:var(--transition);
+
 }
 
-.card:hover {
-  transform: translateY(-2px);
+.card:hover{
 
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transform:translateY(-3px);
+
+  box-shadow:var(--shadow-lg);
+
 }
 
-.card h3 {
-  color: var(--text);
+.card-title{
 
-  font-size: 22px;
+  font-size:20px;
 
-  margin-bottom: var(--space-md);
+  font-weight:700;
 
-  font-weight: 700;
+  color:var(--text);
+
+  margin-bottom:18px;
+
+}
+
+.card-subtitle{
+
+  color:var(--text-light);
+
+  font-size:14px;
+
+  margin-top:6px;
+
+}
+
+.card-center{
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+.card-between{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+}
+
+.card-column{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:16px;
+
+}
+
+.card-success{
+
+  background:var(--success-light);
+
+}
+
+.card-primary{
+
+  background:var(--primary-light);
+
+}
+
+.card-rest{
+
+  background:var(--rest-light);
+
+}
+
+.card-cardio{
+
+  background:var(--cardio-light);
+
+}
+
+@media(max-width:768px){
+
+.card{
+
+  padding:18px;
+
+  border-radius:22px;
+
+}
+
+.card-title{
+
+  font-size:18px;
+
+}
+
 }

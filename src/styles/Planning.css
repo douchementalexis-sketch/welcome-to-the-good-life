@@ -1,49 +1,212 @@
-.planning {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+/* ================================= */
+/* PLANNING */
+/* ================================= */
+
+.planning{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:14px;
+
 }
 
-.planning-card {
-  background: var(--primary-light);
+/* ================================= */
 
-  border: 1px solid var(--border);
+.planning-card{
 
-  border-radius: var(--radius);
+  display:flex;
 
-  padding: var(--space-md);
+  justify-content:space-between;
 
-  transition: .25s;
+  align-items:center;
+
+  border-radius:22px;
+
+  padding:18px;
+
+  transition:.25s;
+
+  box-shadow:
+      0 8px 22px rgba(0,0,0,.08);
+
 }
 
-.planning-card:hover {
-  transform: translateY(-2px);
+.planning-card:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+      0 14px 28px rgba(0,0,0,.12);
+
 }
 
-.planning-day {
-  color: var(--primary);
+/* ================================= */
+/* COLORS */
+/* ================================= */
 
-  font-weight: bold;
+.strength{
 
-  margin-bottom: 8px;
+  background:linear-gradient(
+      135deg,
+      #E8F5E9,
+      #C8E6C9
+  );
+
 }
 
-.planning-title {
-  font-size: 18px;
+.cardio{
 
-  font-weight: bold;
+  background:linear-gradient(
+      135deg,
+      #E3F2FD,
+      #BBDEFB
+  );
 
-  color: var(--text);
-
-  margin-bottom: 12px;
 }
 
-.planning-footer {
-  display: flex;
+.rest{
 
-  justify-content: space-between;
+  background:linear-gradient(
+      135deg,
+      #FCE4EC,
+      #F8BBD0
+  );
 
-  color: var(--text-light);
+}
 
-  font-size: 15px;
+/* ================================= */
+
+.planning-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:16px;
+
+}
+
+.planning-icon{
+
+  width:54px;
+
+  height:54px;
+
+  border-radius:16px;
+
+  background:white;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:28px;
+
+  box-shadow:
+      0 6px 14px rgba(0,0,0,.10);
+
+}
+
+/* ================================= */
+
+.planning-day{
+
+  font-size:15px;
+
+  font-weight:700;
+
+  color:#355F4B;
+
+}
+
+.planning-title{
+
+  margin-top:4px;
+
+  font-size:19px;
+
+  font-weight:800;
+
+  color:#243228;
+
+}
+
+/* ================================= */
+
+.planning-right{
+
+  text-align:right;
+
+}
+
+.planning-right span{
+
+  display:block;
+
+  font-weight:700;
+
+  font-size:15px;
+
+}
+
+.planning-right small{
+
+  color:#555;
+
+  font-size:13px;
+
+}
+
+/* ================================= */
+/* MOBILE */
+/* ================================= */
+
+@media(max-width:768px){
+
+.planning-card{
+
+padding:14px;
+
+border-radius:18px;
+
+}
+
+.planning-icon{
+
+width:44px;
+
+height:44px;
+
+font-size:22px;
+
+}
+
+.planning-title{
+
+font-size:16px;
+
+}
+
+.planning-day{
+
+font-size:13px;
+
+}
+
+.planning-right span{
+
+font-size:13px;
+
+}
+
+.planning-right small{
+
+font-size:11px;
+
+}
+
 }

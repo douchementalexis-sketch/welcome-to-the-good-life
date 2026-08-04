@@ -1,0 +1,995 @@
+/* ======================================================
+   CALENDAR PREMIUM V2
+   Welcome To The Good Life
+====================================================== */
+
+.calendar{
+    width:100%;
+    margin-top:24px;
+}
+
+/* ======================================================
+   HEADER
+====================================================== */
+
+.premium-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    margin-bottom:24px;
+
+}
+
+.premium-header-content{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.premium-label{
+
+    display:block;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#94a3b8;
+
+    margin-bottom:6px;
+
+}
+
+.premium-title{
+
+    margin:0;
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1e293b;
+
+    text-transform:capitalize;
+
+}
+
+.premium-nav-button{
+
+    width:44px;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#2E7D5A;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    box-shadow:
+        0 6px 18px rgba(15,23,42,.08);
+
+}
+
+.premium-nav-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(15,23,42,.12);
+
+}
+
+/* ======================================================
+   WEEK DAYS
+====================================================== */
+
+.premium-weekdays{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:8px;
+
+    margin-bottom:14px;
+
+}
+
+.premium-weekdays span{
+
+    text-align:center;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    color:#94a3b8;
+
+    letter-spacing:1px;
+
+}/* ======================================================
+   GRID
+====================================================== */
+
+.premium-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,minmax(0,1fr));
+
+    gap:8px;
+
+    animation:premiumFade .35s ease;
+
+}
+
+.premium-empty{
+
+    min-height:120px;
+
+}
+
+/* ======================================================
+   CARD
+====================================================== */
+
+.premium-day{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:120px;
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:22px;
+
+    background:#ffffff;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:
+        transform .20s ease,
+        box-shadow .20s ease;
+
+    box-shadow:
+        0 8px 20px rgba(15,23,42,.06);
+
+}
+
+.premium-day:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 16px 30px rgba(15,23,42,.12);
+
+}
+
+.premium-day.today{
+
+    border:2px solid #2E7D5A;
+
+    box-shadow:
+        0 0 0 4px rgba(46,125,90,.12),
+        0 12px 28px rgba(15,23,42,.08);
+
+}
+
+.premium-day.completed{
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f6fff8
+        );
+
+}
+
+/* ======================================================
+   TOP
+====================================================== */
+
+.premium-day-top{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.premium-number{
+
+    font-size:17px;
+
+    font-weight:800;
+
+    color:#1e293b;
+
+}
+
+.premium-check{
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:
+        0 4px 10px rgba(34,197,94,.35);
+
+}/* ======================================================
+   ICON
+====================================================== */
+
+.premium-icon-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex:1;
+
+    width:100%;
+
+    margin:6px 0;
+
+}
+
+.premium-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #ecfdf5,
+        #d1fae5
+    );
+
+    color:#15803d;
+
+    box-shadow:
+        0 8px 18px rgba(34,197,94,.20);
+
+    transition:.25s ease;
+
+}
+
+.premium-day:hover .premium-icon{
+
+    transform:scale(1.08);
+
+}
+
+.premium-icon svg{
+
+    width:26px;
+
+    height:26px;
+
+    stroke-width:2.4;
+
+}
+
+/* ======================================================
+   BADGE
+====================================================== */
+
+.premium-badge{
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    background:#f1f5f9;
+
+    color:#475569;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:8px;
+
+}
+
+/* ======================================================
+   INDICATORS
+====================================================== */
+
+.premium-indicators{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    width:100%;
+
+    margin-top:4px;
+
+}
+
+.premium-indicator{
+
+    width:24px;
+
+    height:24px;
+
+    border-radius:50%;
+
+    background:#f8fafc;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#64748b;
+
+    transition:.20s;
+
+}
+
+.premium-indicator svg{
+
+    width:14px;
+
+    height:14px;
+
+}
+
+.premium-day:hover .premium-indicator{
+
+    background:#ecfdf5;
+
+    color:#15803d;
+
+}
+
+.indicator-empty{
+
+    color:#cbd5e1;
+
+    font-size:14px;
+
+}
+
+/* ======================================================
+   COLORS
+====================================================== */
+
+.premium-day.A .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #dcfce7,
+        #bbf7d0
+    );
+
+    color:#166534;
+
+}
+
+.premium-day.B .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #dcfce7,
+        #86efac
+    );
+
+    color:#166534;
+
+}
+
+.premium-day.C .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #ecfdf5,
+        #bbf7d0
+    );
+
+    color:#166534;
+
+}
+
+.premium-day.cardio .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #dbeafe,
+        #bfdbfe
+    );
+
+    color:#2563eb;
+
+}
+
+.premium-day.rest .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #f3f4f6,
+        #e5e7eb
+    );
+
+    color:#6b7280;
+
+}/* ======================================================
+   PROGRESS BAR
+====================================================== */
+
+.premium-progress{
+
+    width:100%;
+
+    height:5px;
+
+    margin-top:10px;
+
+    border-radius:999px;
+
+    background:#e2e8f0;
+
+    overflow:hidden;
+
+}
+
+.premium-progress-bar{
+
+    height:100%;
+
+    width:0;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        #22c55e,
+        #16a34a
+    );
+
+    transition:
+        width .35s ease;
+
+}
+
+.premium-day.completed .premium-progress-bar{
+
+    background:linear-gradient(
+        90deg,
+        #16a34a,
+        #15803d
+    );
+
+}
+
+/* ======================================================
+   MODAL
+====================================================== */
+
+.premium-modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:rgba(15,23,42,.45);
+
+    backdrop-filter:blur(8px);
+
+    z-index:999;
+
+}
+
+.premium-modal{
+
+    width:100%;
+
+    max-width:480px;
+
+    background:#ffffff;
+
+    border-radius:28px;
+
+    padding:24px;
+
+    position:relative;
+
+    box-shadow:
+        0 30px 60px rgba(15,23,42,.18);
+
+    animation:premiumPop .25s ease;
+
+}
+
+.premium-modal h2{
+
+    margin:0 0 22px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+.premium-close{
+
+    position:absolute;
+
+    top:16px;
+
+    right:16px;
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f1f5f9;
+
+    color:#475569;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.20s ease;
+
+}
+
+.premium-close:hover{
+
+    transform:rotate(90deg);
+
+    background:#e2e8f0;
+
+}
+
+.premium-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:16px;
+
+    margin-bottom:12px;
+
+    border-radius:18px;
+
+    background:#f8fafc;
+
+    transition:.20s ease;
+
+}
+
+.premium-card:hover{
+
+    background:#f1f5f9;
+
+}
+
+.premium-card span{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:12px;
+
+    background:white;
+
+    box-shadow:
+        0 4px 10px rgba(15,23,42,.05);
+
+}
+
+.premium-card strong{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#1e293b;
+
+}
+
+.premium-card p{
+
+    margin:0;
+
+    color:#64748b;
+
+}
+
+.premium-empty{
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+}/* ======================================================
+   ANIMATIONS
+====================================================== */
+
+@keyframes premiumFade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes premiumPop{
+
+    from{
+
+        opacity:0;
+        transform:scale(.90);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}
+
+.premium-day{
+
+    animation:premiumFade .30s ease;
+
+}
+
+.premium-check{
+
+    animation:premiumPop .25s ease;
+
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width:768px){
+
+    .premium-header{
+
+        gap:12px;
+
+        margin-bottom:18px;
+
+    }
+
+    .premium-title{
+
+        font-size:24px;
+
+    }
+
+    .premium-nav-button{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+    .premium-grid{
+
+        gap:6px;
+
+    }
+
+    .premium-empty{
+
+        min-height:92px;
+
+    }
+
+    .premium-day{
+
+        min-height:96px;
+
+        padding:8px;
+
+        border-radius:18px;
+
+    }
+
+    .premium-icon{
+
+        width:42px;
+
+        height:42px;
+
+        border-radius:14px;
+
+    }
+
+    .premium-icon svg{
+
+        width:22px;
+
+        height:22px;
+
+    }
+
+    .premium-number{
+
+        font-size:15px;
+
+    }
+
+    .premium-badge{
+
+        font-size:9px;
+
+        padding:3px 8px;
+
+    }
+
+    .premium-indicator{
+
+        width:20px;
+
+        height:20px;
+
+    }
+
+    .premium-progress{
+
+        height:4px;
+
+    }
+
+}
+
+/* ======================================================
+   PHONE
+====================================================== */
+
+@media (max-width:480px){
+
+    .premium-header{
+
+        margin-bottom:14px;
+
+    }
+
+    .premium-title{
+
+        font-size:21px;
+
+    }
+
+    .premium-label{
+
+        font-size:10px;
+
+    }
+
+    .premium-weekdays{
+
+        gap:4px;
+
+        margin-bottom:10px;
+
+    }
+
+    .premium-weekdays span{
+
+        font-size:10px;
+
+    }
+
+    .premium-grid{
+
+        gap:4px;
+
+    }
+
+    .premium-day{
+
+        min-height:82px;
+
+        padding:6px;
+
+        border-radius:16px;
+
+    }
+
+    .premium-icon{
+
+        width:34px;
+
+        height:34px;
+
+        border-radius:10px;
+
+    }
+
+    .premium-icon svg{
+
+        width:18px;
+
+        height:18px;
+
+    }
+
+    .premium-badge{
+
+        display:none;
+
+    }
+
+    .premium-number{
+
+        font-size:14px;
+
+    }
+
+    .premium-indicators{
+
+        gap:4px;
+
+    }
+
+    .premium-indicator{
+
+        width:18px;
+
+        height:18px;
+
+    }
+
+    .premium-progress{
+
+        height:3px;
+
+    }
+
+    .premium-modal{
+
+        border-radius:22px;
+
+        padding:18px;
+
+    }
+
+}
+
+/* ======================================================
+   DESKTOP
+====================================================== */
+
+@media (min-width:1024px){
+
+    .premium-grid{
+
+        gap:12px;
+
+    }
+
+    .premium-day{
+
+        min-height:140px;
+
+    }
+
+}

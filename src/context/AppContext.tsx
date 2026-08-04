@@ -36,6 +36,7 @@ export function AppProvider({
 
   });
 
+
   useEffect(() => {
 
     localStorage.setItem(
@@ -45,10 +46,14 @@ export function AppProvider({
 
   }, [days]);
 
+
   function updateDay(
     date: string,
     updates: Partial<DayData>
   ) {
+
+    console.log("UPDATE DAY :", date, updates);
+
 
     setDays((previous) => {
 
@@ -56,9 +61,10 @@ export function AppProvider({
         (day) => day.date === date
       );
 
+
       if (exists) {
 
-        return previous.map((day) =>
+        const updated = previous.map((day) =>
           day.date === date
             ? {
                 ...day,
@@ -67,33 +73,72 @@ export function AppProvider({
             : day
         );
 
+
+        console.log(
+          "NOUVELLES DONNEES :",
+          updated.find(
+            (day) => day.date === date
+          )
+        );
+
+
+        return updated;
+
       }
 
+
       const newDay: DayData = {
+
         id: date,
+
         date,
+
         water: 0,
+
         mood: 2,
+
         workoutDone: false,
+
         notes: "",
+
+        completedExercises: [],
+
         ...updates,
+
       };
 
-      return [...previous, newDay];
+
+      console.log(
+        "NOUVELLE JOURNEE :",
+        newDay
+      );
+
+
+      return [
+        ...previous,
+        newDay
+      ];
 
     });
 
   }
 
+
   return (
+
     <AppContext.Provider
+
       value={{
         days,
         updateDay,
       }}
+
     >
+
       {children}
+
     </AppContext.Provider>
+
   );
 
 }

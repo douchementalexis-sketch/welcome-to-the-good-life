@@ -18,6 +18,16 @@ export default function BottomNavigation() {
       </NavLink>
 
       <NavLink
+        to="/program"
+        className={({ isActive }) =>
+          `nav-item ${isActive ? "active" : ""}`
+        }
+      >
+        <div className="nav-icon">💪</div>
+        <div className="nav-label">Programme</div>
+      </NavLink>
+
+      <NavLink
         to="/calendar"
         className={({ isActive }) =>
           `nav-item ${isActive ? "active" : ""}`

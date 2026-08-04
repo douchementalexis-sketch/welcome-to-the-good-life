@@ -1,0 +1,23 @@
+.workout-pill{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+width:fit-content;
+
+padding:6px 14px;
+
+border-radius:999px;
+
+color:white;
+
+font-size:12px;
+
+font-weight:700;
+
+box-shadow:0 8px 18px rgba(0,0,0,.12);
+
+}

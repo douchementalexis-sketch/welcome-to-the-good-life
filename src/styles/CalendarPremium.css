@@ -1,0 +1,392 @@
+/* ==========================================
+   V3 PREMIUM CARD
+========================================== */
+
+.premium-icon-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin:8px 0;
+
+}
+
+.premium-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #ecfdf5,
+        #d1fae5
+    );
+
+    color:#15803d;
+
+    box-shadow:
+        0 8px 18px rgba(34,197,94,.18);
+
+}
+
+.premium-icon svg{
+
+    width:26px;
+
+    height:26px;
+
+}
+
+.premium-badge{
+
+    align-self:center;
+
+    margin-top:4px;
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.8px;
+
+    text-transform:uppercase;
+
+    background:#f1f5f9;
+
+    color:#475569;
+
+}/* ==========================================
+   V3 INDICATORS
+========================================== */
+
+.premium-indicators{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:10px;
+
+}
+
+.premium-indicator{
+
+    width:28px;
+
+    height:28px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    transition:.25s ease;
+
+}
+
+.premium-indicator svg{
+
+    width:15px;
+
+    height:15px;
+
+}
+
+.premium-day:hover .premium-indicator{
+
+    transform:translateY(-2px);
+
+    background:#ecfdf5;
+
+    color:#15803d;
+
+}
+
+.indicator-empty{
+
+    font-size:16px;
+
+    color:#cbd5e1;
+
+    line-height:1;
+
+}
+
+/* ==========================================
+   CARD COLORS
+========================================== */
+
+.premium-day.A .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #ecfdf5,
+        #bbf7d0
+    );
+
+    color:#15803d;
+
+}
+
+.premium-day.B .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #dcfce7,
+        #86efac
+    );
+
+    color:#166534;
+
+}
+
+.premium-day.C .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #f0fdf4,
+        #bbf7d0
+    );
+
+    color:#166534;
+
+}
+
+.premium-day.cardio .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #dbeafe,
+        #bfdbfe
+    );
+
+    color:#2563eb;
+
+}
+
+.premium-day.rest .premium-icon{
+
+    background:linear-gradient(
+        135deg,
+        #f3f4f6,
+        #e5e7eb
+    );
+
+    color:#6b7280;
+
+}/* ==========================================
+   V3 PROGRESS
+========================================== */
+
+.premium-progress{
+
+    width:100%;
+
+    height:5px;
+
+    margin-top:12px;
+
+    border-radius:999px;
+
+    background:#e2e8f0;
+
+    overflow:hidden;
+
+}
+
+.premium-progress-bar{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        #22c55e,
+        #16a34a
+    );
+
+    transition:width .35s ease;
+
+}
+
+/* ==========================================
+   TODAY
+========================================== */
+
+.premium-day.today{
+
+    border:2px solid #22c55e;
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,.10),
+        0 12px 24px rgba(0,0,0,.08);
+
+}
+
+/* ==========================================
+   COMPLETED
+========================================== */
+
+.premium-day.completed{
+
+    border:2px solid #22c55e;
+
+}
+
+.premium-day.completed .premium-progress-bar{
+
+    background:linear-gradient(
+        90deg,
+        #16a34a,
+        #15803d
+    );
+
+}
+
+.premium-day.completed .premium-badge{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+}
+
+/* ==========================================
+   HOVER
+========================================== */
+
+.premium-day:hover .premium-badge{
+
+    transform:translateY(-1px);
+
+    transition:.20s;
+
+}
+
+.premium-day:hover .premium-progress{
+
+    background:#dbeafe;
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+    .premium-icon{
+
+        width:42px;
+
+        height:42px;
+
+        border-radius:14px;
+
+    }
+
+    .premium-icon svg{
+
+        width:22px;
+
+        height:22px;
+
+    }
+
+    .premium-badge{
+
+        font-size:9px;
+
+        padding:3px 8px;
+
+    }
+
+    .premium-indicator{
+
+        width:22px;
+
+        height:22px;
+
+    }
+
+    .premium-progress{
+
+        height:4px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .premium-icon{
+
+        width:36px;
+
+        height:36px;
+
+        border-radius:12px;
+
+    }
+
+    .premium-icon svg{
+
+        width:18px;
+
+        height:18px;
+
+    }
+
+    .premium-badge{
+
+        display:none;
+
+    }
+
+    .premium-indicators{
+
+        gap:5px;
+
+    }
+
+    .premium-indicator{
+
+        width:18px;
+
+        height:18px;
+
+    }
+
+    .premium-progress{
+
+        height:3px;
+
+    }
+
+}

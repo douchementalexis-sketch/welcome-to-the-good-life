@@ -1,0 +1,87 @@
+/* =======================================
+   WELCOME TO THE GOOD LIFE
+   DESIGN SYSTEM V2
+======================================= */
+
+:root {
+
+  /* ===============================
+     COLORS
+  =============================== */
+
+  --background: #F6F8F7;
+  --surface: #FFFFFF;
+  --card: #FFFFFF;
+
+  --primary: #355F4B;
+  --primary-light: #E8F5EE;
+
+  --success: #22C55E;
+  --success-light: #DCFCE7;
+
+  --cardio: #3B82F6;
+  --cardio-light: #DBEAFE;
+
+  --rest: #9CA3AF;
+  --rest-light: #F3F4F6;
+
+  --warning: #F59E0B;
+  --danger: #EF4444;
+
+  --text: #1F2937;
+  --text-light: #6B7280;
+  --text-muted: #9CA3AF;
+
+  --border: #E5E7EB;
+
+
+
+  /* ===============================
+     SHADOWS
+  =============================== */
+
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.05);
+
+  --shadow-md: 0 8px 20px rgba(0,0,0,.08);
+
+  --shadow-lg: 0 18px 40px rgba(0,0,0,.12);
+
+
+
+  /* ===============================
+     BORDER RADIUS
+  =============================== */
+
+  --radius-sm: 12px;
+
+  --radius: 22px;
+
+  --radius-lg: 28px;
+
+
+
+  /* ===============================
+     SPACING
+  =============================== */
+
+  --space-xs: 6px;
+
+  --space-sm: 10px;
+
+  --space-md: 16px;
+
+  --space-lg: 24px;
+
+  --space-xl: 32px;
+
+
+
+  /* ===============================
+     TRANSITIONS
+  =============================== */
+
+  --transition-fast: .2s ease;
+
+  --transition: .3s ease;
+
+}

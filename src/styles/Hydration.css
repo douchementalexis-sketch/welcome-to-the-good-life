@@ -44,4 +44,16 @@
 
 .hydration-button:hover {
   transform: translateY(-2px);
+}.hydration-success {
+
+  text-align:center;
+
+  margin-top:12px;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  color:var(--primary);
+
 }

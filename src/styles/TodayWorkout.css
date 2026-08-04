@@ -1,0 +1,341 @@
+/* ================================= */
+/* TODAY WORKOUT */
+/* ================================= */
+
+.today-workout{
+
+  background:linear-gradient(
+      135deg,
+      #3E7057 0%,
+      #58896E 100%
+  );
+
+  color:white;
+
+  border-radius:28px;
+
+  padding:26px;
+
+  box-shadow:
+      0 20px 45px rgba(0,0,0,.18);
+
+  overflow:hidden;
+
+  position:relative;
+
+}
+
+.today-workout::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:-80px;
+
+  right:-80px;
+
+  width:220px;
+
+  height:220px;
+
+  background:rgba(255,255,255,.08);
+
+  border-radius:50%;
+
+}
+
+.today-workout::after{
+
+  content:"";
+
+  position:absolute;
+
+  bottom:-60px;
+
+  left:-60px;
+
+  width:170px;
+
+  height:170px;
+
+  background:rgba(255,255,255,.05);
+
+  border-radius:50%;
+
+}
+
+/* ================================= */
+
+.today-top{
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+.today-badge{
+
+  display:inline-block;
+
+  background:rgba(255,255,255,.18);
+
+  padding:6px 14px;
+
+  border-radius:999px;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  letter-spacing:1px;
+
+  margin-bottom:16px;
+
+}
+
+.today-top h1{
+
+  margin:0;
+
+  font-size:32px;
+
+  font-weight:800;
+
+}
+
+.today-top p{
+
+  margin-top:8px;
+
+  opacity:.9;
+
+  font-size:15px;
+
+}
+
+/* ================================= */
+
+.today-infos{
+
+  margin-top:28px;
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:14px;
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+.info-card{
+
+  background:rgba(255,255,255,.15);
+
+  backdrop-filter:blur(12px);
+
+  border-radius:18px;
+
+  padding:14px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+}
+
+.info-card span{
+
+  font-size:28px;
+
+}
+
+.info-card strong{
+
+  display:block;
+
+  font-size:18px;
+
+}
+
+.info-card small{
+
+  opacity:.8;
+
+}
+
+/* ================================= */
+
+.today-progress{
+
+  margin-top:28px;
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+.progress-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  font-weight:700;
+
+  margin-bottom:10px;
+
+}
+
+.progress-bar{
+
+  height:14px;
+
+  background:rgba(255,255,255,.20);
+
+  border-radius:999px;
+
+  overflow:hidden;
+
+}
+
+.progress-fill{
+
+  height:100%;
+
+  border-radius:999px;
+
+  background:linear-gradient(
+      90deg,
+      #FFB74D,
+      #FFD54F
+  );
+
+  transition:.4s;
+
+}
+
+/* ================================= */
+
+.today-button{
+
+  width:100%;
+
+  margin-top:30px;
+
+  padding:18px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:white;
+
+  color:#355F4B;
+
+  font-size:17px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:.25s;
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+.today-button:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+      0 12px 22px rgba(0,0,0,.18);
+
+}
+
+.today-button:disabled{
+
+  background:#D7F5DE;
+
+  color:#1B5E20;
+
+  cursor:default;
+
+}
+
+/* ================================= */
+/* MOBILE */
+/* ================================= */
+
+@media (max-width:768px){
+
+.today-workout{
+
+padding:20px;
+
+border-radius:22px;
+
+}
+
+.today-top h1{
+
+font-size:25px;
+
+}
+
+.today-top p{
+
+font-size:14px;
+
+}
+
+.today-infos{
+
+gap:10px;
+
+}
+
+.info-card{
+
+padding:12px;
+
+}
+
+.info-card span{
+
+font-size:22px;
+
+}
+
+.info-card strong{
+
+font-size:15px;
+
+}
+
+.info-card small{
+
+font-size:11px;
+
+}
+
+.today-button{
+
+padding:15px;
+
+font-size:15px;
+
+}
+
+}

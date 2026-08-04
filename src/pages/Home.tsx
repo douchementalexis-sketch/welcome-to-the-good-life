@@ -9,7 +9,7 @@ import Mood from "../components/Mood";
 import Notes from "../components/Notes";
 import BottomNavigation from "../components/BottomNavigation";
 
-import Workout from "./Workout";
+import TodayWorkout from "../components/home/TodayWorkout";
 
 export default function Home() {
   return (
@@ -20,43 +20,68 @@ export default function Home() {
 
         <Stats />
 
-        <Card title="☀️ Bonjour Rachel">
-          <p
-            className="message"
+        <Card title="🌸 Bonjour Rachel">
+
+          <div
             style={{
-              fontSize: 18,
-              lineHeight: 1.6,
               textAlign: "center",
-              margin: 0,
+              marginBottom: 24,
             }}
           >
-            Passe une excellente journée ❤️
-          </p>
+            <h2
+              style={{
+                margin: 0,
+                color: "#355F4B",
+                fontSize: 30,
+              }}
+            >
+              Aujourd'hui
+            </h2>
+
+            <p
+              style={{
+                marginTop: 8,
+                color: "#666",
+                fontSize: 16,
+              }}
+            >
+              Chaque petite victoire compte 💚
+            </p>
+          </div>
+
+          <TodayWorkout />
+
         </Card>
 
-        <Card title="🏋️ Séance du jour">
-          <Workout />
-        </Card>
-
-        <Card title="📅 À venir">
+        <Card title="📅 Planning de la semaine">
           <Planning />
         </Card>
 
-        <Card title="💧 Hydratation">
-          <Hydration />
-        </Card>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          <Card title="💧 Hydratation">
+            <Hydration />
+          </Card>
 
-        <Card title="😊 Humeur du jour">
-          <Mood />
-        </Card>
+          <Card title="😊 Humeur">
+            <Mood />
+          </Card>
+        </div>
 
         <Card title="📝 Notes du jour">
           <Notes />
         </Card>
 
-        <BottomNavigation />
-
       </div>
+
+      <BottomNavigation />
+
     </div>
   );
 }

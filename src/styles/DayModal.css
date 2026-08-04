@@ -1,240 +1,268 @@
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
+.modal-overlay{
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+position:fixed;
 
-  padding: 16px;
+inset:0;
 
-  z-index: 999;
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(6px);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+z-index:999;
+
 }
-
-.modal {
-  width: 100%;
-  max-width: 520px;
-
-  max-height: 90vh;
-  overflow-y: auto;
-
-  background: #fff;
-
-  border-radius: 24px;
-
-  padding: 24px;
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
-
-  animation: popup .25s ease;
-
-  box-sizing: border-box;
-}
-
-.modal h2 {
-  margin: 0 0 24px;
-  text-align: center;
-  color: var(--text);
-}
-
-.modal-section {
-  margin-bottom: 22px;
-}
-
-.modal-section h3 {
-  margin-bottom: 10px;
-  color: var(--primary);
-}
-
-textarea {
-  width: 100%;
-  min-height: 120px;
-
-  padding: 14px;
-
-  border-radius: 16px;
-  border: 1px solid var(--border);
-
-  background: var(--card);
-
-  color: var(--text);
-
-  font: inherit;
-
-  resize: vertical;
-
-  box-sizing: border-box;
-
-  transition: .2s;
-}
-
-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-.workout-label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  font-weight: 600;
-}
-
-.workout-label input {
-  width: 22px;
-  height: 22px;
-}
-
-.modal-button {
-  width: 100%;
-
-  padding: 16px;
-
-  margin-top: 10px;
-
-  border: none;
-  border-radius: 16px;
-
-  background: var(--primary);
-  color: white;
-
-  font-size: 17px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: .2s;
-}
-
-.modal-button:hover {
-  transform: translateY(-2px);
-}
-
-.editor-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 16px;
-}
-
-.editor-button {
-  width: 46px;
-  height: 46px;
-
-  border: none;
-  border-radius: 50%;
-
-  background: var(--primary);
-  color: white;
-
-  font-size: 22px;
-  font-weight: bold;
-
-  cursor: pointer;
-
-  flex-shrink: 0;
-
-  transition: .2s;
-}
-
-.editor-button:hover {
-  transform: scale(1.05);
-}
-
-.editor-value {
-  flex: 1;
-
-  text-align: center;
-
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.mood-editor {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.mood-button {
-  width: 48px;
-  height: 48px;
-
-  border: none;
-  border-radius: 50%;
-
-  background: #f3f3f3;
-
-  cursor: pointer;
-
-  font-size: 24px;
-
-  transition: .2s;
-}
-
-.mood-button.selected {
-  background: var(--primary);
-  transform: scale(1.08);
-}
-
-@media (max-width:768px){
 
 .modal{
 
-padding:18px;
+width:min(520px,95vw);
 
-border-radius:20px;
+max-height:90vh;
 
-max-height:92vh;
+overflow-y:auto;
+
+background:white;
+
+border-radius:28px;
+
+padding:28px;
+
+box-shadow:0 25px 60px rgba(0,0,0,.25);
+
+animation:popup .25s ease;
 
 }
 
 .modal h2{
 
-font-size:22px;
+margin:0 0 25px;
+
+text-align:center;
+
+font-size:34px;
+
+color:var(--text);
 
 }
 
 .modal-section{
 
-margin-bottom:18px;
+margin-bottom:25px;
 
 }
 
-.editor-value{
+.modal-section h3{
 
-font-size:18px;
+margin-bottom:12px;
+
+font-size:24px;
+
+color:var(--primary);
 
 }
 
-.editor-button{
+.program-card{
 
-width:40px;
-height:40px;
+background:#EEF6F1;
+
+border:1px solid #D9E8DD;
+
+border-radius:18px;
+
+padding:16px;
 
 font-size:20px;
 
+font-weight:700;
+
+text-align:center;
+
+color:#355F4B;
+
 }
 
-.mood-button{
+.workout-label{
 
-width:42px;
-height:42px;
+display:flex;
 
-font-size:22px;
+align-items:center;
+
+gap:12px;
+
+font-size:20px;
+
+font-weight:600;
+
+color:var(--text);
+
+}
+
+.workout-label input{
+
+width:22px;
+
+height:22px;
+
+accent-color:var(--primary);
 
 }
 
 textarea{
 
-min-height:90px;
+width:100%;
+
+padding:14px;
+
+border-radius:16px;
+
+border:1px solid #ddd;
+
+font:inherit;
+
+font-size:17px;
+
+resize:none;
+
+box-sizing:border-box;
 
 }
+
+textarea:focus{
+
+outline:none;
+
+border-color:var(--primary);
+
+box-shadow:0 0 0 3px rgba(77,123,98,.15);
+
+}
+
+.editor-row{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:18px;
+
+}
+
+.editor-button{
+
+width:50px;
+
+height:50px;
+
+border:none;
+
+border-radius:50%;
+
+background:var(--primary);
+
+color:white;
+
+font-size:24px;
+
+font-weight:bold;
+
+transition:.2s;
+
+}
+
+.editor-button:hover{
+
+transform:scale(1.08);
+
+}
+
+.editor-value{
+
+flex:1;
+
+text-align:center;
+
+font-size:24px;
+
+font-weight:700;
+
+color:#355F4B;
+
+}
+
+.mood-editor{
+
+display:flex;
+
+justify-content:space-between;
+
+gap:8px;
+
+}
+
+.mood-button{
+
+flex:1;
+
+border:none;
+
+background:#F3F5F4;
+
+border-radius:14px;
+
+padding:12px;
+
+font-size:28px;
+
+transition:.2s;
+
+}
+
+.mood-button.selected{
+
+background:#EEF6F1;
+
+outline:2px solid var(--primary);
+
+}
+
+.modal-button{
+
+width:100%;
+
+margin-top:12px;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:var(--primary);
+
+color:white;
+
+font-size:20px;
+
+font-weight:700;
+
+transition:.25s;
+
+}
+
+.modal-button:hover{
+
+transform:translateY(-2px);
+
+background:#355F4B;
 
 }
 
@@ -243,14 +271,100 @@ min-height:90px;
 from{
 
 opacity:0;
-transform:scale(.9);
+
+transform:scale(.92);
 
 }
 
 to{
 
 opacity:1;
+
 transform:scale(1);
+
+}
+
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+.modal{
+
+padding:22px;
+
+border-radius:24px;
+
+}
+
+.modal h2{
+
+font-size:28px;
+
+}
+
+.modal-section h3{
+
+font-size:22px;
+
+}
+
+.program-card{
+
+font-size:18px;
+
+padding:14px;
+
+}
+
+.editor-button{
+
+width:42px;
+
+height:42px;
+
+font-size:20px;
+
+}
+
+.editor-value{
+
+font-size:20px;
+
+color:#355F4B;
+
+font-weight:700;
+
+}
+
+.workout-label{
+
+font-size:18px;
+
+}
+
+.mood-button{
+
+font-size:24px;
+
+padding:10px;
+
+}
+
+textarea{
+
+font-size:16px;
+
+}
+
+.modal-button{
+
+font-size:18px;
+
+padding:15px;
 
 }
 

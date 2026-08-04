@@ -1,0 +1,131 @@
+/* =======================================
+   BUTTONS
+======================================= */
+
+.btn{
+
+  border:none;
+
+  border-radius:18px;
+
+  padding:14px 22px;
+
+  cursor:pointer;
+
+  transition:var(--transition);
+
+  font-weight:700;
+
+  font-size:15px;
+
+}
+
+
+
+.btn:hover{
+
+  transform:translateY(-2px);
+
+}
+
+
+
+.btn-primary{
+
+  background:var(--primary);
+
+  color:white;
+
+  box-shadow:var(--shadow-md);
+
+}
+
+
+
+.btn-primary:hover{
+
+  background:#2d523f;
+
+}
+
+
+
+.btn-success{
+
+  background:var(--success);
+
+  color:white;
+
+}
+
+
+
+.btn-danger{
+
+  background:var(--danger);
+
+  color:white;
+
+}
+
+
+
+.btn-light{
+
+  background:white;
+
+  color:var(--text);
+
+  border:1px solid var(--border);
+
+}
+
+
+
+.btn-icon{
+
+  width:48px;
+
+  height:48px;
+
+  border-radius:50%;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  padding:0;
+
+}
+
+
+
+.btn-block{
+
+  width:100%;
+
+}
+
+
+
+@media(max-width:768px){
+
+.btn{
+
+  padding:12px 18px;
+
+  font-size:14px;
+
+}
+
+.btn-icon{
+
+  width:42px;
+
+  height:42px;
+
+}
+
+}

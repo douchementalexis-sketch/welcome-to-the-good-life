@@ -1,0 +1,529 @@
+/* ======================================================
+   DAY MODAL PREMIUM
+   Welcome To The Good Life
+====================================================== */
+
+
+.premium-modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:rgba(15,23,42,.45);
+
+    backdrop-filter:blur(8px);
+
+    z-index:1000;
+
+}
+
+
+
+.premium-modal{
+
+    width:100%;
+
+    max-width:520px;
+
+    max-height:85vh;
+
+    overflow-y:auto;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:24px;
+
+    padding-bottom:100px;
+
+    position:relative;
+
+    box-shadow:
+        0 25px 60px rgba(15,23,42,.20);
+
+    animation:modalFade .25s ease;
+
+}
+
+
+
+/* TITRE */
+
+.premium-modal h2{
+
+    margin:0 0 24px;
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1e293b;
+
+    text-transform:capitalize;
+
+}
+
+
+
+/* FERMETURE */
+
+.premium-close{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.premium-close:hover{
+
+    transform:rotate(90deg);
+
+    background:#e2e8f0;
+
+}
+
+
+
+/* ======================================================
+   CARDS
+====================================================== */
+
+
+.premium-card{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    padding:18px;
+
+    margin-bottom:14px;
+
+    border-radius:20px;
+
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+
+    transition:.25s;
+
+}
+.premium-card:hover{
+
+    transform:translateY(-2px);
+
+    background:white;
+
+    box-shadow:
+        0 10px 25px rgba(15,23,42,.08);
+
+}
+
+
+
+.premium-card span:first-child{
+
+    flex-shrink:0;
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #ecfdf5,
+        #d1fae5
+    );
+
+    color:#15803d;
+
+}
+
+
+
+.premium-card strong{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+
+
+.premium-card p{
+
+    margin:0;
+
+    line-height:1.5;
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+
+
+
+/* ======================================================
+   PROGRAMME EXERCICES
+====================================================== */
+
+
+.program-container{
+
+    width:100%;
+
+}
+
+
+
+.exercise-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:14px;
+
+}
+
+
+
+.exercise-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:10px 12px;
+
+    border-radius:14px;
+
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    transition:.20s ease;
+
+}
+
+
+
+.exercise-item:hover{
+
+    background:#f8fafc;
+
+    transform:translateX(4px);
+
+}
+
+
+
+.exercise-icon{
+
+    width:26px;
+
+    height:26px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+}
+
+
+
+.exercise-text{
+
+    flex:1;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    color:#334155;
+
+    line-height:1.4;
+
+}
+
+
+
+/* ======================================================
+   VIDE
+====================================================== */
+
+
+.premium-empty{
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:#94a3b8;
+
+}/* ======================================================
+   ANIMATIONS
+====================================================== */
+
+
+@keyframes modalFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(20px)
+            scale(.96);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+
+/* ======================================================
+   SCROLLBAR
+====================================================== */
+
+
+.premium-modal::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+
+.premium-modal::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+
+.premium-modal::-webkit-scrollbar-thumb{
+
+    background:#cbd5e1;
+
+    border-radius:999px;
+
+}
+
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+
+@media(max-width:768px){
+
+
+    .premium-modal-overlay{
+
+        padding:12px;
+
+        align-items:flex-end;
+
+    }
+
+
+
+    .premium-modal{
+
+        max-height:82vh;
+
+        border-radius:26px 26px 0 0;
+
+        padding:20px;
+
+        padding-bottom:120px;
+
+    }
+
+
+
+    .premium-modal h2{
+
+        font-size:20px;
+
+    }
+
+
+
+    .premium-card{
+
+        padding:14px;
+
+        gap:12px;
+
+    }
+
+
+
+    .premium-card span:first-child{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+    .premium-modal{
+
+        max-height:78vh;
+
+        padding:16px;
+
+        padding-bottom:130px;
+
+    }
+
+
+
+    .premium-close{
+
+        width:36px;
+
+        height:36px;
+
+        top:12px;
+
+        right:12px;
+
+    }
+
+
+
+    .premium-card{
+
+        border-radius:16px;
+
+        margin-bottom:10px;
+
+    }
+
+
+
+    .premium-card strong{
+
+        font-size:14px;
+
+    }
+
+
+
+    .premium-card p{
+
+        font-size:13px;
+
+    }
+
+
+
+    .exercise-item{
+
+        padding:9px;
+
+    }
+
+
+
+    .exercise-text{
+
+        font-size:13px;
+
+    }
+
+
+}

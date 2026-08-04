@@ -1,35 +1,79 @@
-:root{
+/* =======================================
+   GLOBAL THEME
+======================================= */
 
-  /* Couleurs */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  --primary:#4D7B62;
-  --primary-light:#EEF6F1;
+html{
 
-  --background:#F5F7F4;
+  scroll-behavior:smooth;
 
-  --card:#FFFFFF;
+}
 
-  --text:#355F4B;
+body{
 
-  --text-light:#666666;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-  --border:#E8ECE9;
+  background:var(--background);
 
-  /* Ombres */
+  color:var(--text);
 
-  --shadow:
-    0 8px 20px rgba(0,0,0,.08);
+  line-height:1.5;
 
-  /* Arrondis */
+  -webkit-font-smoothing:antialiased;
 
-  --radius:20px;
+}
 
-  /* Espacements */
+#root{
 
-  --space-xs:8px;
-  --space-sm:12px;
-  --space-md:20px;
-  --space-lg:30px;
-  --space-xl:40px;
+  min-height:100vh;
+
+}
+
+a{
+
+  color:inherit;
+
+  text-decoration:none;
+
+}
+
+button{
+
+  font-family:inherit;
+
+}
+
+img{
+
+  max-width:100%;
+
+  display:block;
+
+}
+
+input,
+textarea,
+select{
+
+  font-family:inherit;
+
+}
+
+::selection{
+
+  background:var(--primary);
+
+  color:white;
 
 }

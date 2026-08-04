@@ -1,136 +1,221 @@
 import { useContext } from "react";
 
-import "../../styles/DayModal.css";
-
 import { AppContext } from "../../context/AppContext";
 
-import HydrationEditor from "../day/HydrationEditor";
-import MoodEditor from "../day/MoodEditor";
+import "../../styles/DayModal.css";
+
 
 type Props = {
-  day: number | null;
+  date: Date | null;
   onClose: () => void;
 };
 
+
 export default function DayModal({
-  day,
+  date,
   onClose,
 }: Props) {
-  const { days, updateDay } = useContext(AppContext);
 
-  if (day === null) {
-    return null;
-  }
 
-  const selected = days.find(
-    (item) =>
-      Number(item.date.split("-")[2]) === day
+  const { days } = useContext(AppContext);
+
+
+  if (!date) return null;
+
+
+
+  // Date locale (évite le décalage UTC de toISOString)
+  const dateKey =
+    `${date.getFullYear()}-${String(
+      date.getMonth() + 1
+    ).padStart(2, "0")}-${String(
+      date.getDate()
+    ).padStart(2, "0")}`;
+
+
+
+  const dayData = days.find(
+    (d) => d.date === dateKey
   );
+
+
 
   return (
+
     <div
+
       className="modal-overlay"
+
       onClick={onClose}
+
     >
+
+
       <div
+
         className="modal"
-        onClick={(e) => e.stopPropagation()}
+
+        onClick={(e) =>
+          e.stopPropagation()
+        }
+
       >
-        <h2>📅 Jour {day}</h2>
 
-        {selected ? (
-          <>
-            <div className="modal-section">
-              <h3>💧 Hydratation</h3>
-
-              <HydrationEditor
-                date={selected.date}
-                water={selected.water}
-              />
-            </div>
-
-            <div className="modal-section">
-              <h3>😊 Humeur</h3>
-
-              <MoodEditor
-                date={selected.date}
-                mood={selected.mood}
-              />
-            </div>
-
-            <div className="modal-section">
-              <h3>🏋️ Séance</h3>
-
-              <label className="workout-label">
-                <input
-                  type="checkbox"
-                  checked={selected.workoutDone}
-                  onChange={(e) =>
-                    updateDay(selected.date, {
-                      workoutDone: e.target.checked,
-                    })
-                  }
-                />
-
-                Séance effectuée
-              </label>
-            </div>
-
-            <div className="modal-section">
-              <h3>📝 Notes</h3>
-
-              <textarea
-                rows={5}
-                value={selected.notes}
-                placeholder="Écris une note..."
-                onChange={(e) =>
-                  updateDay(selected.date, {
-                    notes: e.target.value,
-                  })
-                }
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            <p>Aucune donnée pour cette journée.</p>
-
-            <div className="modal-section">
-              <h3>💧 Hydratation</h3>
-
-              <HydrationEditor
-                date=""
-                water={0}
-              />
-            </div>
-
-            <div className="modal-section">
-              <h3>😊 Humeur</h3>
-
-              <MoodEditor
-                date=""
-                mood={2}
-              />
-            </div>
-
-            <div className="modal-section">
-              <h3>📝 Notes</h3>
-
-              <textarea
-                rows={5}
-                placeholder="Écris une note..."
-              />
-            </div>
-          </>
-        )}
 
         <button
-          className="modal-button"
+
+          className="modal-close"
+
           onClick={onClose}
+
         >
-          Fermer
+
+          ✕
+
         </button>
+
+
+
+        <h2>
+
+          {date.toLocaleDateString(
+            "fr-FR",
+            {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }
+          )}
+
+        </h2>
+
+
+
+
+        {!dayData ? (
+
+          <div className="empty-day">
+
+            <p>
+              Aucune donnée enregistrée.
+            </p>
+
+          </div>
+
+
+        ) : (
+
+
+          <div className="modal-content">
+
+
+
+            <div className="modal-item">
+
+              <strong>
+                💧 Eau
+              </strong>
+
+              <span>
+                {dayData.water} verres
+              </span>
+
+            </div>
+
+
+
+
+            <div className="modal-item">
+
+              <strong>
+                😀 Humeur
+              </strong>
+
+              <span>
+                {dayData.mood}/5
+              </span>
+
+            </div>
+
+
+
+
+            <div className="modal-item">
+
+              <strong>
+                🏋️ Séance
+              </strong>
+
+              <span>
+
+                {dayData.workoutDone
+
+                  ? "Terminée ✅"
+
+                  : "Non réalisée ❌"
+
+                }
+
+              </span>
+
+            </div>
+
+
+
+
+            <div className="modal-item">
+
+              <strong>
+                💪 Exercices réalisés
+              </strong>
+
+              <span>
+                {
+                  dayData.completedExercises?.length ?? 0
+                }
+              </span>
+
+            </div>
+
+
+
+
+            <div className="modal-item">
+
+              <strong>
+                📝 Notes
+              </strong>
+
+
+              <p>
+
+                {
+                  dayData.notes?.trim()
+
+                  ? dayData.notes
+
+                  : "Aucune note"
+
+                }
+
+              </p>
+
+
+            </div>
+
+
+
+          </div>
+
+        )}
+
+
       </div>
+
+
     </div>
+
   );
+
 }

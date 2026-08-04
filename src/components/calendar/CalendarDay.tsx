@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { AppContext } from "../../context/AppContext";
-import { MOODS } from "../../constants/moods";
+import { workouts } from "../../data/programs";
 
 type Props = {
   day: number;
@@ -14,46 +14,81 @@ export default function CalendarDay({
   today,
   onClick,
 }: Props) {
+
   const { days } = useContext(AppContext);
 
-  const current = days.find((item) => {
-    const dayNumber = Number(item.date.split("-")[2]);
-    return dayNumber === day;
-  });
+  const data = days.find(
+    (d) => Number(d.date.split("-")[2]) === day
+  );
+
+  const date = new Date();
+  date.setDate(day);
+
+  const weekDay = date.getDay();
+
+  const schedule: Record<number, string> = {
+    1: "fullBodyA",
+    2: "cardio",
+    3: "fullBodyB",
+    4: "rest",
+    5: "fullBodyC",
+    6: "cardio",
+    0: "rest",
+  };
+
+  const workout = workouts[schedule[weekDay]];
+
+  const completed = data?.workoutDone ?? false;
 
   return (
+
     <button
-      type="button"
-      className={`calendar-day ${today ? "today" : ""}`}
+      className={`
+        calendar-day
+        ${today ? "today" : ""}
+        ${completed ? "completed-day" : ""}
+      `}
       onClick={onClick}
     >
-      <div className="day-number">
-        {day}
+
+      <div className="premium-top">
+
+        <span className="day-number">
+          {day}
+        </span>
+
+        <span className="status-icon">
+          {completed ? "✅" : workout.icon}
+        </span>
+
       </div>
 
-      <div className="day-content">
-        {current ? (
-          <>
-            <div className="badge water">
-              💧 {current.water}/8
-            </div>
 
-            <div className="badge mood">
-              {MOODS[current.mood].emoji}
-            </div>
+      <div className="premium-center">
 
-            {current.workoutDone && (
-              <div className="badge workout">
-                ✅
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="badge empty">
-            —
-          </div>
-        )}
+        <span className="main-icon">
+          {workout.icon}
+        </span>
+
       </div>
+
+
+      <div className="premium-bottom">
+
+        {data?.water ? <span>💧</span> : <span className="empty">•</span>}
+
+        {data && data.mood >= 0
+          ? <span>😊</span>
+          : <span className="empty">•</span>}
+
+        {data?.notes?.trim()
+          ? <span>📝</span>
+          : <span className="empty">•</span>}
+
+      </div>
+
     </button>
+
   );
+
 }
