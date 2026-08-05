@@ -1,27 +1,122 @@
+import {
+  useContext,
+} from "react";
+
 import "./Statistics.css";
 
-import BottomNavigation from "../components/BottomNavigation";
+import BottomNavigation
+from "../components/BottomNavigation";
+
+import {
+  AuthContext,
+} from "../context/AuthContext";
+
+import {
+  AppContext,
+} from "../context/AppContext";
 
 export default function Statistics() {
 
-  const height = 1.62;
+  const {
 
-  const currentWeight = 67;
+    height,
 
-  const goalWeight = 60;
+    currentWeight,
+
+    goalWeight,
+
+  } = useContext(AuthContext);
+
+  const {
+
+    days,
+
+  } = useContext(AppContext);
+
+  const current =
+    currentWeight ?? 0;
+
+  const goal =
+    goalWeight ?? 0;
+
+  const userHeight =
+    height ?? 0;
 
   const remaining =
-    currentWeight - goalWeight;
+    Math.max(
+      current - goal,
+      0
+    );
 
-  const progress = Math.round(
+  const progress =
+    current <= goal
+      ? 100
+      : 0;
 
-    ((67 - currentWeight) /
+  const validatedDays =
+    days.filter(
+      day =>
+        day.dayValidated
+    ).length;
 
-    (67 - goalWeight || 1))
+  const workouts =
+    days.filter(
+      day =>
+        day.workoutDone
+    ).length;
 
-    * 100
+  const totalWater =
+    days.reduce(
 
-  );
+      (
+        total,
+        day
+      ) =>
+
+        total + day.water,
+
+      0
+
+    );
+
+  const moodAverage =
+
+    days.length
+
+      ?
+
+      (
+
+        days.reduce(
+
+          (
+            total,
+            day
+          ) =>
+
+            total + day.mood,
+
+          0
+
+        ) /
+
+        days.length
+
+      ).toFixed(1)
+
+      :
+
+      "0";
+
+  const notesCount =
+
+    days.filter(
+
+      day =>
+
+        day.notes.trim() !== ""
+
+    ).length;
 
   return (
 
@@ -43,7 +138,7 @@ export default function Statistics() {
 
         <div className="weight-value">
 
-          {currentWeight.toFixed(1)} kg
+          {current.toFixed(1)} kg
 
         </div>
 
@@ -51,7 +146,7 @@ export default function Statistics() {
 
           Objectif :
 
-          {goalWeight.toFixed(1)} kg
+          {goal.toFixed(1)} kg
 
         </div>
 
@@ -95,7 +190,7 @@ export default function Statistics() {
 
           <strong>
 
-            {height.toFixed(2)} m
+            {userHeight.toFixed(2)} m
 
           </strong>
 
@@ -111,7 +206,7 @@ export default function Statistics() {
 
           <strong>
 
-            {currentWeight.toFixed(1)} kg
+            {current.toFixed(1)} kg
 
           </strong>
 
@@ -127,7 +222,7 @@ export default function Statistics() {
 
           <strong>
 
-            {goalWeight.toFixed(1)} kg
+            {goal.toFixed(1)} kg
 
           </strong>
 
@@ -169,7 +264,7 @@ export default function Statistics() {
 
           <strong>
 
-            0
+            {validatedDays}
 
           </strong>
 
@@ -185,7 +280,7 @@ export default function Statistics() {
 
           <strong>
 
-            0
+            {workouts}
 
           </strong>
 
@@ -201,7 +296,7 @@ export default function Statistics() {
 
           <strong>
 
-            0
+            {totalWater}
 
           </strong>
 
@@ -225,7 +320,7 @@ export default function Statistics() {
 
           <strong>
 
-            😁
+            {moodAverage} / 4
 
           </strong>
 
@@ -235,13 +330,13 @@ export default function Statistics() {
 
           <span>
 
-            💧 Hydratation moyenne
+            💧 Total des verres
 
           </span>
 
           <strong>
 
-            0 / 8
+            {totalWater}
 
           </strong>
 
@@ -257,17 +352,13 @@ export default function Statistics() {
 
           <strong>
 
-            0
+            {notesCount}
 
           </strong>
 
         </div>
 
       </div>
-
-
-
-
 
       <div className="stats-card">
 
@@ -285,10 +376,6 @@ export default function Statistics() {
 
       </div>
 
-
-
-
-
       <div className="stats-card">
 
         <h2>
@@ -299,7 +386,7 @@ export default function Statistics() {
 
         <p className="coming-soon">
 
-          🚧 Les séries de journées validées arrivent bientôt.
+          🚧 Les séries de journées validées arriveront bientôt.
 
         </p>
 
