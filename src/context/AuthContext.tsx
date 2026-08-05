@@ -16,65 +16,40 @@ import {
   supabase,
 } from "../lib/supabase";
 
-
-
 type AuthContextType = {
-
 
   user: User | null;
 
-
   role: string | null;
 
-
+  loading: boolean;
 
   login: (
 
-    email:string,
+    email: string,
 
-    password:string
+    password: string
 
   ) => Promise<void>;
 
-
-
   logout: () => Promise<void>;
-
 
 };
 
-
-
-
-
-
-
 export const AuthContext =
-
 createContext<AuthContextType>({
 
+  user: null,
 
-  user:null,
+  role: null,
 
+  loading: true,
 
-  role:null,
+  login: async () => {},
 
-
-  login:async()=>{},
-
-
-  logout:async()=>{},
-
+  logout: async () => {},
 
 });
-
-
-
-
-
-
-
-
 
 export function AuthProvider({
 
@@ -82,11 +57,9 @@ export function AuthProvider({
 
 }:{
 
-  children:ReactNode;
+  children: ReactNode;
 
 }) {
-
-
 
   const [
 
@@ -96,10 +69,6 @@ export function AuthProvider({
 
   ] = useState<User | null>(null);
 
-
-
-
-
   const [
 
     role,
@@ -108,37 +77,25 @@ export function AuthProvider({
 
   ] = useState<string | null>(null);
 
+  const [
 
+    loading,
 
+    setLoading
 
-
-
-
-
+  ] = useState(true);
 
   async function loadProfile(
 
-    currentUser:User | null
+    currentUser: User | null
 
-  ){
-
-
-
-    if(!currentUser){
-
+  ) {    if (!currentUser) {
 
       setRole(null);
 
       return;
 
-
     }
-
-
-
-
-
-
 
     const {
 
@@ -162,14 +119,7 @@ export function AuthProvider({
 
       .maybeSingle();
 
-
-
-
-
-
-
-    if(error){
-
+    if (error) {
 
       console.error(
 
@@ -179,41 +129,25 @@ export function AuthProvider({
 
       );
 
-
       setRole(null);
 
       return;
 
-
     }
 
-
-
-
-
-
-
-    if(!data){
-
+    if (!data) {
 
       console.error(
 
-        "AUCUN PROFIL TROUVE"
+        "AUCUN PROFIL TROUVÉ"
 
       );
-
 
       setRole(null);
 
       return;
 
-
     }
-
-
-
-
-
 
     console.log(
 
@@ -223,107 +157,49 @@ export function AuthProvider({
 
     );
 
-
-
-
-
     setRole(
 
       data.role
 
     );
 
-
   }
 
+  useEffect(() => {
 
+    async function getSession() {
 
+      const {
 
+        data,
 
+      } = await supabase.auth.getSession();
 
+      const currentUser =
 
+        data.session?.user ?? null;
 
+      setUser(
 
+        currentUser
 
+      );
 
+      await loadProfile(
 
+        currentUser
 
-  useEffect(()=>{
+      );
 
+      setLoading(false);
 
+    }
 
-   async function getSession(){
+    getSession();    const {
 
-
-
-  const {
-
-    data,
-
-  } = await supabase.auth.getSession();
-
-
-
-
-
- alert(
-
-  JSON.stringify(data.session)
-
-);
-
-
-
-
-
-  const currentUser =
-
-    data.session?.user ?? null;
-
-
-
-
-
-  setUser(
-
-    currentUser
-
-  );
-
-
-
-
-
-  await loadProfile(
-
-    currentUser
-
-  );
-
-
-}
-
-
-
-
-
-
-    getSession();
-
-
-
-
-
-
-
-
-    const {
-
-      data:listener,
+      data: listener,
 
     } = supabase.auth.onAuthStateChange(
-
-
 
       async (
 
@@ -331,17 +207,11 @@ export function AuthProvider({
 
         session
 
-      )=>{
-
-
+      ) => {
 
         const currentUser =
 
           session?.user ?? null;
-
-
-
-
 
         setUser(
 
@@ -349,64 +219,33 @@ export function AuthProvider({
 
         );
 
-
-
-
-
         await loadProfile(
 
           currentUser
 
         );
 
-
+        setLoading(false);
 
       }
 
-
-
     );
 
-
-
-
-
-
-    return ()=>{
-
+    return () => {
 
       listener.subscription.unsubscribe();
 
-
     };
 
-
-
-
-
-  },[]);
-
-
-
-
-
-
-
-
-
-
-
-
+  }, []);
 
   async function login(
 
-    email:string,
+    email: string,
 
-    password:string
+    password: string
 
-  ){
-
-
+  ) {
 
     const {
 
@@ -420,48 +259,21 @@ export function AuthProvider({
 
     });
 
-
-
-
-
-    if(error){
+    if (error) {
 
       throw error;
 
     }
 
-
-
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-  async function logout(){
-
-
+  async function logout() {
 
     const {
 
       error,
 
-    } = await supabase.auth.signOut();
-
-
-
-
-
-    if(error){
-
+    } = await supabase.auth.signOut();    if (error) {
 
       console.error(
 
@@ -471,82 +283,42 @@ export function AuthProvider({
 
       );
 
-
     }
-
-
-
-
-
 
     setUser(null);
 
-
     setRole(null);
 
+    setLoading(false);
 
-
-
-
-    window.location.href="/login";
-
+    window.location.href = "/login";
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
   return (
-
-
 
     <AuthContext.Provider
 
-
-
       value={{
-
-
 
         user,
 
-
         role,
 
+        loading,
 
         login,
 
-
         logout,
-
-
 
       }}
 
-
-
     >
-
-
 
       {children}
 
-
-
     </AuthContext.Provider>
 
-
-
   );
-
-
 
 }

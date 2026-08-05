@@ -14,16 +14,11 @@ import {
   AuthContext,
 } from "../context/AuthContext";
 
-
-
 type Props = {
 
   children: ReactNode;
 
 };
-
-
-
 
 export default function ProtectedRoute({
 
@@ -31,16 +26,23 @@ export default function ProtectedRoute({
 
 }: Props) {
 
-
   const {
+
     user,
+
+    loading,
+
   } = useContext(AuthContext);
 
+  // On attend que la session Supabase soit restaurée
+  if (loading) {
 
+    return null;
 
+  }
 
-  if(!user){
-
+  // Pas connecté
+  if (!user) {
 
     return (
 
@@ -54,12 +56,7 @@ export default function ProtectedRoute({
 
     );
 
-
   }
-
-
-
-
 
   return <>{children}</>;
 

@@ -5,46 +5,29 @@ import {
   Navigate,
 } from "react-router-dom";
 
-
 import {
   AuthProvider,
   AuthContext,
 } from "./context/AuthContext";
 
-
 import AppProvider from "./context/AppProvider";
-
 
 import {
   useContext,
 } from "react";
 
-
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Login from "./pages/Login";
-
 import Home from "./pages/Home";
-
 import Calendar from "./pages/Calendar";
-
 import Statistics from "./pages/Statistics";
-
 import Profile from "./pages/Profile";
-
 import WorkoutSession from "./pages/WorkoutSession";
-
 import CoachDashboard from "./pages/CoachDashboard";
-
 import ClientFollowUp from "./pages/ClientFollowUp";
 
-
-
-
-
-
-
-function HomeRedirect(){
-
+function HomeRedirect() {
 
   const {
 
@@ -52,16 +35,17 @@ function HomeRedirect(){
 
     role,
 
+    loading,
+
   } = useContext(AuthContext);
 
+  if (loading) {
 
+    return null;
 
+  }
 
-
-  // Pas connecté
-
-  if(!user){
-
+  if (!user) {
 
     return (
 
@@ -75,218 +59,91 @@ function HomeRedirect(){
 
     );
 
+  }
+
+  if (role === "COACH") {
+
+    return <CoachDashboard />;
 
   }
 
-
-
-
-
-
-  // Compte coach Alexis
-
-  if(role === "COACH"){
-
-
-    return (
-
-      <CoachDashboard />
-
-    );
-
-
-  }
-
-
-
-
-
-
-  // Compte cliente Rachel
-
-  return (
-
-    <Home />
-
-  );
-
+  return <Home />;
 
 }
 
-
-
-
-
-
-
-
-
-export default function App(){
-
-
+export default function App() {
 
   return (
 
-
-
     <AuthProvider>
-
-
 
       <AppProvider>
 
-
-
         <BrowserRouter>
-
-
 
           <Routes>
 
-
-
-
             <Route
-
               path="/login"
-
-              element={
-
-                <Login />
-
-              }
-
+              element={<Login />}
             />
 
-
-
-
-
-
-
             <Route
-
               path="/"
-
-              element={
-
-                <HomeRedirect />
-
-              }
-
-            />
-
-
-
-
-
-
-
-            <Route
-
+              element={<HomeRedirect />}
+            />            <Route
               path="/calendar"
-
               element={
-
-                <Calendar />
-
+                <ProtectedRoute>
+                  <Calendar />
+                </ProtectedRoute>
               }
-
             />
 
-
-
-
-
-
-
             <Route
-
               path="/statistics"
-
               element={
-
-                <Statistics />
-
+                <ProtectedRoute>
+                  <Statistics />
+                </ProtectedRoute>
               }
-
             />
 
-
-
-
-
-
-
             <Route
-
               path="/profile"
-
               element={
-
-                <Profile />
-
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
               }
-
             />
 
-
-
-
-
-
-
             <Route
-
               path="/workout"
-
               element={
-
-                <WorkoutSession />
-
+                <ProtectedRoute>
+                  <WorkoutSession />
+                </ProtectedRoute>
               }
-
             />
-
-
-
-
-
-
 
             <Route
-
               path="/client-followup"
-
               element={
-
-                <ClientFollowUp />
-
+                <ProtectedRoute>
+                  <ClientFollowUp />
+                </ProtectedRoute>
               }
-
             />
-
-
-
-
 
           </Routes>
 
-
-
         </BrowserRouter>
-
-
 
       </AppProvider>
 
-
-
     </AuthProvider>
 
-
-
   );
-
 
 }
