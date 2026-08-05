@@ -31,11 +31,8 @@ type AuthContextType = {
   loading: boolean;
 
   login: (
-
     email: string,
-
     password: string
-
   ) => Promise<void>;
 
   logout: () => Promise<void>;
@@ -77,7 +74,7 @@ export function AuthProvider({
 
     user,
 
-    setUser
+    setUser,
 
   ] = useState<User | null>(null);
 
@@ -85,7 +82,7 @@ export function AuthProvider({
 
     role,
 
-    setRole
+    setRole,
 
   ] = useState<string | null>(null);
 
@@ -93,7 +90,7 @@ export function AuthProvider({
 
     height,
 
-    setHeight
+    setHeight,
 
   ] = useState<number | null>(null);
 
@@ -101,7 +98,7 @@ export function AuthProvider({
 
     currentWeight,
 
-    setCurrentWeight
+    setCurrentWeight,
 
   ] = useState<number | null>(null);
 
@@ -109,7 +106,7 @@ export function AuthProvider({
 
     goalWeight,
 
-    setGoalWeight
+    setGoalWeight,
 
   ] = useState<number | null>(null);
 
@@ -117,7 +114,7 @@ export function AuthProvider({
 
     loading,
 
-    setLoading
+    setLoading,
 
   ] = useState(true);  async function loadProfile(
 
@@ -125,19 +122,34 @@ export function AuthProvider({
 
   ) {
 
+    console.log("================================");
+    console.log("LOAD PROFILE");
+    console.log("================================");
+
+    console.log(
+      "Utilisateur connecté :",
+      currentUser
+    );
+
     if (!currentUser) {
 
+      console.log(
+        "Aucun utilisateur."
+      );
+
       setRole(null);
-
       setHeight(null);
-
       setCurrentWeight(null);
-
       setGoalWeight(null);
 
       return;
 
     }
+
+    console.log(
+      "Recherche profil ID :",
+      currentUser.id
+    );
 
     const {
 
@@ -149,12 +161,7 @@ export function AuthProvider({
 
       .from("profiles")
 
-      .select(`
-        role,
-        height,
-        current_weight,
-        goal_weight
-      `)
+      .select("*")
 
       .eq(
 
@@ -166,22 +173,26 @@ export function AuthProvider({
 
       .maybeSingle();
 
+    console.log(
+      "Réponse Supabase :",
+      data
+    );
+
+    console.log(
+      "Erreur Supabase :",
+      error
+    );
+
     if (error) {
 
       console.error(
-
         "ERREUR PROFIL :",
-
         error
-
       );
 
       setRole(null);
-
       setHeight(null);
-
       setCurrentWeight(null);
-
       setGoalWeight(null);
 
       return;
@@ -191,17 +202,12 @@ export function AuthProvider({
     if (!data) {
 
       console.error(
-
         "AUCUN PROFIL TROUVÉ"
-
       );
 
       setRole(null);
-
       setHeight(null);
-
       setCurrentWeight(null);
-
       setGoalWeight(null);
 
       return;
@@ -209,35 +215,39 @@ export function AuthProvider({
     }
 
     console.log(
-
-      "ROLE UTILISATEUR :",
-
+      "ROLE :",
       data.role
+    );
 
+    console.log(
+      "HEIGHT :",
+      data.height
+    );
+
+    console.log(
+      "CURRENT WEIGHT :",
+      data.current_weight
+    );
+
+    console.log(
+      "GOAL WEIGHT :",
+      data.goal_weight
     );
 
     setRole(
-
       data.role
-
     );
 
     setHeight(
-
       data.height
-
     );
 
     setCurrentWeight(
-
       data.current_weight
-
     );
 
     setGoalWeight(
-
       data.goal_weight
-
     );
 
   }  useEffect(() => {
@@ -253,6 +263,11 @@ export function AuthProvider({
       const currentUser =
 
         data.session?.user ?? null;
+
+      console.log(
+        "SESSION :",
+        currentUser
+      );
 
       setUser(
 
@@ -280,15 +295,25 @@ export function AuthProvider({
 
       async (
 
-        _event,
+        event,
 
         session
 
       ) => {
 
+        console.log(
+          "AUTH EVENT :",
+          event
+        );
+
         const currentUser =
 
           session?.user ?? null;
+
+        console.log(
+          "USER EVENT :",
+          currentUser
+        );
 
         setUser(
 
