@@ -22,6 +22,12 @@ type AuthContextType = {
 
   role: string | null;
 
+  height: number | null;
+
+  currentWeight: number | null;
+
+  goalWeight: number | null;
+
   loading: boolean;
 
   login: (
@@ -42,6 +48,12 @@ createContext<AuthContextType>({
   user: null,
 
   role: null,
+
+  height: null,
+
+  currentWeight: null,
+
+  goalWeight: null,
 
   loading: true,
 
@@ -79,19 +91,49 @@ export function AuthProvider({
 
   const [
 
+    height,
+
+    setHeight
+
+  ] = useState<number | null>(null);
+
+  const [
+
+    currentWeight,
+
+    setCurrentWeight
+
+  ] = useState<number | null>(null);
+
+  const [
+
+    goalWeight,
+
+    setGoalWeight
+
+  ] = useState<number | null>(null);
+
+  const [
+
     loading,
 
     setLoading
 
-  ] = useState(true);
-
-  async function loadProfile(
+  ] = useState(true);  async function loadProfile(
 
     currentUser: User | null
 
-  ) {    if (!currentUser) {
+  ) {
+
+    if (!currentUser) {
 
       setRole(null);
+
+      setHeight(null);
+
+      setCurrentWeight(null);
+
+      setGoalWeight(null);
 
       return;
 
@@ -107,7 +149,12 @@ export function AuthProvider({
 
       .from("profiles")
 
-      .select("role")
+      .select(`
+        role,
+        height,
+        current_weight,
+        goal_weight
+      `)
 
       .eq(
 
@@ -131,6 +178,12 @@ export function AuthProvider({
 
       setRole(null);
 
+      setHeight(null);
+
+      setCurrentWeight(null);
+
+      setGoalWeight(null);
+
       return;
 
     }
@@ -144,6 +197,12 @@ export function AuthProvider({
       );
 
       setRole(null);
+
+      setHeight(null);
+
+      setCurrentWeight(null);
+
+      setGoalWeight(null);
 
       return;
 
@@ -163,9 +222,25 @@ export function AuthProvider({
 
     );
 
-  }
+    setHeight(
 
-  useEffect(() => {
+      data.height
+
+    );
+
+    setCurrentWeight(
+
+      data.current_weight
+
+    );
+
+    setGoalWeight(
+
+      data.goal_weight
+
+    );
+
+  }  useEffect(() => {
 
     async function getSession() {
 
@@ -195,7 +270,9 @@ export function AuthProvider({
 
     }
 
-    getSession();    const {
+    getSession();
+
+    const {
 
       data: listener,
 
@@ -273,7 +350,9 @@ export function AuthProvider({
 
       error,
 
-    } = await supabase.auth.signOut();    if (error) {
+    } = await supabase.auth.signOut();
+
+    if (error) {
 
       console.error(
 
@@ -289,13 +368,17 @@ export function AuthProvider({
 
     setRole(null);
 
+    setHeight(null);
+
+    setCurrentWeight(null);
+
+    setGoalWeight(null);
+
     setLoading(false);
 
     window.location.href = "/login";
 
-  }
-
-  return (
+  }  return (
 
     <AuthContext.Provider
 
@@ -304,6 +387,12 @@ export function AuthProvider({
         user,
 
         role,
+
+        height,
+
+        currentWeight,
+
+        goalWeight,
 
         loading,
 
