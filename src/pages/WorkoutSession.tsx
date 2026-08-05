@@ -6,39 +6,54 @@ import WorkoutProgram from "../components/workout/WorkoutProgram";
 
 import { AppContext } from "../context/AppContext";
 import { getTodayDate } from "../utils/date";
+import { getWorkout } from "../utils/getWorkout";
 
 import "./Home.css";
 
-
 export default function WorkoutSession() {
-
 
   const navigate = useNavigate();
 
-
-  const { days } = useContext(AppContext);
-
+  const {
+    days,
+    updateDay,
+  } = useContext(AppContext);
 
   const today = getTodayDate();
 
+  const workout = getWorkout(today);
 
   const current = days.find(
     (day) => day.date === today
   );
 
-
   const finished =
     current?.workoutDone ?? false;
 
+  const completedExercises =
+    current?.completedExercises ?? [];
 
+  const allExercisesCompleted =
+    completedExercises.length ===
+    workout.exercises.length;
+
+  function validateWorkout() {
+
+    if (!allExercisesCompleted || finished) {
+      return;
+    }
+
+    updateDay(today, {
+      workoutDone: true,
+    });
+
+  }
 
   return (
 
     <div className="home">
 
-
       <div className="hero">
-
 
         <button
 
@@ -60,134 +75,105 @@ export default function WorkoutSession() {
 
         </button>
 
-
-
-
         <h1
-
           style={{
             color:"#355F4B",
             marginBottom:8,
           }}
-
         >
 
           🏋️ Séance du jour
 
         </h1>
 
-
-
-
         <p
-
           style={{
             color:"#666",
             marginBottom:20,
           }}
-
         >
 
           Coche chaque exercice au fur et à mesure 💪
 
         </p>
 
-
-
-
         <WorkoutProgram
-
           date={today}
+        />        <div
+          style={{
+            marginTop: 40,
+            marginBottom: 30,
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
 
-        />
+          {finished ? (
 
-
-
-
-
-        {finished && (
-
-
-          <div
-
-            style={{
-              marginTop:30,
-              background:"#E8F5E9",
-              borderRadius:18,
-              padding:20,
-              textAlign:"center",
-            }}
-
-          >
-
-
-            <h2
-
+            <button
+              disabled
               style={{
-                marginTop:0,
-                color:"#2E7D32",
+                background: "#2E7D32",
+                color: "white",
+                border: "none",
+                borderRadius: 16,
+                padding: "16px 28px",
+                fontSize: 17,
+                fontWeight: 700,
+                cursor: "default",
+                opacity: 0.9,
               }}
-
             >
+              ✅ Séance validée
+            </button>
 
-              🎉 Bravo Rachel !
-
-            </h2>
-
-
-
-
-            <p
-
-              style={{
-                marginBottom:20,
-              }}
-
-            >
-
-              Tu as terminé ta séance du jour 💪
-
-            </p>
-
-
-
+          ) : (
 
             <button
 
-              onClick={() => navigate("/")}
+              onClick={validateWorkout}
+
+              disabled={!allExercisesCompleted}
 
               style={{
-                background:"#355F4B",
-                color:"white",
-                border:"none",
-                borderRadius:14,
-                padding:"14px 22px",
-                cursor:"pointer",
-                fontWeight:700,
+
+                background:
+                  allExercisesCompleted
+                    ? "#355F4B"
+                    : "#BDBDBD",
+
+                color: "white",
+
+                border: "none",
+
+                borderRadius: 16,
+
+                padding: "16px 28px",
+
+                fontSize: 17,
+
+                fontWeight: 700,
+
+                cursor:
+                  allExercisesCompleted
+                    ? "pointer"
+                    : "not-allowed",
+
+                transition: "0.2s",
+
               }}
 
             >
 
-              🏠 Retour à l'accueil
+              💾 Enregistrer la séance
 
             </button>
 
+          )}
 
-
-          </div>
-
-
-        )}
-
-
-
-      </div>
-
-
-
+        </div>      </div>
 
       <BottomNavigation />
-
 
     </div>
 

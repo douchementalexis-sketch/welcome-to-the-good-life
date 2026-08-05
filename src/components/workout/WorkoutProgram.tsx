@@ -7,55 +7,40 @@ import { getWorkout } from "../../utils/getWorkout";
 
 import ExerciseItem from "./ExerciseItem";
 
-
 type Props = {
   date: string;
 };
-
 
 export default function WorkoutProgram({
   date,
 }: Props) {
 
-
   const workout = getWorkout(date);
-
 
   const {
     days,
     updateDay,
   } = useContext(AppContext);
 
-
-
   const current =
     days.find(
       (d) => d.date === date
     );
 
-
-
   const completed =
     current?.completedExercises ?? [];
-
-
 
   console.log(
     "EXERCICES TERMINE :",
     completed.length
   );
 
-
-
   function toggleExercise(
     exercise: string
   ) {
 
-
     const exists =
       completed.includes(exercise);
-
-
 
     const newCompleted = exists
 
@@ -68,23 +53,14 @@ export default function WorkoutProgram({
           exercise
         ];
 
-
-
     updateDay(date, {
 
       completedExercises:
         newCompleted,
 
-      workoutDone:
-        newCompleted.length ===
-        workout.exercises.length,
-
     });
 
-
   }
-
-
 
   const percent = Math.round(
 
@@ -93,14 +69,9 @@ export default function WorkoutProgram({
 
       100
 
-  );
-
-
-
-  return (
+  );  return (
 
     <div className="program-card">
-
 
       <h3>
 
@@ -108,30 +79,21 @@ export default function WorkoutProgram({
 
       </h3>
 
-
-
       <div className="progress">
 
-
         <div className="progress-header">
-
 
           <span>
             Progression
           </span>
 
-
           <span>
             {completed.length} / {workout.exercises.length}
           </span>
 
-
         </div>
 
-
-
         <div className="progress-bar">
-
 
           <div
 
@@ -143,22 +105,15 @@ export default function WorkoutProgram({
 
           />
 
-
         </div>
-
 
       </div>
 
-
-
-
       <div className="program-list">
-
 
         {workout.exercises.map(
 
           (exercise) => (
-
 
             <ExerciseItem
 
@@ -180,14 +135,11 @@ export default function WorkoutProgram({
 
             />
 
-
           )
 
         )}
 
-
       </div>
-
 
     </div>
 
