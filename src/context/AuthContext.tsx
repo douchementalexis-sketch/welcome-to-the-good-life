@@ -252,46 +252,56 @@ export function AuthProvider({
 
 
 
-    async function getSession(){
+   async function getSession(){
 
 
 
-      const {
+  const {
 
-        data,
+    data,
 
-      } = await supabase.auth.getSession();
-
-
-
-
-
-      const currentUser =
-
-        data.session?.user ?? null;
+  } = await supabase.auth.getSession();
 
 
 
 
 
-      setUser(
+ alert(
 
-        currentUser
+  JSON.stringify(data.session)
 
-      );
-
-
+);
 
 
 
-      await loadProfile(
-
-        currentUser
-
-      );
 
 
-    }
+  const currentUser =
+
+    data.session?.user ?? null;
+
+
+
+
+
+  setUser(
+
+    currentUser
+
+  );
+
+
+
+
+
+  await loadProfile(
+
+    currentUser
+
+  );
+
+
+}
 
 
 
