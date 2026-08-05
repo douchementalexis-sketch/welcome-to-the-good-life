@@ -24,8 +24,6 @@ import {
   supabase,
 } from "../lib/supabase";
 
-
-
 export default function AppProvider({
 
   children,
@@ -36,29 +34,18 @@ export default function AppProvider({
 
 }) {
 
-
   const {
     user,
   } = useContext(AuthContext);
-
-
 
   const [
     days,
     setDays,
   ] = useState<DayData[]>([]);
 
-
-
-
-
-
   async function loadDays(){
 
-
     if(!user) return;
-
-
 
     const {
       data,
@@ -78,8 +65,6 @@ export default function AppProvider({
           }
         );
 
-
-
     if(error){
 
       console.error(
@@ -90,8 +75,6 @@ export default function AppProvider({
       return;
 
     }
-
-
 
     const formatted:DayData[] =
       (data ?? []).map(
@@ -112,6 +95,9 @@ export default function AppProvider({
           workoutDone:
             day.workout_done ?? false,
 
+          dayValidated:
+            day.day_validated ?? false,
+
           notes:
             day.notes ?? "",
 
@@ -121,24 +107,11 @@ export default function AppProvider({
         })
       );
 
-
-
     setDays(
       formatted
     );
 
-
-  }
-
-
-
-
-
-
-
-
-
-  async function ensureMonthDays(
+  }  async function ensureMonthDays(
 
     year:number,
 
@@ -146,10 +119,7 @@ export default function AppProvider({
 
   ){
 
-
     if(!user) return;
-
-
 
     const totalDays =
       new Date(
@@ -158,11 +128,7 @@ export default function AppProvider({
         0
       ).getDate();
 
-
-
     const rows:any[] = [];
-
-
 
     for(
       let i = 1;
@@ -170,11 +136,8 @@ export default function AppProvider({
       i++
     ){
 
-
       const date =
         `${year}-${String(month+1).padStart(2,"0")}-${String(i).padStart(2,"0")}`;
-
-
 
       const exists =
         days.some(
@@ -182,10 +145,7 @@ export default function AppProvider({
             day.date === date
         );
 
-
-
       if(!exists){
-
 
         rows.push({
 
@@ -203,25 +163,19 @@ export default function AppProvider({
 
           workout_done:false,
 
+          day_validated:false,
+
           notes:"",
 
           completed_exercises:[],
 
-
         });
-
 
       }
 
-
     }
 
-
-
-
-
     if(rows.length){
-
 
       const {
         error,
@@ -231,8 +185,6 @@ export default function AppProvider({
           .insert(
             rows
           );
-
-
 
       if(error){
 
@@ -245,25 +197,11 @@ export default function AppProvider({
 
       }
 
-
-
       await loadDays();
-
 
     }
 
-
-  }
-
-
-
-
-
-
-
-
-
-  async function updateDay(
+  }  async function updateDay(
 
     date:string,
 
@@ -271,12 +209,7 @@ export default function AppProvider({
 
   ){
 
-
-
     if(!user) return;
-
-
-
 
     const existing =
       days.find(
@@ -284,13 +217,7 @@ export default function AppProvider({
           day.date === date
       );
 
-
-
-
-
-
     const row = {
-
 
       id:
 
@@ -298,17 +225,11 @@ export default function AppProvider({
 
         crypto.randomUUID(),
 
-
-
       user_id:
 
         user.id,
 
-
-
       date,
-
-
 
       water:
 
@@ -318,8 +239,6 @@ export default function AppProvider({
 
         0,
 
-
-
       mood:
 
         updates.mood ??
@@ -327,8 +246,6 @@ export default function AppProvider({
         existing?.mood ??
 
         2,
-
-
 
       workout_done:
 
@@ -338,7 +255,13 @@ export default function AppProvider({
 
         false,
 
+      day_validated:
 
+        updates.dayValidated ??
+
+        existing?.dayValidated ??
+
+        false,
 
       notes:
 
@@ -348,8 +271,6 @@ export default function AppProvider({
 
         "",
 
-
-
       completed_exercises:
 
         updates.completedExercises ??
@@ -358,15 +279,7 @@ export default function AppProvider({
 
         [],
 
-
     };
-
-
-
-
-
-
-
 
     const {
 
@@ -392,14 +305,7 @@ export default function AppProvider({
 
         )
         .select()
-        .single();
-
-
-
-
-
-
-    if(error){
+        .single();    if(error){
 
       console.error(
 
@@ -409,61 +315,41 @@ export default function AppProvider({
 
       );
 
-
       return;
-
 
     }
 
-
-
-
-
-
-
     const updatedDay:DayData = {
-
 
       id:
         data.id,
 
-
       date:
         data.date,
-
 
       water:
         data.water ?? 0,
 
-
       mood:
         data.mood ?? 2,
-
 
       workoutDone:
         data.workout_done ?? false,
 
+      dayValidated:
+        data.day_validated ?? false,
 
       notes:
         data.notes ?? "",
 
-
       completedExercises:
         data.completed_exercises ?? [],
 
-
     };
-
-
-
-
-
-
 
     setDays(
 
       previous => {
-
 
         const exists =
 
@@ -475,10 +361,7 @@ export default function AppProvider({
 
           );
 
-
-
         if(exists){
-
 
           return previous.map(
 
@@ -496,10 +379,7 @@ export default function AppProvider({
 
           );
 
-
         }
-
-
 
         return [
 
@@ -513,20 +393,9 @@ export default function AppProvider({
 
     );
 
-
   }
 
-
-
-
-
-
-
-
-
-
   useEffect(()=>{
-
 
     if(user){
 
@@ -534,16 +403,7 @@ export default function AppProvider({
 
     }
 
-
   },[user]);
-
-
-
-
-
-
-
-
 
   return (
 

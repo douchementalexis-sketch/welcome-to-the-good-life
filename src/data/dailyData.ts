@@ -7,6 +7,7 @@ export const dayData: DayData[] = [
     water: 5,
     mood: 3,
     workoutDone: true,
+    dayValidated: false,
     notes: "Très bonne séance aujourd'hui 💪",
   },
 ];

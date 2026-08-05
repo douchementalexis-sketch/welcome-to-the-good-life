@@ -9,6 +9,8 @@ export type DayData = {
 
   workoutDone: boolean;
 
+  dayValidated: boolean;
+
   notes: string;
 
   completedExercises?: string[];
