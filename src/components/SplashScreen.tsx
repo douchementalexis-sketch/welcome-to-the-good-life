@@ -1,6 +1,12 @@
 import "./SplashScreen.css";
 import { useEffect, useState } from "react";
 
+import soleil from "../assets/logo/soleil.svg";
+import feuille from "../assets/logo/feuille.svg";
+import coeur from "../assets/logo/coeur.svg";
+import sparkles from "../assets/logo/sparkles.svg";
+import ground from "../assets/logo/ground.svg";
+
 type Props = {
   children: React.ReactNode;
 };
@@ -19,13 +25,13 @@ export default function SplashScreen({
 
       setFadeOut(true);
 
-    }, 3000);
+    }, 4300);
 
     const end = setTimeout(() => {
 
       setShowSplash(false);
 
-    }, 3600);
+    }, 5000);
 
     return () => {
 
@@ -40,9 +46,13 @@ export default function SplashScreen({
   if (!showSplash) {
 
     return (
+
       <div className="app-fade">
+
         {children}
+
       </div>
+
     );
 
   }
@@ -51,29 +61,53 @@ export default function SplashScreen({
 
     <div className={`splash-screen ${fadeOut ? "fade-out" : ""}`}>
 
-      <div className="background-light"></div>
+      <div className="background-light"/>
 
-      <div className="splash-content">
+      <div className="logo-animation">
 
         <img
-          src="/logo.png"
-          alt="Welcome To The Good Life"
-          className="splash-logo"
+          src={soleil}
+          className="sun"
+          alt=""
         />
 
-        <h1 className="brand-name">
+        <img
+          src={feuille}
+          className="leaf"
+          alt=""
+        />
 
-          Welcome To The Good Life
+        <img
+          src={coeur}
+          className="heart"
+          alt=""
+        />
 
-        </h1>
+        <img
+          src={sparkles}
+          className="sparkles"
+          alt=""
+        />
 
-        <p className="brand-subtitle">
-
-          Prends soin de toi aujourd'hui 🌸
-
-        </p>
+        <img
+          src={ground}
+          className="ground"
+          alt=""
+        />
 
       </div>
+
+      <h1 className="brand-name">
+
+        Welcome To The Good Life
+
+      </h1>
+
+      <p className="brand-subtitle">
+
+        Prends soin de toi aujourd'hui 🌸
+
+      </p>
 
     </div>
 
