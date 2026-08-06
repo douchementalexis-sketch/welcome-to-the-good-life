@@ -17,6 +17,7 @@ import {
 } from "react";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import SplashScreen from "./components/SplashScreen";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -79,66 +80,72 @@ export default function App() {
 
       <AppProvider>
 
-        <BrowserRouter>
+        <SplashScreen>
 
-          <Routes>
+          <BrowserRouter>
 
-            <Route
-              path="/login"
-              element={<Login />}
-            />
+            <Routes>
 
-            <Route
-              path="/"
-              element={<HomeRedirect />}
-            />            <Route
-              path="/calendar"
-              element={
-                <ProtectedRoute>
-                  <Calendar />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/login"
+                element={<Login />}
+              />
 
-            <Route
-              path="/statistics"
-              element={
-                <ProtectedRoute>
-                  <Statistics />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/"
+                element={<HomeRedirect />}
+              />
 
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/calendar"
+                element={
+                  <ProtectedRoute>
+                    <Calendar />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/workout"
-              element={
-                <ProtectedRoute>
-                  <WorkoutSession />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/statistics"
+                element={
+                  <ProtectedRoute>
+                    <Statistics />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/client-followup"
-              element={
-                <ProtectedRoute>
-                  <ClientFollowUp />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
 
-          </Routes>
+              <Route
+                path="/workout"
+                element={
+                  <ProtectedRoute>
+                    <WorkoutSession />
+                  </ProtectedRoute>
+                }
+              />
 
-        </BrowserRouter>
+              <Route
+                path="/client-followup"
+                element={
+                  <ProtectedRoute>
+                    <ClientFollowUp />
+                  </ProtectedRoute>
+                }
+              />
+
+            </Routes>
+
+          </BrowserRouter>
+
+        </SplashScreen>
 
       </AppProvider>
 
