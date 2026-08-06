@@ -94,20 +94,23 @@ export default function DayModalPremium({
 
     switch(dayData.mood){
 
-      case 5:
-        return "Excellent";
+      case 0:
+        return "Journée difficile";
 
-      case 4:
-        return "Très bien";
-
-      case 3:
-        return "Correct";
+      case 1:
+        return "Ça va";
 
       case 2:
-        return "Fatigué";
+        return "Je me sens bien";
+
+      case 3:
+        return "Très bonne journée";
+
+      case 4:
+        return "Je suis au top !";
 
       default:
-        return "Difficile";
+        return "Non renseignée";
 
     }
 
@@ -341,7 +344,9 @@ export default function DayModalPremium({
 
               </div>
 
-            </div>            <div className="premium-card">
+            </div>
+
+            <div className="premium-card">
 
               <span>
 
