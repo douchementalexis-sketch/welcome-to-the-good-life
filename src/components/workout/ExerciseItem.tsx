@@ -1,10 +1,12 @@
 import { useState } from "react";
 
+import type { Exercise } from "../../types/Workout";
+
 import ExerciseModal from "./ExerciseModal";
 import { exercises } from "../../data/exercises";
 
 type Props = {
-  exercise: string;
+  exercise: Exercise;
   checked: boolean;
   onToggle: () => void;
 };
@@ -17,17 +19,11 @@ export default function ExerciseItem({
 
   const [open, setOpen] = useState(false);
 
-  const exerciseData = exercises[exercise];
+  const exerciseData =
+    exercises[exercise.name];
 
-  function handleViewExercise(
-    e: React.MouseEvent
-  ) {
-
-    e.stopPropagation();
-
-    setOpen(true);
-
-  }
+  const hasExerciseSheet =
+    !!exerciseData;
 
   return (
 
@@ -45,40 +41,72 @@ export default function ExerciseItem({
         >
 
           <span className="exercise-check">
+
             {checked ? "✅" : "⬜"}
+
           </span>
 
-          <span className="exercise-name">
-            {exercise}
-          </span>
+          <div
+            className="exercise-content"
+          >
+
+            <div className="exercise-name">
+
+              {exercise.name}
+
+            </div>
+
+            {exercise.sets &&
+              exercise.reps && (
+
+              <div
+                className="exercise-details"
+              >
+
+                🏋️ {exercise.sets} × {exercise.reps}
+
+              </div>
+
+            )}
+
+          </div>
 
         </button>
 
-        <button
-          className="exercise-view"
-          onClick={handleViewExercise}
-        >
+        {hasExerciseSheet && (
 
-          👁️ Voir l'exercice
+          <button
+            className="exercise-view"
+            onClick={() =>
+              setOpen(true)
+            }
+          >
 
-        </button>
+            👁️ Voir l'exercice
+
+          </button>
+
+        )}
 
       </div>
 
-      <ExerciseModal
+      {hasExerciseSheet && (
 
-        open={open}
+        <ExerciseModal
 
-        title={exercise}
+          open={open}
 
-        image={
-          exerciseData?.image ??
-          "/exercises/not-found.webp"
-        }
+          title={exercise.name}
 
-        onClose={() => setOpen(false)}
+          image={exerciseData.image}
 
-      />
+          onClose={() =>
+            setOpen(false)
+          }
+
+        />
+
+      )}
 
     </>
 

@@ -30,27 +30,22 @@ export default function WorkoutProgram({
   const completed =
     current?.completedExercises ?? [];
 
-  console.log(
-    "EXERCICES TERMINE :",
-    completed.length
-  );
-
   function toggleExercise(
-    exercise: string
+    exerciseName: string
   ) {
 
     const exists =
-      completed.includes(exercise);
+      completed.includes(exerciseName);
 
     const newCompleted = exists
 
       ? completed.filter(
-          (item) => item !== exercise
+          (item) => item !== exerciseName
         )
 
       : [
           ...completed,
-          exercise
+          exerciseName,
         ];
 
     updateDay(date, {
@@ -69,7 +64,9 @@ export default function WorkoutProgram({
 
       100
 
-  );  return (
+  );
+
+  return (
 
     <div className="program-card">
 
@@ -84,11 +81,15 @@ export default function WorkoutProgram({
         <div className="progress-header">
 
           <span>
+
             Progression
+
           </span>
 
           <span>
+
             {completed.length} / {workout.exercises.length}
+
           </span>
 
         </div>
@@ -117,19 +118,19 @@ export default function WorkoutProgram({
 
             <ExerciseItem
 
-              key={exercise}
+              key={exercise.name}
 
               exercise={exercise}
 
               checked={
                 completed.includes(
-                  exercise
+                  exercise.name
                 )
               }
 
               onToggle={() =>
                 toggleExercise(
-                  exercise
+                  exercise.name
                 )
               }
 

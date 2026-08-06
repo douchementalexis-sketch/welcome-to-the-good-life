@@ -20,7 +20,6 @@ import {
 
 import "../../styles/DayModalPremium.css";
 
-
 type Props = {
 
   date: Date | null;
@@ -28,8 +27,6 @@ type Props = {
   onClose: () => void;
 
 };
-
-
 
 export default function DayModalPremium({
 
@@ -39,28 +36,11 @@ export default function DayModalPremium({
 
 }: Props) {
 
-
-
   const {
     days,
   } = useContext(AppContext);
 
-
-
-
-  console.log(
-    "DAYS CONTEXT MODAL :",
-    days
-  );
-
-
-
-
   if (!date) return null;
-
-
-
-
 
   const dateKey =
 
@@ -74,10 +54,6 @@ export default function DayModalPremium({
 
     ).padStart(2,"0")}`;
 
-
-
-
-
   const dayData =
 
     days.find(
@@ -86,20 +62,11 @@ export default function DayModalPremium({
 
     );
 
-
-
-
-
   const weekDay =
 
     date.getDay();
 
-
-
-
-
   const schedule: Record<number,string> = {
-
 
     1:"fullBodyA",
 
@@ -115,64 +82,38 @@ export default function DayModalPremium({
 
     0:"rest",
 
-
   };
-
-
-
-
 
   const workout =
 
     workouts[schedule[weekDay]];
 
-
-
-
-
-
   function moodText(){
-
 
     if(!dayData) return "";
 
-
-
     switch(dayData.mood){
-
 
       case 5:
         return "Excellent";
 
-
       case 4:
         return "Très bien";
-
 
       case 3:
         return "Correct";
 
-
       case 2:
         return "Fatigué";
 
-
       default:
         return "Difficile";
-
 
     }
 
   }
 
-
-
-
-
-
-
   return (
-
 
     <div
 
@@ -181,8 +122,6 @@ export default function DayModalPremium({
       onClick={onClose}
 
     >
-
-
 
       <div
 
@@ -195,8 +134,6 @@ export default function DayModalPremium({
         }
 
       >
-
-
 
         <button
 
@@ -212,12 +149,7 @@ export default function DayModalPremium({
 
         </button>
 
-
-
-
-
         <h2>
-
 
           {date.toLocaleDateString(
 
@@ -237,20 +169,11 @@ export default function DayModalPremium({
 
           )}
 
-
         </h2>
-
-
-
-
-
-
 
         {!dayData ? (
 
-
           <div className="premium-empty">
-
 
             <p>
 
@@ -258,26 +181,19 @@ export default function DayModalPremium({
 
             </p>
 
-
             <small>
 
               Elle sera créée automatiquement.
 
             </small>
 
-
           </div>
-
-
 
         ) : (
 
-
           <>
 
-
             <div className="premium-card">
-
 
               <span>
 
@@ -285,13 +201,13 @@ export default function DayModalPremium({
 
               </span>
 
-
               <div>
 
                 <strong>
-                  Hydratation
-                </strong>
 
+                  Hydratation
+
+                </strong>
 
                 <p>
 
@@ -299,19 +215,11 @@ export default function DayModalPremium({
 
                 </p>
 
-
               </div>
-
 
             </div>
 
-
-
-
-
-
             <div className="premium-card">
-
 
               <span>
 
@@ -319,14 +227,13 @@ export default function DayModalPremium({
 
               </span>
 
-
               <div>
 
-
                 <strong>
-                  Humeur
-                </strong>
 
+                  Humeur
+
+                </strong>
 
                 <p>
 
@@ -334,19 +241,11 @@ export default function DayModalPremium({
 
                 </p>
 
-
               </div>
-
 
             </div>
 
-
-
-
-
-
             <div className="premium-card">
-
 
               <span>
 
@@ -354,14 +253,13 @@ export default function DayModalPremium({
 
               </span>
 
-
               <div>
 
-
                 <strong>
-                  Séance du jour
-                </strong>
 
+                  Séance du jour
+
+                </strong>
 
                 <p>
 
@@ -369,53 +267,35 @@ export default function DayModalPremium({
 
                 </p>
 
-
               </div>
-
 
             </div>
 
-
-
-
-
-
-
             <div className="premium-card">
-
 
               <span>
 
-
                 {dayData.workoutDone ? (
-
 
                   <CheckCircle2 size={22}/>
 
-
                 ) : (
-
 
                   <Circle size={22}/>
 
-
                 )}
-
 
               </span>
 
-
-
               <div>
 
-
                 <strong>
+
                   Statut
+
                 </strong>
 
-
                 <p>
-
 
                   {dayData.workoutDone
 
@@ -425,23 +305,13 @@ export default function DayModalPremium({
 
                   }
 
-
                 </p>
-
 
               </div>
 
-
             </div>
 
-
-
-
-
-
-
             <div className="premium-card">
-
 
               <span>
 
@@ -449,18 +319,15 @@ export default function DayModalPremium({
 
               </span>
 
-
-
               <div>
 
-
                 <strong>
+
                   Notes
+
                 </strong>
 
-
                 <p>
-
 
                   {dayData.notes?.trim()
 
@@ -470,35 +337,19 @@ export default function DayModalPremium({
 
                   }
 
-
                 </p>
-
 
               </div>
 
-
-            </div>
-
-
-
-
-
-
-
-
-            <div className="premium-card">
-
+            </div>            <div className="premium-card">
 
               <span>
 
-                <Dumbbell size={22}/>
+                <Dumbbell size={22} />
 
               </span>
 
-
-
               <div className="program-container">
-
 
                 <strong>
 
@@ -506,77 +357,66 @@ export default function DayModalPremium({
 
                 </strong>
 
-
-
-
                 <div className="exercise-list">
-
 
                   {workout.exercises.map(
 
-                    (exercise)=>(
+                    (exercise) => (
 
+                      <div
 
-                    <div
+                        key={exercise.name}
 
-                      key={exercise}
+                        className="exercise-item"
 
-                      className="exercise-item"
+                      >
 
-                    >
+                        <div className="exercise-icon">
 
+                          <CheckCircle2 size={14} />
 
+                        </div>
 
-                      <div className="exercise-icon">
+                        <div className="exercise-text">
 
+                          <div>
 
-                        <CheckCircle2 size={14}/>
+                            {exercise.name}
 
+                          </div>
+
+                          {exercise.sets &&
+                            exercise.reps && (
+
+                            <small>
+
+                              🏋️ {exercise.sets} × {exercise.reps}
+
+                            </small>
+
+                          )}
+
+                        </div>
 
                       </div>
 
+                    )
 
-
-
-                      <span className="exercise-text">
-
-                        {exercise}
-
-                      </span>
-
-
-
-                    </div>
-
-
-                  ))}
-
+                  )}
 
                 </div>
 
-
-
               </div>
-
-
 
             </div>
 
-
-
           </>
-
 
         )}
 
-
-
       </div>
 
-
-
     </div>
-
 
   );
 
