@@ -1,12 +1,6 @@
 import "./SplashScreen.css";
 import { useEffect, useState } from "react";
 
-import soleil from "../assets/logo/soleil.svg";
-import feuille from "../assets/logo/feuille.svg";
-import coeur from "../assets/logo/coeur.svg";
-import sparkles from "../assets/logo/sparkles.svg";
-import ground from "../assets/logo/ground.svg";
-
 type Props = {
   children: React.ReactNode;
 };
@@ -25,18 +19,17 @@ export default function SplashScreen({
 
       setFadeOut(true);
 
-    }, 4300);
+    }, 4500);
 
     const end = setTimeout(() => {
 
       setShowSplash(false);
 
-    }, 5000);
+    }, 5200);
 
     return () => {
 
       clearTimeout(fade);
-
       clearTimeout(end);
 
     };
@@ -61,39 +54,17 @@ export default function SplashScreen({
 
     <div className={`splash-screen ${fadeOut ? "fade-out" : ""}`}>
 
-      <div className="background-light"/>
+      <div className="background-light" />
 
-      <div className="logo-animation">
-
-        <img
-          src={soleil}
-          className="sun"
-          alt=""
-        />
+      <div className="logo-wrapper">
 
         <img
-          src={feuille}
-          className="leaf"
-          alt=""
+          src="/logo.png"
+          alt="Welcome To The Good Life"
+          className="logo-image"
         />
 
-        <img
-          src={coeur}
-          className="heart"
-          alt=""
-        />
-
-        <img
-          src={sparkles}
-          className="sparkles"
-          alt=""
-        />
-
-        <img
-          src={ground}
-          className="ground"
-          alt=""
-        />
+        <div className="logo-shine"></div>
 
       </div>
 
