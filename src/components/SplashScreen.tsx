@@ -74,11 +74,9 @@ export default function SplashScreen({
 
       </h1>
 
-      <p className="brand-subtitle">
-
-        Prends soin de toi aujourd'hui 🌸
-
-      </p>
+    <p className="brand-subtitle">
+  Devenir 1 % meilleur chaque jour 🌸
+</p>
 
     </div>
 
