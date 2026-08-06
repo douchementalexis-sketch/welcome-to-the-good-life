@@ -1,6 +1,6 @@
 import { workouts } from "../data/programs";
 
-export function getWorkout(date: string) {
+export function getWorkout(_date: string) {
 
   // ===========================
   // MODE TEST
@@ -14,7 +14,7 @@ export function getWorkout(date: string) {
 
   /*
   const day =
-    new Date(date).getDay();
+    new Date(_date).getDay();
 
   switch (day) {
 
