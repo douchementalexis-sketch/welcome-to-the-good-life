@@ -20,10 +20,12 @@ export default function ExerciseItem({
   const [open, setOpen] = useState(false);
 
   const exerciseData =
-    exercises[exercise.name];
+    exercises[
+      exercise.name as keyof typeof exercises
+    ];
 
-  const hasExerciseSheet =
-    !!exerciseData;
+  const canShowExercise =
+    exerciseData !== undefined;
 
   return (
 
@@ -41,45 +43,40 @@ export default function ExerciseItem({
         >
 
           <span className="exercise-check">
-
             {checked ? "✅" : "⬜"}
-
           </span>
 
-          <div
-            className="exercise-content"
-          >
+          <span className="exercise-name">
 
-            <div className="exercise-name">
-
+            <strong>
               {exercise.name}
+            </strong>
 
-            </div>
-
-            {exercise.sets &&
-              exercise.reps && (
+            {exercise.sets && exercise.reps && (
 
               <div
-                className="exercise-details"
+                style={{
+                  fontSize: 14,
+                  color: "#666",
+                  marginTop: 4,
+                }}
               >
 
-                🏋️ {exercise.sets} × {exercise.reps}
+                {exercise.sets} × {exercise.reps}
 
               </div>
 
             )}
 
-          </div>
+          </span>
 
         </button>
 
-        {hasExerciseSheet && (
+        {canShowExercise && (
 
           <button
             className="exercise-view"
-            onClick={() =>
-              setOpen(true)
-            }
+            onClick={() => setOpen(true)}
           >
 
             👁️ Voir l'exercice
@@ -90,7 +87,7 @@ export default function ExerciseItem({
 
       </div>
 
-      {hasExerciseSheet && (
+      {canShowExercise && (
 
         <ExerciseModal
 
@@ -100,9 +97,7 @@ export default function ExerciseItem({
 
           image={exerciseData.image}
 
-          onClose={() =>
-            setOpen(false)
-          }
+          onClose={() => setOpen(false)}
 
         />
 

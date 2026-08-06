@@ -4,19 +4,21 @@
 
     inset:0;
 
-    background:rgba(0,0,0,.45);
-
     display:flex;
 
     justify-content:center;
 
     align-items:center;
 
-    padding:20px;
+    padding:24px;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(8px);
 
     z-index:99999;
 
-    backdrop-filter:blur(4px);
+    animation:fadeOverlay .25s ease;
 
 }
 
@@ -24,55 +26,65 @@
 
     width:100%;
 
-    max-width:420px;
+    max-width:520px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
 
     background:white;
 
-    border-radius:24px;
+    border-radius:28px;
 
     padding:24px;
 
-    text-align:center;
-
-    animation:modalAppear .25s ease;
-
     box-shadow:
 
-        0 20px 50px rgba(0,0,0,.18);
+        0 20px 60px rgba(0,0,0,.20);
+
+    animation:modalAppear .28s ease;
 
 }
 
 .exercise-modal h2{
 
+    margin:0 0 20px;
+
+    text-align:center;
+
     color:#355F4B;
 
-    margin-bottom:20px;
+    font-size:28px;
 
-    font-size:24px;
+    font-weight:700;
 
 }
 
-.exercise-modal img{
+.exercise-image{
 
     width:100%;
 
-    border-radius:18px;
+    border-radius:22px;
 
-    margin-bottom:22px;
-
-    object-fit:cover;
+    display:block;
 
     background:#F7F7F7;
 
+    margin-bottom:24px;
+
+    box-shadow:
+
+        0 10px 25px rgba(0,0,0,.08);
+
 }
 
-.exercise-modal button{
+.exercise-close{
 
     width:100%;
 
     border:none;
 
-    border-radius:16px;
+    border-radius:18px;
 
     background:#355F4B;
 
@@ -86,15 +98,37 @@
 
     cursor:pointer;
 
-    transition:.2s;
+    transition:.25s;
 
 }
 
-.exercise-modal button:hover{
+.exercise-close:hover{
+
+    background:#2C5140;
 
     transform:translateY(-2px);
 
-    background:#2d5140;
+}
+
+.exercise-close:active{
+
+    transform:scale(.98);
+
+}
+
+@keyframes fadeOverlay{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
 
 }
 
@@ -106,8 +140,8 @@
 
         transform:
 
-            translateY(25px)
-            scale(.95);
+            translateY(35px)
+            scale(.94);
 
     }
 
@@ -119,6 +153,24 @@
 
             translateY(0)
             scale(1);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .exercise-modal{
+
+        padding:18px;
+
+        border-radius:22px;
+
+    }
+
+    .exercise-modal h2{
+
+        font-size:22px;
 
     }
 
