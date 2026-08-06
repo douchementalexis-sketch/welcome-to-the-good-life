@@ -44,12 +44,20 @@ export const exercises = {
     image: "/exercises/walking-lunges.webp",
   },
 
+  "Fentes bulgares haltères": {
+    image: "/exercises/bulgarian-split-squat.webp",
+  },
+
   "Gainage": {
     image: "/exercises/plank.webp",
   },
 
   "Gainage latéral": {
     image: "/exercises/side-plank.webp",
+  },
+
+  "Pompes sur les genoux": {
+    image: "/exercises/knee-push-up.webp",
   },
 
   "Crunch": {
