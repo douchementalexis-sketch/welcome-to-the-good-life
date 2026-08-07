@@ -92,6 +92,9 @@ export default function AppProvider({
           mood:
             day.mood ?? 2,
 
+          sleep:
+            day.sleep ?? 8,
+
           workoutDone:
             day.workout_done ?? false,
 
@@ -160,6 +163,8 @@ export default function AppProvider({
           water:0,
 
           mood:2,
+
+          sleep:8,
 
           workout_done:false,
 
@@ -247,6 +252,14 @@ export default function AppProvider({
 
         2,
 
+      sleep:
+
+        updates.sleep ??
+
+        existing?.sleep ??
+
+        8,
+
       workout_done:
 
         updates.workoutDone ??
@@ -279,9 +292,7 @@ export default function AppProvider({
 
         [],
 
-    };
-
-    const {
+    };    const {
 
       data,
 
@@ -305,7 +316,9 @@ export default function AppProvider({
 
         )
         .select()
-        .single();    if(error){
+        .single();
+
+    if(error){
 
       console.error(
 
@@ -333,6 +346,9 @@ export default function AppProvider({
       mood:
         data.mood ?? 2,
 
+      sleep:
+        data.sleep ?? 8,
+
       workoutDone:
         data.workout_done ?? false,
 
@@ -345,9 +361,7 @@ export default function AppProvider({
       completedExercises:
         data.completed_exercises ?? [],
 
-    };
-
-    setDays(
+    };    setDays(
 
       previous => {
 
@@ -393,9 +407,7 @@ export default function AppProvider({
 
     );
 
-  }
-
-  useEffect(()=>{
+  }  useEffect(()=>{
 
     if(user){
 

@@ -6,6 +6,7 @@ export const dayData: DayData[] = [
     date: "2026-08-03",
     water: 5,
     mood: 3,
+    sleep: 8,
     workoutDone: true,
     dayValidated: false,
     notes: "Très bonne séance aujourd'hui 💪",

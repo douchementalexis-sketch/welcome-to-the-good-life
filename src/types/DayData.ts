@@ -1,4 +1,5 @@
 export type DayData = {
+
   id: string;
 
   date: string;
@@ -7,6 +8,8 @@ export type DayData = {
 
   mood: number;
 
+  sleep: number;
+
   workoutDone: boolean;
 
   dayValidated: boolean;
@@ -14,4 +17,5 @@ export type DayData = {
   notes: string;
 
   completedExercises?: string[];
+
 };

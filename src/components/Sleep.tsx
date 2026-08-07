@@ -1,6 +1,53 @@
+import {
+  useContext,
+} from "react";
+
 import "../styles/Sleep.css";
 
+import {
+  AppContext,
+} from "../context/AppContext";
+
+import {
+  getTodayDate,
+} from "../utils/date";
+
 export default function Sleep() {
+
+  const {
+
+    days,
+
+    updateDay,
+
+  } = useContext(AppContext);
+
+  const today =
+    getTodayDate();
+
+  const current =
+    days.find(
+      day => day.date === today
+    );
+
+  const sleep =
+    current?.sleep ?? 8;
+
+  function selectSleep(hours:number){
+
+    updateDay(
+
+      today,
+
+      {
+
+        sleep:hours,
+
+      }
+
+    );
+
+  }
 
   return (
 
@@ -14,7 +61,7 @@ export default function Sleep() {
 
       <div className="sleepValue">
 
-        8 h
+        {sleep} h
 
       </div>
 
@@ -24,14 +71,41 @@ export default function Sleep() {
 
       </div>
 
-      <div className="sleepBar">
+      <div className="sleepButtons">
 
-        <div
-          className="sleepProgress"
-          style={{
-            width:"80%",
-          }}
-        />
+        {[5,6,7,8,9].map(
+
+          hour => (
+
+            <button
+
+              key={hour}
+
+              className={
+
+                sleep === hour
+
+                ? "sleepButton active"
+
+                : "sleepButton"
+
+              }
+
+              onClick={()=>
+
+                selectSleep(hour)
+
+              }
+
+            >
+
+              {hour} h
+
+            </button>
+
+          )
+
+        )}
 
       </div>
 
