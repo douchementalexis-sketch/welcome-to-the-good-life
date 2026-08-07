@@ -4,7 +4,7 @@
 
     overflow:hidden;
 
-    height:400px;
+    height:360px;
 
     border-radius:34px;
 
@@ -13,7 +13,7 @@
     box-shadow:
         0 25px 60px rgba(0,0,0,.08);
 
-    margin-bottom:50px;
+    margin-bottom:110px;
 
 }
 
@@ -27,11 +27,11 @@
 
     left:0;
 
+    right:0;
+
     bottom:0;
 
     width:100%;
-
-    z-index:1;
 
     pointer-events:none;
 
@@ -41,17 +41,15 @@
 
     position:absolute;
 
-    top:10px;
+    top:18px;
 
-    left:0;
+    left:50%;
 
-    width:100%;
+    width:90%;
 
-    opacity:.45;
+    transform:translateX(-50%);
 
-    z-index:2;
-
-    pointer-events:none;
+    opacity:.95;
 
 }
 
@@ -59,15 +57,37 @@
 
     position:absolute;
 
-    inset:0;
+    top:0;
+
+    left:0;
 
     width:100%;
 
-    opacity:.55;
+    opacity:.75;
 
-    z-index:2;
+}
 
-    pointer-events:none;
+.heroFlowersLeft{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:145px;
+
+}
+
+.heroFlowersRight{
+
+    position:absolute;
+
+    right:0;
+
+    bottom:0;
+
+    width:150px;
 
 }
 
@@ -79,21 +99,21 @@
 
     position:relative;
 
-    z-index:5;
+    z-index:20;
+
+    width:100%;
 
     height:100%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
-    padding:30px;
 
 }
 
 .heroTop{
+
+    position:absolute;
+
+    top:28px;
+
+    left:28px;
 
     display:flex;
 
@@ -148,9 +168,25 @@
 
 }
 
+/* =======================
+   Centre
+======================= */
+
 .heroBottom{
 
-    margin-bottom:18px;
+    position:absolute;
+
+    top:120px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:100%;
+
+    text-align:center;
+
+    z-index:20;
 
 }
 
@@ -158,7 +194,7 @@
 
     margin:0;
 
-    font-size:4rem;
+    font-size:3.15rem;
 
     line-height:1;
 
@@ -172,31 +208,63 @@
 
     margin-top:14px;
 
-    font-size:1.35rem;
+    font-size:1.18rem;
 
-    color:#444;
+    color:#555;
+
+    font-weight:500;
+
+    text-shadow:
+        0 2px 8px rgba(255,255,255,.95);
 
 }
 
 /* =======================
-   Mobile
+   Heart
+======================= */
+
+.heroHeart{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:82px;
+
+    transform:translateX(-50%);
+
+    font-size:34px;
+
+    z-index:30;
+
+    filter:
+        drop-shadow(
+            0 6px 12px rgba(0,0,0,.18)
+        );
+
+}
+
+/* =======================
+   Responsive
 ======================= */
 
 @media(max-width:768px){
 
 .homeHero{
 
-    height:340px;
+    height:310px;
 
     border-radius:28px;
 
-    margin-bottom:40px;
+    margin-bottom:95px;
 
 }
 
-.heroContent{
+.heroTop{
 
-    padding:22px;
+    top:20px;
+
+    left:20px;
 
 }
 
@@ -210,31 +278,45 @@
 
 .heroTop h1{
 
-    font-size:2.7rem;
+    font-size:2.4rem;
+
+}
+
+.heroBottom{
+
+    top:105px;
 
 }
 
 .heroBottom h2{
 
-    font-size:3.2rem;
+    font-size:2.55rem;
 
 }
 
 .heroBottom p{
 
-    font-size:1.05rem;
+    font-size:1rem;
 
 }
 
-.heroClouds{
+.heroHeart{
 
-    opacity:.35;
+    bottom:72px;
+
+    font-size:28px;
 
 }
 
-.heroSparkles{
+.heroFlowersLeft{
 
-    opacity:.45;
+    width:110px;
+
+}
+
+.heroFlowersRight{
+
+    width:115px;
 
 }
 
