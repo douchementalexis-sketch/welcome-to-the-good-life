@@ -94,37 +94,31 @@ export default function TodayWorkout() {
 
   return (
 
+  <div className="today-workout">
 
+    <div className="today-badge">
 
-    <div className="today-workout">
+      🌸 SÉANCE DU JOUR
 
+    </div>
 
+    <div className="today-header">
 
-      <div className="today-top">
+      <div className="today-left">
 
+        <div className="today-icon">
 
+          {workout.icon}
+
+        </div>
 
         <div>
 
-
-
-          <div className="today-badge">
-
-            SÉANCE DU JOUR
-
-          </div>
-
-
-
-
           <h1>
 
-            {workout.icon} {workout.title}
+            {workout.title}
 
           </h1>
-
-
-
 
           <p>
 
@@ -132,134 +126,19 @@ export default function TodayWorkout() {
 
           </p>
 
-
-
         </div>
-
-
 
       </div>
 
+      <div className="today-right">
 
+        <div className="today-percent">
 
-
-
-
-
-      <div className="today-infos">
-
-
-
-        <div className="info-card">
-
-
-
-          <span>⏱</span>
-
-
-
-          <div>
-
-
-            <strong>
-
-              45 min
-
-            </strong>
-
-
-            <small>
-
-              Durée
-
-            </small>
-
-
-          </div>
-
-
+          {progress}%
 
         </div>
-
-
-
-
-
-
-
-        <div className="info-card">
-
-
-
-          <span>💪</span>
-
-
-
-          <div>
-
-
-            <strong>
-
-              {total}
-
-            </strong>
-
-
-            <small>
-
-              Exercices
-
-            </small>
-
-
-          </div>
-
-
-
-        </div>
-
-
-
-      </div>
-
-
-
-
-
-
-
-      <div className="today-progress">
-
-
-
-        <div className="progress-header">
-
-
-          <span>
-
-            Progression
-
-          </span>
-
-
-
-          <span>
-
-            {completed}/{total}
-
-          </span>
-
-
-
-        </div>
-
-
-
-
 
         <div className="progress-bar">
-
-
 
           <div
 
@@ -267,55 +146,102 @@ export default function TodayWorkout() {
 
             style={{
 
-              width:`${progress}%`,
+              width:`${progress}%`
 
             }}
 
           />
 
-
-
         </div>
 
+        <span>
 
+          {completed}/{total}
+
+        </span>
 
       </div>
 
+    </div>
 
+    <div className="today-infos">
 
+      <div className="info-card">
 
+        <span>
 
+          ⏱
 
+        </span>
 
-      <button
+        <div>
 
-        className="today-button"
+          <strong>
 
-        onClick={()=>navigate("/workout")}
+            45 min
 
-      >
+          </strong>
 
+          <small>
 
-        {
-          finished
+            Durée
+
+          </small>
+
+        </div>
+
+      </div>
+
+      <div className="info-card">
+
+        <span>
+
+          💪
+
+        </span>
+
+        <div>
+
+          <strong>
+
+            {total}
+
+          </strong>
+
+          <small>
+
+            Exercices
+
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <button
+
+      className="today-button"
+
+      onClick={() => navigate("/workout")}
+
+    >
+
+      {
+
+        finished
 
           ? "✅ Séance terminée"
 
           : "▶ Commencer la séance"
-        }
 
+      }
 
-      </button>
-
-
-
-
+    </button>
 
     </div>
 
-
-
   );
-
 
 }

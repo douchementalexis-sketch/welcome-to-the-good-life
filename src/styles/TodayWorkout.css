@@ -1,5 +1,5 @@
 /* =======================================================
-   TODAY WORKOUT V2 PREMIUM
+   TODAY WORKOUT
 ======================================================= */
 
 .today-workout{
@@ -8,89 +8,21 @@
 
     overflow:hidden;
 
-    border-radius:34px;
+    background:#FFFFFF;
 
-    padding:34px;
+    border-radius:32px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #355F4B 0%,
-            #4E8B6C 55%,
-            #72C397 100%
-        );
+    padding:30px;
 
-    color:white;
+    border:2px dashed #F3D9E4;
 
     box-shadow:
-        0 30px 70px rgba(53,95,75,.30);
+        0 20px 45px rgba(0,0,0,.08);
 
 }
 
 /* =======================================================
-   DECOR
-======================================================= */
-
-.today-workout::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:260px;
-
-    height:260px;
-
-    right:-120px;
-
-    top:-120px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.10);
-
-}
-
-.today-workout::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-
-    height:180px;
-
-    left:-80px;
-
-    bottom:-80px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.06);
-
-}
-
-/* =======================================================
-   CONTENT
-======================================================= */
-
-.today-top,
-
-.today-infos,
-
-.today-progress,
-
-.today-button{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-/* =======================================================
-   TITLE
+   BADGE
 ======================================================= */
 
 .today-badge{
@@ -101,61 +33,181 @@
 
     gap:8px;
 
-    padding:8px 16px;
+    padding:10px 18px;
 
     border-radius:999px;
 
-    background:rgba(255,255,255,.15);
+    background:#FFF2F7;
 
-    backdrop-filter:blur(12px);
+    color:#D56D92;
 
-    font-size:.78rem;
-
-    letter-spacing:1.5px;
-
-    font-weight:700;
-
-    margin-bottom:22px;
-
-}
-
-.today-top h1{
-
-    margin:0;
-
-    font-size:2.4rem;
+    font-size:.80rem;
 
     font-weight:800;
 
-    line-height:1.15;
+    letter-spacing:1px;
 
-}
-
-.today-top p{
-
-    margin-top:12px;
-
-    color:rgba(255,255,255,.88);
-
-    font-size:1rem;
-
-    line-height:1.7;
+    margin-bottom:24px;
 
 }
 
 /* =======================================================
-   INFO
+   HEADER
+======================================================= */
+
+.today-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:30px;
+
+}
+
+.today-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    flex:1;
+
+}
+
+.today-icon{
+
+    width:74px;
+
+    height:74px;
+
+    border-radius:22px;
+
+    background:#F8F5FF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:38px;
+
+    flex-shrink:0;
+
+}
+
+.today-left h1{
+
+    margin:0;
+
+    font-size:2rem;
+
+    color:#1D2433;
+
+    font-weight:900;
+
+}
+
+.today-left p{
+
+    margin-top:8px;
+
+    color:#7D8793;
+
+    font-size:1rem;
+
+    line-height:1.5;
+
+}/* =======================================================
+   RIGHT
+======================================================= */
+
+.today-right{
+
+    width:180px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+    gap:12px;
+
+}
+
+.today-percent{
+
+    font-size:2rem;
+
+    font-weight:900;
+
+    color:#355F4B;
+
+}
+
+.today-right span{
+
+    font-size:.95rem;
+
+    color:#7B8793;
+
+    font-weight:700;
+
+}
+
+/* =======================================================
+   PROGRESS
+======================================================= */
+
+.progress-bar{
+
+    width:100%;
+
+    height:14px;
+
+    background:#EEF2EF;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        #69C38A,
+        #355F4B
+    );
+
+    transition:.35s;
+
+}
+
+/* =======================================================
+   INFOS
 ======================================================= */
 
 .today-infos{
-
-    margin-top:34px;
 
     display:grid;
 
     grid-template-columns:repeat(2,1fr);
 
-    gap:16px;
+    gap:18px;
+
+    margin-top:28px;
 
 }
 
@@ -171,17 +223,26 @@
 
     border-radius:22px;
 
-    background:rgba(255,255,255,.12);
+    background:#FAFBFC;
 
-    backdrop-filter:blur(14px);
+    border:1px solid #ECECEC;
 
-    border:1px solid rgba(255,255,255,.10);
+    transition:.25s;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(0,0,0,.06);
 
 }
 
 .info-card span{
 
-    font-size:34px;
+    font-size:32px;
 
 }
 
@@ -189,7 +250,9 @@
 
     display:block;
 
-    font-size:1.2rem;
+    color:#222;
+
+    font-size:1.15rem;
 
     font-weight:800;
 
@@ -201,65 +264,9 @@
 
     margin-top:4px;
 
-    opacity:.8;
+    color:#8A949F;
 
-}
-
-/* =======================================================
-   PROGRESS
-======================================================= */
-
-.today-progress{
-
-    margin-top:34px;
-
-}
-
-.progress-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    font-weight:700;
-
-    margin-bottom:12px;
-
-}
-
-.progress-bar{
-
-    height:16px;
-
-    background:rgba(255,255,255,.16);
-
-    border-radius:999px;
-
-    overflow:hidden;
-
-}
-
-.progress-fill{
-
-    height:100%;
-
-    border-radius:999px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #FFD54F,
-            #FFB300
-        );
-
-    box-shadow:
-        0 0 18px rgba(255,213,79,.45);
-
-    transition:.45s;
-
-}
-
-/* =======================================================
+}/* =======================================================
    BUTTON
 ======================================================= */
 
@@ -267,17 +274,21 @@
 
     width:100%;
 
-    margin-top:34px;
+    margin-top:28px;
 
-    padding:18px;
+    padding:18px 22px;
 
     border:none;
 
     border-radius:20px;
 
-    background:white;
+    background:linear-gradient(
+        135deg,
+        #355F4B,
+        #4E8B6C
+    );
 
-    color:#355F4B;
+    color:#FFF;
 
     font-size:1rem;
 
@@ -285,7 +296,12 @@
 
     cursor:pointer;
 
-    transition:.25s;
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+    box-shadow:
+        0 12px 24px rgba(53,95,75,.25);
 
 }
 
@@ -294,7 +310,7 @@
     transform:translateY(-3px);
 
     box-shadow:
-        0 18px 35px rgba(0,0,0,.18);
+        0 20px 36px rgba(53,95,75,.35);
 
 }
 
@@ -306,29 +322,93 @@
 
 .today-button:disabled{
 
-    background:#D7F5DE;
+    background:#A8D5B7;
 
-    color:#1B5E20;
+    color:white;
+
+    cursor:default;
 
 }
 
 /* =======================================================
-   MOBILE
+   MICRO ANIMATIONS
 ======================================================= */
 
-@media(max-width:768px){
+.today-workout{
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+.today-workout:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.10);
+
+}
+
+.today-icon{
+
+    transition:
+        transform .25s;
+
+}
+
+.today-workout:hover .today-icon{
+
+    transform:scale(1.08);
+
+}/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+@media (max-width:768px){
 
     .today-workout{
 
-        padding:24px;
+        padding:22px;
 
-        border-radius:26px;
+        border-radius:24px;
 
     }
 
-    .today-top h1{
+    .today-header{
+
+        flex-direction:column;
+
+        gap:24px;
+
+        align-items:flex-start;
+
+    }
+
+    .today-left{
+
+        width:100%;
+
+    }
+
+    .today-right{
+
+        width:100%;
+
+        align-items:flex-start;
+
+    }
+
+    .today-percent{
 
         font-size:1.8rem;
+
+    }
+
+    .progress-bar{
+
+        width:100%;
 
     }
 
@@ -336,11 +416,41 @@
 
         grid-template-columns:1fr;
 
+        gap:14px;
+
     }
 
-    .info-card{
+    .today-icon{
+
+        width:64px;
+
+        height:64px;
+
+        font-size:32px;
+
+        border-radius:18px;
+
+    }
+
+    .today-left h1{
+
+        font-size:1.65rem;
+
+    }
+
+    .today-left p{
+
+        font-size:.95rem;
+
+    }
+
+    .today-button{
+
+        margin-top:22px;
 
         padding:16px;
+
+        font-size:.95rem;
 
     }
 
