@@ -140,9 +140,9 @@
 
     position:absolute;
 
-    top:150px;
-
     left:50%;
+
+    top:118px;
 
     transform:translateX(-50%);
 
@@ -152,13 +152,17 @@
 
     z-index:25;
 
+    padding:0 20px;
+
+    box-sizing:border-box;
+
 }
 
 .heroBottom h2{
 
     margin:0;
 
-    font-size:4rem;
+    font-size:3.8rem;
 
     line-height:1;
 
@@ -170,17 +174,17 @@
 
 .heroBottom p{
 
-    margin-top:14px;
+    margin-top:12px;
 
-    font-size:1.45rem;
+    font-size:1.35rem;
 
     font-weight:700;
 
-    color:#444;
+    color:#3E3E3E;
 
     text-shadow:
-        0 2px 10px rgba(255,255,255,.95),
-        0 0 6px rgba(255,255,255,.95);
+        0 2px 12px rgba(255,255,255,.98),
+        0 0 10px rgba(255,255,255,.95);
 
 }
 
@@ -194,11 +198,11 @@
 
     left:50%;
 
-    bottom:92px;
+    bottom:54px;
 
     transform:translateX(-50%);
 
-    font-size:52px;
+    font-size:42px;
 
     z-index:30;
 
@@ -280,7 +284,7 @@
 
 .heroBottom{
 
-    top:145px;
+    top:112px;
 
     padding:0 18px;
 
@@ -288,21 +292,23 @@
 
 .heroBottom h2{
 
-    font-size:3.4rem;
+    font-size:3.3rem;
 
 }
 
 .heroBottom p{
 
-    font-size:1.35rem;
+    margin-top:10px;
+
+    font-size:1.25rem;
 
 }
 
 .heroHeart{
 
-    bottom:82px;
+    bottom:48px;
 
-    font-size:46px;
+    font-size:38px;
 
 }
 
