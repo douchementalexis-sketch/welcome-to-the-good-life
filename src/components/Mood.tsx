@@ -12,91 +12,62 @@ import {
 
 import "../styles/Mood.css";
 
-
-
 const moods = [
 
   {
-    emoji: "😞",
-    text: "Journée difficile",
-    value: 20,
+    emoji:"😞",
+    text:"Difficile",
+    value:20,
   },
 
   {
-    emoji: "😐",
-    text: "Ça va",
-    value: 40,
+    emoji:"😐",
+    text:"Moyenne",
+    value:40,
   },
 
   {
-    emoji: "🙂",
-    text: "Je me sens bien",
-    value: 60,
+    emoji:"🙂",
+    text:"Bien",
+    value:60,
   },
 
   {
-    emoji: "😁",
-    text: "Très bonne journée",
-    value: 80,
+    emoji:"😁",
+    text:"Très bien",
+    value:80,
   },
 
   {
-    emoji: "🤩",
-    text: "Je suis au top !",
-    value: 100,
+    emoji:"🤩",
+    text:"Au top",
+    value:100,
   },
 
 ];
 
+export default function Mood(){
 
-
-
-
-export default function Mood() {
-
-
-  const {
+  const{
     days,
     updateDay,
-  } = useContext(AppContext);
+  }=useContext(AppContext);
 
-
-
-
-  const today =
+  const today=
     getTodayDate();
 
-
-
-
-  const current =
+  const current=
     days.find(
-      (day) =>
-        day.date === today
+      day=>day.date===today
     );
 
-
-
-
-  const moodIndex =
+  const moodIndex=
     current?.mood ?? 2;
 
-
-
-
-  const currentMood =
+  const currentMood=
     moods[moodIndex];
 
-
-
-
-
-
-
-  function handleMood(
-    index:number
-  ){
-
+  function handleMood(index:number){
 
     updateDay(
       today,
@@ -105,46 +76,31 @@ export default function Mood() {
       }
     );
 
-
   }
 
-
-
-
-
-
-
-  return (
+  return(
 
     <div className="mood">
 
-
-
       <div className="mood-emojis">
 
-
-        {moods.map(
-          (item,index)=>(
-
+        {moods.map((item,index)=>(
 
           <span
 
             key={index}
 
-
-            onClick={() =>
+            onClick={()=>
               handleMood(index)
             }
 
-
             className={
               `mood-emoji ${
-                moodIndex === index
+                moodIndex===index
                   ? "active"
                   : ""
               }`
             }
-
 
           >
 
@@ -152,63 +108,42 @@ export default function Mood() {
 
           </span>
 
-
         ))}
-
 
       </div>
 
-
-
-
-
-
       <div className="mood-bar">
-
 
         <div
 
           className="mood-progress"
 
           style={{
-
-            width:
-              `${currentMood.value}%`,
-
+            width:`${currentMood.value}%`,
           }}
 
         />
 
       </div>
 
-
-
-
-
-
       <div className="mood-percent">
 
-        {currentMood.value} %
+        {currentMood.value}%
 
       </div>
-
-
-
-
-
 
       <div className="mood-text">
 
-        {currentMood.emoji} {currentMood.text}
+        {currentMood.emoji}
+
+        <br/>
+
+        {currentMood.text}
 
       </div>
-
-
-
 
     </div>
 
   );
-
 
 }

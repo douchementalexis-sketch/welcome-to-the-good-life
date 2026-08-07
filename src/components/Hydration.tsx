@@ -12,23 +12,15 @@ import {
 
 import "../styles/Hydration.css";
 
-
-
 export default function Hydration() {
-
 
   const {
     days,
     updateDay,
   } = useContext(AppContext);
 
-
-
   const today =
     getTodayDate();
-
-
-
 
   const current =
     days.find(
@@ -36,35 +28,20 @@ export default function Hydration() {
         day.date === today
     );
 
-
-
   const water =
     current?.water ?? 0;
 
-
-
   const max = 8;
 
-
-
   const percentage =
-    (water / max) * 100;
+    Math.round((water / max) * 100);
 
-
-
-
-
-
-  function handleWater(){
-
-
+  function handleWater() {
 
     const next =
       water >= max
         ? 0
         : water + 1;
-
-
 
     updateDay(
       today,
@@ -73,34 +50,35 @@ export default function Hydration() {
       }
     );
 
-
   }
-
-
-
-
-
-
 
   return (
 
     <div className="hydration">
 
+      <div className="hydrationIcon">
 
-      <div className="hydration-count">
-
-        💧 {water} / {max} verres
+        💧
 
       </div>
 
+      <div className="hydrationValue">
 
+        {water}/{max}
 
-      <div className="hydration-bar">
+      </div>
 
+      <div className="hydrationLabel">
+
+        Hydratation
+
+      </div>
+
+      <div className="hydrationBar">
 
         <div
 
-          className="hydration-progress"
+          className="hydrationProgress"
 
           style={{
             width:`${percentage}%`,
@@ -108,30 +86,22 @@ export default function Hydration() {
 
         />
 
-
       </div>
-
-
-
-
 
       <button
 
-        className="hydration-button"
+        className="hydrationButton"
 
         onClick={handleWater}
 
       >
 
-        💧 Ajouter un verre
+        +1 verre
 
       </button>
-
-
 
     </div>
 
   );
-
 
 }

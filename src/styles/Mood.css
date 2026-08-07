@@ -1,49 +1,147 @@
-.mood {
-  display: flex;
-  flex-direction: column;
+/* ==========================================
+   MOOD
+========================================== */
+
+.mood{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:100%;
+
 }
 
-.mood-emojis {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: var(--space-md);
+/* ========================================== */
+
+.mood-emojis{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
 }
 
-.mood-emoji {
-  cursor: pointer;
-  font-size: 24px;
-  opacity: .45;
-  transition: .2s;
+/* ========================================== */
+
+.mood-emoji{
+
+    cursor:pointer;
+
+    font-size:30px;
+
+    opacity:.35;
+
+    transition:.25s;
+
 }
 
-.mood-emoji.active {
-  opacity: 1;
-  transform: scale(1.15);
+.mood-emoji:hover{
+
+    transform:translateY(-3px) scale(1.1);
+
 }
 
-.mood-bar {
-  width: 100%;
-  height: 18px;
-  background: #dfe9e2;
-  border-radius: 999px;
-  overflow: hidden;
-  margin-bottom: var(--space-md);
+.mood-emoji.active{
+
+    opacity:1;
+
+    transform:scale(1.25);
+
 }
 
-.mood-progress {
-  height: 100%;
-  background: var(--primary);
-  transition: width .3s ease;
+/* ========================================== */
+
+.mood-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#F1E5B5;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    margin-bottom:14px;
+
 }
 
-.mood-percent {
-  text-align: center;
-  font-weight: bold;
-  color: var(--text);
-  margin-bottom: 8px;
+/* ========================================== */
+
+.mood-progress{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        #FFD54F,
+        #FFB300
+    );
+
+    transition:.35s;
+
 }
 
-.mood-text {
-  text-align: center;
-  color: var(--text-light);
+/* ========================================== */
+
+.mood-percent{
+
+    font-size:1.8rem;
+
+    font-weight:800;
+
+    color:#355F4B;
+
+    margin-bottom:6px;
+
+}
+
+/* ========================================== */
+
+.mood-text{
+
+    text-align:center;
+
+    font-size:.92rem;
+
+    color:#666;
+
+    line-height:1.4;
+
+}
+
+/* ========================================== */
+
+@media(max-width:768px){
+
+.mood-emoji{
+
+    font-size:24px;
+
+}
+
+.mood-percent{
+
+    font-size:1.5rem;
+
+}
+
+.mood-text{
+
+    font-size:.80rem;
+
+}
+
 }

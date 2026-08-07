@@ -1,0 +1,69 @@
+.sleep{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:100%;
+
+}
+
+.sleepIcon{
+
+    font-size:46px;
+
+    margin-bottom:12px;
+
+}
+
+.sleepValue{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:#355F4B;
+
+}
+
+.sleepLabel{
+
+    margin-top:6px;
+
+    color:#666;
+
+    font-weight:600;
+
+}
+
+.sleepBar{
+
+    width:100%;
+
+    height:12px;
+
+    margin-top:18px;
+
+    border-radius:999px;
+
+    background:#DDD;
+
+    overflow:hidden;
+
+}
+
+.sleepProgress{
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #7E57C2,
+        #5E35B1
+    );
+
+}
