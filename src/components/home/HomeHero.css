@@ -1,0 +1,283 @@
+.homeHero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    height:360px;
+
+    border-radius:34px;
+
+    background:#FFFDF8;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.08);
+
+    margin-bottom:110px;
+
+}
+
+/* =======================
+   Images
+======================= */
+
+.heroBg{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    width:100%;
+
+    pointer-events:none;
+
+}
+
+.heroClouds{
+
+    position:absolute;
+
+    top:18px;
+
+    left:50%;
+
+    width:90%;
+
+    transform:translateX(-50%);
+
+    opacity:.95;
+
+}
+
+.heroSun{
+
+    position:absolute;
+
+    right:120px;
+
+    top:65px;
+
+    width:120px;
+
+}
+
+.heroSparkles{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    opacity:.75;
+
+}
+
+.heroFlowersLeft{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:145px;
+
+}
+
+.heroFlowersRight{
+
+    position:absolute;
+
+    right:0;
+
+    bottom:0;
+
+    width:150px;
+
+}
+
+/* =======================
+   Content
+======================= */
+
+.heroContent{
+
+    position:relative;
+
+    z-index:20;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:28px;
+
+}
+
+.heroTop{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.heroAvatar{
+
+    width:78px;
+
+    height:78px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid white;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.12);
+
+}
+
+.heroHello{
+
+    display:block;
+
+    font-size:1.15rem;
+
+    color:#444;
+
+    font-weight:600;
+
+}
+
+.heroTop h1{
+
+    margin:0;
+
+    margin-top:2px;
+
+    font-size:3rem;
+
+    line-height:1;
+
+    color:#17222C;
+
+    font-weight:900;
+
+}
+
+.heroBottom{
+
+    margin-bottom:28px;
+
+}
+
+.heroBottom h2{
+
+    margin:0;
+
+    font-size:3.6rem;
+
+    line-height:1;
+
+    color:#17222C;
+
+    font-weight:900;
+
+}
+
+.heroBottom p{
+
+    margin-top:14px;
+
+    font-size:1.45rem;
+
+    color:#444;
+
+}
+
+/* =======================
+   Responsive
+======================= */
+
+@media(max-width:768px){
+
+.homeHero{
+
+height:310px;
+
+border-radius:28px;
+
+margin-bottom:95px;
+
+}
+
+.heroContent{
+
+padding:20px;
+
+}
+
+.heroAvatar{
+
+width:64px;
+
+height:64px;
+
+}
+
+.heroTop h1{
+
+font-size:2.4rem;
+
+}
+
+.heroBottom h2{
+
+font-size:2.7rem;
+
+}
+
+.heroBottom p{
+
+font-size:1.05rem;
+
+}
+
+.heroSun{
+
+width:95px;
+
+right:70px;
+
+top:60px;
+
+}
+
+.heroFlowersLeft{
+
+width:110px;
+
+}
+
+.heroFlowersRight{
+
+width:115px;
+
+}
+
+}

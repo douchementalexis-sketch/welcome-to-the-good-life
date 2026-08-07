@@ -1,8 +1,8 @@
 import "./Home.css";
 
 import { useContext } from "react";
+import HomeHero from "../components/home/HomeHero";
 
-import Header from "../components/Header";
 import Card from "../components/Card";
 import Stats from "../components/Stats";
 import Planning from "../components/Planning";
@@ -11,7 +11,7 @@ import Mood from "../components/Mood";
 import Notes from "../components/Notes";
 import BottomNavigation from "../components/BottomNavigation";
 
-import HeroBanner from "../components/home/HeroBanner";
+
 
 import { AppContext } from "../context/AppContext";
 import { getTodayDate } from "../utils/date";
@@ -48,11 +48,13 @@ export default function Home() {
 
       <div className="hero">
 
-        <Header />
+        <HomeHero />
 
-        <Stats />
+       <Stats />
 
-        <HeroBanner firstName="Rachel" />
+        
+
+        
 
         <Card title="📅 Planning de la semaine">
           <Planning />
