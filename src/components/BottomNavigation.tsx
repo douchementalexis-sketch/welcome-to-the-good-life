@@ -2,61 +2,65 @@ import { NavLink } from "react-router-dom";
 
 import "../styles/BottomNavigation.css";
 
+const items = [
+  {
+    to: "/",
+    icon: "🏠",
+    label: "Accueil",
+  },
+  {
+    to: "/program",
+    icon: "💪",
+    label: "Programme",
+  },
+  {
+    to: "/calendar",
+    icon: "📅",
+    label: "Planning",
+  },
+  {
+    to: "/statistics",
+    icon: "📊",
+    label: "Stats",
+  },
+  {
+    to: "/profile",
+    icon: "👤",
+    label: "Profil",
+  },
+];
+
 export default function BottomNavigation() {
+
   return (
-    <nav className="bottom-nav">
 
-      <NavLink
-        to="/"
-        end
-        className={({ isActive }) =>
-          `nav-item ${isActive ? "active" : ""}`
-        }
-      >
-        <div className="nav-icon">🏠</div>
-        <div className="nav-label">Accueil</div>
-      </NavLink>
+    <nav className="bottomNav">
 
-      <NavLink
-        to="/program"
-        className={({ isActive }) =>
-          `nav-item ${isActive ? "active" : ""}`
-        }
-      >
-        <div className="nav-icon">💪</div>
-        <div className="nav-label">Programme</div>
-      </NavLink>
+      {items.map((item) => (
 
-      <NavLink
-        to="/calendar"
-        className={({ isActive }) =>
-          `nav-item ${isActive ? "active" : ""}`
-        }
-      >
-        <div className="nav-icon">📅</div>
-        <div className="nav-label">Calendrier</div>
-      </NavLink>
+        <NavLink
+          key={item.to}
+          to={item.to}
+          end={item.to === "/"}
+          className={({ isActive }) =>
+            `bottomNavItem ${isActive ? "active" : ""}`
+          }
+        >
 
-      <NavLink
-        to="/statistics"
-        className={({ isActive }) =>
-          `nav-item ${isActive ? "active" : ""}`
-        }
-      >
-        <div className="nav-icon">📊</div>
-        <div className="nav-label">Stats</div>
-      </NavLink>
+          <span className="bottomNavIcon">
+            {item.icon}
+          </span>
 
-      <NavLink
-        to="/profile"
-        className={({ isActive }) =>
-          `nav-item ${isActive ? "active" : ""}`
-        }
-      >
-        <div className="nav-icon">👤</div>
-        <div className="nav-label">Profil</div>
-      </NavLink>
+          <span className="bottomNavLabel">
+            {item.label}
+          </span>
+
+        </NavLink>
+
+      ))}
 
     </nav>
+
   );
+
 }

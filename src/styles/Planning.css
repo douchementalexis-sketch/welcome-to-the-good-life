@@ -1,212 +1,329 @@
-/* ================================= */
-/* PLANNING */
-/* ================================= */
+/* =======================================================
+   PLANNING V2
+======================================================= */
 
 .planning{
 
-  display:flex;
+    display:flex;
 
-  flex-direction:column;
+    flex-direction:column;
 
-  gap:14px;
-
-}
-
-/* ================================= */
-
-.planning-card{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  border-radius:22px;
-
-  padding:18px;
-
-  transition:.25s;
-
-  box-shadow:
-      0 8px 22px rgba(0,0,0,.08);
+    gap:18px;
 
 }
 
-.planning-card:hover{
+/* =======================================================
+   CARD
+======================================================= */
 
-  transform:translateY(-3px);
+.planningCard{
 
-  box-shadow:
-      0 14px 28px rgba(0,0,0,.12);
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:26px;
+
+    padding:22px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.07);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
 
 }
 
-/* ================================= */
-/* COLORS */
-/* ================================= */
+.planningCard:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.12);
+
+}
+
+.planningCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    right:-60px;
+
+    top:-60px;
+
+    opacity:.12;
+
+}
+
+/* =======================================================
+   THEMES
+======================================================= */
 
 .strength{
 
-  background:linear-gradient(
-      135deg,
-      #E8F5E9,
-      #C8E6C9
-  );
+    background:linear-gradient(
+        135deg,
+        #ECFFF1,
+        #D8F7DF
+    );
+
+}
+
+.strength::before{
+
+    background:#22C55E;
 
 }
 
 .cardio{
 
-  background:linear-gradient(
-      135deg,
-      #E3F2FD,
-      #BBDEFB
-  );
+    background:linear-gradient(
+        135deg,
+        #EDF8FF,
+        #D7F0FF
+    );
+
+}
+
+.cardio::before{
+
+    background:#0094FF;
 
 }
 
 .rest{
 
-  background:linear-gradient(
-      135deg,
-      #FCE4EC,
-      #F8BBD0
-  );
+    background:linear-gradient(
+        135deg,
+        #FFF3F6,
+        #FFD7E4
+    );
 
 }
 
-/* ================================= */
+.rest::before{
 
-.planning-left{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:16px;
+    background:#F06292;
 
 }
 
-.planning-icon{
+/* =======================================================
+   TOP
+======================================================= */
 
-  width:54px;
+.planningTop{
 
-  height:54px;
+    display:flex;
 
-  border-radius:16px;
+    align-items:center;
 
-  background:white;
-
-  display:flex;
-
-  justify-content:center;
-
-  align-items:center;
-
-  font-size:28px;
-
-  box-shadow:
-      0 6px 14px rgba(0,0,0,.10);
+    gap:18px;
 
 }
 
-/* ================================= */
+.planningEmoji{
 
-.planning-day{
+    width:68px;
 
-  font-size:15px;
+    height:68px;
 
-  font-weight:700;
+    border-radius:20px;
 
-  color:#355F4B;
+    background:rgba(255,255,255,.7);
 
-}
+    backdrop-filter:blur(12px);
 
-.planning-title{
+    display:flex;
 
-  margin-top:4px;
+    justify-content:center;
 
-  font-size:19px;
+    align-items:center;
 
-  font-weight:800;
+    font-size:34px;
 
-  color:#243228;
-
-}
-
-/* ================================= */
-
-.planning-right{
-
-  text-align:right;
+    flex-shrink:0;
 
 }
 
-.planning-right span{
+.planningInfos{
 
-  display:block;
-
-  font-weight:700;
-
-  font-size:15px;
+    flex:1;
 
 }
 
-.planning-right small{
+.planningDay{
 
-  color:#555;
+    display:block;
 
-  font-size:13px;
+    color:#6A7A71;
 
-}
+    font-size:.82rem;
 
-/* ================================= */
-/* MOBILE */
-/* ================================= */
+    text-transform:uppercase;
 
-@media(max-width:768px){
+    font-weight:700;
 
-.planning-card{
-
-padding:14px;
-
-border-radius:18px;
+    letter-spacing:1px;
 
 }
 
-.planning-icon{
+.planningInfos h3{
 
-width:44px;
+    margin:6px 0 0;
 
-height:44px;
+    font-size:1.35rem;
 
-font-size:22px;
+    color:#28463A;
 
-}
-
-.planning-title{
-
-font-size:16px;
+    font-weight:800;
 
 }
 
-.planning-day{
+.planningBadge{
 
-font-size:13px;
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.75);
+
+    font-weight:700;
+
+    color:#355F4B;
+
+}
+
+/* =======================================================
+   BOTTOM
+======================================================= */
+
+.planningBottom{
+
+    margin-top:22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
 
 }
 
-.planning-right span{
+.planningBottom span{
 
-font-size:13px;
+    color:#55655D;
+
+    font-weight:600;
+
+}
+
+.planningBottom button{
+
+    border:none;
+
+    background:#355F4B;
+
+    color:white;
+
+    padding:12px 20px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
 
 }
 
-.planning-right small{
+.planningBottom button:hover{
 
-font-size:11px;
+    transform:translateY(-2px);
+
+    background:#2A4B3B;
 
 }
+
+/* =======================================================
+   TABLET
+======================================================= */
+
+@media(max-width:900px){
+
+    .planningTop{
+
+        align-items:flex-start;
+
+    }
+
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media(max-width:650px){
+
+    .planningCard{
+
+        padding:18px;
+
+        border-radius:22px;
+
+    }
+
+    .planningEmoji{
+
+        width:56px;
+
+        height:56px;
+
+        font-size:28px;
+
+    }
+
+    .planningInfos h3{
+
+        font-size:1.05rem;
+
+    }
+
+    .planningTop{
+
+        flex-wrap:wrap;
+
+    }
+
+    .planningBadge{
+
+        margin-top:12px;
+
+    }
+
+    .planningBottom{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:14px;
+
+    }
+
+    .planningBottom button{
+
+        width:100%;
+
+    }
 
 }

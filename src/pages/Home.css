@@ -88,6 +88,22 @@
     gap: 24px;
 
   }
+.homeGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+    margin-bottom:28px;
+}
 
+.hero{
+    max-width:1300px;
+    margin:auto;
+    padding:24px;
+}
+
+.home{
+    background:#F5F8F5;
+    min-height:100vh;
+}
 
 }

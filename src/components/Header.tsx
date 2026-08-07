@@ -1,6 +1,13 @@
 import "../styles/Header.css";
 
-export default function Header() {
+interface HeaderProps {
+  firstName?: string;
+}
+
+export default function Header({
+  firstName = "Rachel",
+}: HeaderProps) {
+
   const now = new Date();
 
   const date = now.toLocaleDateString("fr-FR", {
@@ -11,24 +18,39 @@ export default function Header() {
   });
 
   return (
+
     <header className="header">
-      <h1 className="header-title">
-        🌿 Welcome to the Good Life
-      </h1>
 
-      <h2 className="header-date">
-        📅 {date}
-      </h2>
+      <div className="headerLeft">
 
-      <div className="quote-card">
-        <div className="quote-title">
-          ❤️ Citation du jour
+        <span className="headerOverline">
+          Welcome To The Good Life
+        </span>
+
+        <h1>
+          Bonjour {firstName} 👋
+        </h1>
+
+        <p>
+          {date}
+        </p>
+
+      </div>
+
+      <div className="headerRight">
+
+        <button className="headerButton">
+          🔔
+        </button>
+
+        <div className="headerAvatar">
+          R
         </div>
 
-        <p className="quote-text">
-          "Chaque petit pas compte."
-        </p>
       </div>
+
     </header>
+
   );
+
 }

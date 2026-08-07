@@ -1,121 +1,225 @@
-/* =======================================
-   CARDS
-======================================= */
+/* =======================================================
+   CARD V2
+======================================================= */
 
 .card{
 
-  background:var(--card);
+    position:relative;
 
-  border-radius:var(--radius-lg);
+    overflow:hidden;
 
-  padding:var(--space-lg);
+    background:#FFFFFF;
 
-  box-shadow:var(--shadow-md);
+    border-radius:28px;
 
-  border:1px solid rgba(0,0,0,.04);
+    padding:26px;
 
-  transition:var(--transition);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.06);
+
+    border:1px solid rgba(53,95,75,.06);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
 
 }
 
 .card:hover{
 
-  transform:translateY(-3px);
+    transform:translateY(-6px);
 
-  box-shadow:var(--shadow-lg);
+    box-shadow:
+        0 24px 55px rgba(0,0,0,.10);
 
 }
 
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(
+        90deg,
+        #355F4B,
+        #67B08A
+    );
+
+}
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+.cardHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+}
+
+.cardHeader h3{
+
+    margin:0;
+
+    color:#2E4F40;
+
+    font-size:1.35rem;
+
+    font-weight:800;
+
+    letter-spacing:.3px;
+
+}
+
+/* =======================================================
+   BODY
+======================================================= */
+
+.cardBody{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* =======================================================
+   HELPERS
+======================================================= */
+
 .card-title{
 
-  font-size:20px;
+    font-size:1.35rem;
 
-  font-weight:700;
+    font-weight:800;
 
-  color:var(--text);
-
-  margin-bottom:18px;
+    color:#2E4F40;
 
 }
 
 .card-subtitle{
 
-  color:var(--text-light);
+    color:#718076;
 
-  font-size:14px;
-
-  margin-top:6px;
+    font-size:.92rem;
 
 }
 
 .card-center{
 
-  display:flex;
+    display:flex;
 
-  justify-content:center;
+    justify-content:center;
 
-  align-items:center;
+    align-items:center;
 
 }
 
 .card-between{
 
-  display:flex;
+    display:flex;
 
-  justify-content:space-between;
+    justify-content:space-between;
 
-  align-items:center;
+    align-items:center;
 
 }
 
 .card-column{
 
-  display:flex;
+    display:flex;
 
-  flex-direction:column;
+    flex-direction:column;
 
-  gap:16px;
+    gap:18px;
 
 }
 
+/* =======================================================
+   VARIANTS
+======================================================= */
+
 .card-success{
 
-  background:var(--success-light);
+    background:linear-gradient(
+        135deg,
+        #ECFFF1,
+        #DDF7E5
+    );
 
 }
 
 .card-primary{
 
-  background:var(--primary-light);
+    background:linear-gradient(
+        135deg,
+        #EDF8FF,
+        #DAF1FF
+    );
 
 }
 
 .card-rest{
 
-  background:var(--rest-light);
+    background:linear-gradient(
+        135deg,
+        #FFF4F7,
+        #FFE0E9
+    );
 
 }
 
 .card-cardio{
 
-  background:var(--cardio-light);
+    background:linear-gradient(
+        135deg,
+        #FFFBEA,
+        #FFF2C8
+    );
 
 }
+
+/* =======================================================
+   MOBILE
+======================================================= */
 
 @media(max-width:768px){
 
-.card{
+    .card{
 
-  padding:18px;
+        padding:20px;
 
-  border-radius:22px;
+        border-radius:22px;
 
-}
+    }
 
-.card-title{
+    .cardHeader{
 
-  font-size:18px;
+        margin-bottom:18px;
 
-}
+    }
+
+    .cardHeader h3{
+
+        font-size:1.15rem;
+
+    }
 
 }

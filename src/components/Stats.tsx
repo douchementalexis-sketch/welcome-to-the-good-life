@@ -25,73 +25,137 @@ export default function Stats() {
       workoutDone: false,
     };
 
-  const completedWorkouts = days.filter(
-    (day) => day.workoutDone
-  ).length;
+  const completedWorkouts =
+    days.filter((day) => day.workoutDone).length;
+
+  const waterPercent =
+    Math.round((current.water / 8) * 100);
 
   return (
 
-    <div className="stats-grid">
+    <section className="stats">
 
-      <div className="stat-card water-card">
+      <div className="statsHeader">
 
-        <div className="stat-icon">💧</div>
+        <div>
 
-        <div className="stat-value">
-          {current.water}/8
-        </div>
+          <span className="statsOverline">
 
-        <div className="stat-title">
-          Hydratation
-        </div>
+            TABLEAU DE BORD
 
-      </div>
+          </span>
 
-      <div className="stat-card workout-card">
+          <h2>
 
-        <div className="stat-icon">🏋️</div>
+            Aujourd'hui en un coup d'œil
 
-        <div className="stat-value">
-          {completedWorkouts}
-        </div>
+          </h2>
 
-        <div className="stat-title">
-          Séances
         </div>
 
       </div>
 
-      <div className="stat-card mood-card">
+      <div className="statsGrid">
 
-        <div className="stat-icon">
-          {moods[current.mood].emoji}
-        </div>
+        <article className="statsCard hydration">
 
-        <div className="stat-value">
-          {moods[current.mood].text}
-        </div>
+          <div className="statsIcon">
+            💧
+          </div>
 
-        <div className="stat-title">
-          Humeur
-        </div>
+          <div className="statsContent">
+
+            <span className="statsLabel">
+              Hydratation
+            </span>
+
+            <strong>
+              {current.water}/8 verres
+            </strong>
+
+            <small>
+              {waterPercent}% de l'objectif
+            </small>
+
+          </div>
+
+        </article>
+
+        <article className="statsCard workout">
+
+          <div className="statsIcon">
+            🏋️
+          </div>
+
+          <div className="statsContent">
+
+            <span className="statsLabel">
+              Séances
+            </span>
+
+            <strong>
+              {completedWorkouts}
+            </strong>
+
+            <small>
+              réalisées
+            </small>
+
+          </div>
+
+        </article>
+
+        <article className="statsCard mood">
+
+          <div className="statsIcon">
+            {moods[current.mood].emoji}
+          </div>
+
+          <div className="statsContent">
+
+            <span className="statsLabel">
+              Humeur
+            </span>
+
+            <strong>
+              {moods[current.mood].text}
+            </strong>
+
+            <small>
+              aujourd'hui
+            </small>
+
+          </div>
+
+        </article>
+
+        <article className="statsCard streak">
+
+          <div className="statsIcon">
+            🔥
+          </div>
+
+          <div className="statsContent">
+
+            <span className="statsLabel">
+              Série
+            </span>
+
+            <strong>
+              0 jour
+            </strong>
+
+            <small>
+              bientôt disponible
+            </small>
+
+          </div>
+
+        </article>
 
       </div>
 
-      <div className="stat-card streak-card">
-
-        <div className="stat-icon">🔥</div>
-
-        <div className="stat-value">
-          0
-        </div>
-
-        <div className="stat-title">
-          Série
-        </div>
-
-      </div>
-
-    </div>
+    </section>
 
   );
 

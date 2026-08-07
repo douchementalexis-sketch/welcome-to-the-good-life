@@ -16,11 +16,19 @@ export default function Card({
 
     <section className="card">
 
-      <h3>
-        {title}
-      </h3>
+      <div className="cardHeader">
 
-      {children}
+        <h3>
+          {title}
+        </h3>
+
+      </div>
+
+      <div className="cardBody">
+
+        {children}
+
+      </div>
 
     </section>
 
