@@ -12,6 +12,8 @@
 
     align-items:center;
 
+    width:100%;
+
     height:100%;
 
 }
@@ -26,7 +28,7 @@
 
     justify-content:space-between;
 
-    margin-bottom:18px;
+    margin-bottom:10px;
 
 }
 
@@ -36,7 +38,7 @@
 
     cursor:pointer;
 
-    font-size:30px;
+    font-size:22px;
 
     opacity:.35;
 
@@ -44,17 +46,11 @@
 
 }
 
-.mood-emoji:hover{
-
-    transform:translateY(-3px) scale(1.1);
-
-}
-
 .mood-emoji.active{
 
     opacity:1;
 
-    transform:scale(1.25);
+    transform:scale(1.15);
 
 }
 
@@ -64,7 +60,7 @@
 
     width:100%;
 
-    height:12px;
+    height:8px;
 
     background:#F1E5B5;
 
@@ -72,7 +68,7 @@
 
     overflow:hidden;
 
-    margin-bottom:14px;
+    margin-bottom:10px;
 
 }
 
@@ -98,13 +94,13 @@
 
 .mood-percent{
 
-    font-size:1.8rem;
+    font-size:1.2rem;
 
     font-weight:800;
 
     color:#355F4B;
 
-    margin-bottom:6px;
+    margin-bottom:4px;
 
 }
 
@@ -114,11 +110,11 @@
 
     text-align:center;
 
-    font-size:.92rem;
+    font-size:.75rem;
 
     color:#666;
 
-    line-height:1.4;
+    line-height:1.25;
 
 }
 
@@ -126,22 +122,42 @@
 
 @media(max-width:768px){
 
-.mood-emoji{
+    .mood{
 
-    font-size:24px;
+        gap:4px;
 
-}
+    }
 
-.mood-percent{
+    .mood-emojis{
 
-    font-size:1.5rem;
+        margin-bottom:8px;
 
-}
+    }
 
-.mood-text{
+    .mood-emoji{
 
-    font-size:.80rem;
+        font-size:18px;
 
-}
+    }
+
+    .mood-bar{
+
+        height:6px;
+
+        margin-bottom:8px;
+
+    }
+
+    .mood-percent{
+
+        font-size:1rem;
+
+    }
+
+    .mood-text{
+
+        font-size:.68rem;
+
+    }
 
 }
