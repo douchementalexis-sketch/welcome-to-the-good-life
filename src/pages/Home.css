@@ -1,109 +1,61 @@
-.home {
+.home{
 
-  min-height: 100vh;
+    min-height:100vh;
+    background:#F5F8F5;
+    padding-bottom:120px;
 
-  width: 100%;
-
-  padding-bottom: 100px;
-
-}
-
-
-
-
-
-.hero {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 24px;
-
-  padding-bottom: 30px;
-
-}
-
-
-
-
-
-/*
-  Espacement entre les grandes sections
-*/
-
-.home .card {
-
-  margin-bottom: 0;
-
-}
-
-
-
-
-
-/*
-  Bloc Hydratation + Humeur
-*/
-
-.home-grid {
-
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 24px;
-
-}
-
-
-
-
-
-/*
-  Responsive mobile
-*/
-
-@media (max-width: 768px) {
-
-
-  .hero {
-
-    gap: 28px;
-
-    padding-left: 12px;
-
-    padding-right: 12px;
-
-  }
-
-
-
-
-
-  .home-grid {
-
-    grid-template-columns: 1fr;
-
-    gap: 24px;
-
-  }
-.homeGrid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:24px;
-    margin-bottom:28px;
 }
 
 .hero{
-    max-width:1300px;
+
+    max-width:1280px;
     margin:auto;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:28px;
+
     padding:24px;
+
 }
 
-.home{
-    background:#F5F8F5;
-    min-height:100vh;
+.home .card{
+
+    margin-bottom:0;
+
+}
+
+/* ==========================
+   2 x 2 Dashboard
+========================== */
+
+.homeGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:24px;
+
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width:900px){
+
+.homeGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero{
+
+padding:16px;
+
 }
 
 }
