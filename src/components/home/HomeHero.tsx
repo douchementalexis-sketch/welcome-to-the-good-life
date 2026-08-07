@@ -2,9 +2,6 @@ import "./HomeHero.css";
 
 import heroBg from "../../assets/hero/hero-bg.png";
 import clouds from "../../assets/hero/clouds.png";
-import sun from "../../assets/hero/sun.png";
-import flowersLeft from "../../assets/hero/flowers-left.png";
-import flowersRight from "../../assets/hero/flowers-right.png";
 import sparkles from "../../assets/hero/sparkles.png";
 import avatarRachel from "../../assets/hero/avatar-rachel.png";
 
@@ -24,24 +21,6 @@ export default function HomeHero() {
         src={clouds}
         alt=""
         className="heroClouds"
-      />
-
-      <img
-        src={sun}
-        alt=""
-        className="heroSun"
-      />
-
-      <img
-        src={flowersLeft}
-        alt=""
-        className="heroFlowersLeft"
-      />
-
-      <img
-        src={flowersRight}
-        alt=""
-        className="heroFlowersRight"
       />
 
       <img
