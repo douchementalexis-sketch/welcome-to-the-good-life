@@ -6,241 +6,181 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-
 import {
   AppContext,
 } from "../../context/AppContext";
-
 
 import {
   getTodayDate,
 } from "../../utils/date";
 
-
 import {
   getWorkout,
 } from "../../utils/getWorkout";
 
-
 import "../../styles/TodayWorkout.css";
-
-
 
 export default function TodayWorkout() {
 
-
-  const navigate = useNavigate();
-
-
+  const navigate =
+    useNavigate();
 
   const {
     days,
   } = useContext(AppContext);
 
-
-
   const today =
     getTodayDate();
-
-
 
   const workout =
     getWorkout(today);
 
-
-
-
   const current =
     days.find(
-      (day) =>
+      day =>
         day.date === today
     );
-
-
-
-
 
   const completed =
     current?.completedExercises?.length ?? 0;
 
-
-
-
   const total =
     workout.exercises.length;
-
-
-
 
   const progress =
     total === 0
       ? 0
       : Math.round(
-          (completed / total) * 100
+          completed / total * 100
         );
-
-
-
-
 
   const finished =
     current?.workoutDone ?? false;
 
+  let motivation =
+    "Aujourd'hui est un nouveau départ 💚";
 
+  if(progress >= 25)
+    motivation =
+      "C'est bien parti 🌸";
 
+  if(progress >= 50)
+    motivation =
+      "Continue comme ça 🔥";
 
-
-
+  if(progress === 100)
+    motivation =
+      "Bravo Rachel 🎉";
 
   return (
 
-  <div className="today-workout">
+    <section className="todayWorkout">
 
-    <div className="today-badge">
+      <div className="todayTop">
 
-      🌸 SÉANCE DU JOUR
+        <div className="todayBadge">
 
-    </div>
-
-    <div className="today-header">
-
-      <div className="today-left">
-
-        <div className="today-icon">
-
-          {workout.icon}
+          🌸 Séance du jour
 
         </div>
 
-        <div>
-
-          <h1>
-
-            {workout.title}
-
-          </h1>
-
-          <p>
-
-            Programme personnalisé Rachel 💚
-
-          </p>
-
-        </div>
-
-      </div>
-
-      <div className="today-right">
-
-        <div className="today-percent">
+        <div className="todayProgress">
 
           {progress}%
 
         </div>
 
-        <div className="progress-bar">
-
-          <div
-
-            className="progress-fill"
-
-            style={{
-
-              width:`${progress}%`
-
-            }}
-
-          />
-
-        </div>
-
-        <span>
-
-          {completed}/{total}
-
-        </span>
-
       </div>
 
-    </div>
+      <div className="todayTitle">
 
-    <div className="today-infos">
+        <span className="todayEmoji">
 
-      <div className="info-card">
-
-        <span>
-
-          ⏱
+          {workout.icon}
 
         </span>
 
         <div>
 
+          <h2>
+
+            {workout.title}
+
+          </h2>
+
+          <p>
+
+            Programme personnalisé Rachel
+
+          </p>
+
+        </div>
+
+      </div>      <div className="todayInfos">
+
+        <div className="todayInfo">
+
+          <span>⏱</span>
+
+          <strong>45 min</strong>
+
+        </div>
+
+        <div className="todayInfo">
+
+          <span>💪</span>
+
           <strong>
 
-            45 min
+            {total} exercices
 
           </strong>
-
-          <small>
-
-            Durée
-
-          </small>
 
         </div>
 
       </div>
 
-      <div className="info-card">
+      <div className="todayBar">
 
-        <span>
+        <div
 
-          💪
+          className="todayBarFill"
 
-        </span>
+          style={{
 
-        <div>
+            width:`${progress}%`,
 
-          <strong>
+          }}
 
-            {total}
-
-          </strong>
-
-          <small>
-
-            Exercices
-
-          </small>
-
-        </div>
+        />
 
       </div>
 
-    </div>
+      <div className="todayMessage">
 
-    <button
+        {motivation}
 
-      className="today-button"
+      </div>
 
-      onClick={() => navigate("/workout")}
+      <button
 
-    >
+        className="todayButton"
 
-      {
+        onClick={() => navigate("/workout")}
 
-        finished
+      >
 
-          ? "✅ Séance terminée"
+        {
 
-          : "▶ Commencer la séance"
+          finished
 
-      }
+            ? "✅ Séance terminée"
 
-    </button>
+            : "▶ Commencer la séance"
 
-    </div>
+        }
+
+      </button>    </section>
 
   );
 

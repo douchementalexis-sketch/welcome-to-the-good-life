@@ -1,5 +1,5 @@
 /* =======================================================
-   PLANNING V2
+   PLANNING V3
 ======================================================= */
 
 .planning{
@@ -8,207 +8,11 @@
 
     flex-direction:column;
 
-    gap:18px;
+    gap:12px;
 
 }
 
-/* =======================================================
-   CARD
-======================================================= */
-
-.planningCard{
-
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:26px;
-
-    padding:22px;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.07);
-
-    transition:
-        transform .25s,
-        box-shadow .25s;
-
-}
-
-.planningCard:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:
-        0 25px 55px rgba(0,0,0,.12);
-
-}
-
-.planningCard::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:140px;
-
-    height:140px;
-
-    border-radius:50%;
-
-    right:-60px;
-
-    top:-60px;
-
-    opacity:.12;
-
-}
-
-/* =======================================================
-   THEMES
-======================================================= */
-
-.strength{
-
-    background:linear-gradient(
-        135deg,
-        #ECFFF1,
-        #D8F7DF
-    );
-
-}
-
-.strength::before{
-
-    background:#22C55E;
-
-}
-
-.cardio{
-
-    background:linear-gradient(
-        135deg,
-        #EDF8FF,
-        #D7F0FF
-    );
-
-}
-
-.cardio::before{
-
-    background:#0094FF;
-
-}
-
-.rest{
-
-    background:linear-gradient(
-        135deg,
-        #FFF3F6,
-        #FFD7E4
-    );
-
-}
-
-.rest::before{
-
-    background:#F06292;
-
-}
-
-/* =======================================================
-   TOP
-======================================================= */
-
-.planningTop{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-}
-
-.planningEmoji{
-
-    width:68px;
-
-    height:68px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.7);
-
-    backdrop-filter:blur(12px);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:34px;
-
-    flex-shrink:0;
-
-}
-
-.planningInfos{
-
-    flex:1;
-
-}
-
-.planningDay{
-
-    display:block;
-
-    color:#6A7A71;
-
-    font-size:.82rem;
-
-    text-transform:uppercase;
-
-    font-weight:700;
-
-    letter-spacing:1px;
-
-}
-
-.planningInfos h3{
-
-    margin:6px 0 0;
-
-    font-size:1.35rem;
-
-    color:#28463A;
-
-    font-weight:800;
-
-}
-
-.planningBadge{
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    background:rgba(255,255,255,.75);
-
-    font-weight:700;
-
-    color:#355F4B;
-
-}
-
-/* =======================================================
-   BOTTOM
-======================================================= */
-
-.planningBottom{
-
-    margin-top:22px;
+.planningRow{
 
     display:flex;
 
@@ -216,17 +20,135 @@
 
     align-items:center;
 
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    transition:.25s;
+
+    border:1px solid rgba(0,0,0,.05);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.05);
+
 }
 
-.planningBottom span{
+.planningRow:hover{
 
-    color:#55655D;
+    transform:translateY(-2px);
+
+}
+
+.strength{
+
+    background:#F1FBF4;
+
+}
+
+.cardio{
+
+    background:#EEF8FF;
+
+}
+
+.rest{
+
+    background:#FFF3F7;
+
+}/* =======================================================
+   LEFT
+======================================================= */
+
+.planningLeft{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    flex:1;
+
+}
+
+.planningIcon{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:14px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.05);
+
+}
+
+.planningContent{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+
+}
+
+.planningDay{
+
+    font-size:.72rem;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    color:#6E7A73;
+
+    letter-spacing:1px;
+
+}
+
+.planningContent h4{
+
+    margin:0;
+
+    font-size:1rem;
+
+    font-weight:800;
+
+    color:#28463A;
+
+}
+
+.planningMeta{
+
+    display:flex;
+
+    gap:14px;
+
+    font-size:.82rem;
+
+    color:#66756D;
 
     font-weight:600;
 
-}
+}/* =======================================================
+   BUTTON
+======================================================= */
 
-.planningBottom button{
+.planningButton{
 
     border:none;
 
@@ -234,37 +156,29 @@
 
     color:white;
 
-    padding:12px 20px;
+    padding:10px 16px;
 
-    border-radius:14px;
+    border-radius:12px;
+
+    font-size:.82rem;
 
     font-weight:700;
 
     cursor:pointer;
 
-    transition:.25s;
+    transition:
+        background .25s,
+        transform .25s;
+
+    flex-shrink:0;
 
 }
 
-.planningBottom button:hover{
+.planningButton:hover{
+
+    background:#28463A;
 
     transform:translateY(-2px);
-
-    background:#2A4B3B;
-
-}
-
-/* =======================================================
-   TABLET
-======================================================= */
-
-@media(max-width:900px){
-
-    .planningTop{
-
-        align-items:flex-start;
-
-    }
 
 }
 
@@ -272,57 +186,61 @@
    MOBILE
 ======================================================= */
 
-@media(max-width:650px){
+@media(max-width:768px){
 
-    .planningCard{
+    .planning{
 
-        padding:18px;
-
-        border-radius:22px;
+        gap:10px;
 
     }
 
-    .planningEmoji{
+    .planningRow{
 
-        width:56px;
+        padding:12px 14px;
 
-        height:56px;
-
-        font-size:28px;
-
-    }
-
-    .planningInfos h3{
-
-        font-size:1.05rem;
-
-    }
-
-    .planningTop{
-
-        flex-wrap:wrap;
-
-    }
-
-    .planningBadge{
-
-        margin-top:12px;
-
-    }
-
-    .planningBottom{
-
-        flex-direction:column;
+        border-radius:16px;
 
         align-items:flex-start;
 
-        gap:14px;
+    }
+
+    .planningLeft{
+
+        gap:10px;
 
     }
 
-    .planningBottom button{
+    .planningIcon{
 
-        width:100%;
+        width:42px;
+
+        height:42px;
+
+        font-size:20px;
+
+    }
+
+    .planningContent h4{
+
+        font-size:.92rem;
+
+    }
+
+    .planningMeta{
+
+        flex-wrap:wrap;
+
+        gap:8px;
+
+        font-size:.75rem;
+
+    }
+
+    .planningButton{
+
+        padding:8px 12px;
+
+        font-size:.75rem;
 
     }
 

@@ -1,93 +1,89 @@
 /* =======================================================
-   TODAY WORKOUT
+   TODAY WORKOUT V3
 ======================================================= */
 
-.today-workout{
-
-    position:relative;
-
-    overflow:hidden;
+.todayWorkout{
 
     background:#FFFFFF;
 
-    border-radius:32px;
+    border-radius:24px;
 
-    padding:30px;
-
-    border:2px dashed #F3D9E4;
+    padding:20px;
 
     box-shadow:
-        0 20px 45px rgba(0,0,0,.08);
+        0 12px 28px rgba(0,0,0,.06);
+
+    border:1px solid #EEF2F1;
 
 }
 
 /* =======================================================
-   BADGE
+   TOP
 ======================================================= */
 
-.today-badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    background:#FFF2F7;
-
-    color:#D56D92;
-
-    font-size:.80rem;
-
-    font-weight:800;
-
-    letter-spacing:1px;
-
-    margin-bottom:24px;
-
-}
-
-/* =======================================================
-   HEADER
-======================================================= */
-
-.today-header{
+.todayTop{
 
     display:flex;
 
     justify-content:space-between;
 
-    align-items:flex-start;
+    align-items:center;
 
-    gap:30px;
+    margin-bottom:16px;
 
 }
 
-.today-left{
+.todayBadge{
+
+    background:#FFF2F7;
+
+    color:#D56D92;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:.75rem;
+
+    font-weight:800;
+
+    letter-spacing:.6px;
+
+}
+
+.todayProgress{
+
+    font-size:1.4rem;
+
+    font-weight:900;
+
+    color:#355F4B;
+
+}/* =======================================================
+   HEADER
+======================================================= */
+
+.todayTitle{
 
     display:flex;
 
     align-items:center;
 
-    gap:18px;
+    gap:14px;
 
-    flex:1;
+    margin-bottom:18px;
 
 }
 
-.today-icon{
+.todayEmoji{
 
-    width:74px;
+    width:56px;
 
-    height:74px;
+    height:56px;
 
-    border-radius:22px;
+    border-radius:18px;
 
-    background:#F8F5FF;
+    background:#F4F8F5;
 
     display:flex;
 
@@ -95,69 +91,67 @@
 
     align-items:center;
 
-    font-size:38px;
+    font-size:30px;
 
     flex-shrink:0;
 
 }
 
-.today-left h1{
+.todayTitle h2{
 
     margin:0;
 
-    font-size:2rem;
+    font-size:1.35rem;
 
-    color:#1D2433;
+    color:#243328;
 
-    font-weight:900;
+    font-weight:800;
+
+    line-height:1.2;
 
 }
 
-.today-left p{
+.todayTitle p{
 
-    margin-top:8px;
+    margin-top:4px;
 
-    color:#7D8793;
+    color:#7A857F;
 
-    font-size:1rem;
-
-    line-height:1.5;
+    font-size:.85rem;
 
 }/* =======================================================
-   RIGHT
+   INFOS
 ======================================================= */
 
-.today-right{
-
-    width:180px;
+.todayInfos{
 
     display:flex;
 
-    flex-direction:column;
+    gap:18px;
 
-    align-items:flex-end;
-
-    gap:12px;
+    margin-bottom:16px;
 
 }
 
-.today-percent{
+.todayInfo{
 
-    font-size:2rem;
+    display:flex;
 
-    font-weight:900;
+    align-items:center;
+
+    gap:8px;
 
     color:#355F4B;
 
-}
-
-.today-right span{
+    font-weight:700;
 
     font-size:.95rem;
 
-    color:#7B8793;
+}
 
-    font-weight:700;
+.todayInfo span{
+
+    font-size:1.15rem;
 
 }
 
@@ -165,11 +159,11 @@
    PROGRESS
 ======================================================= */
 
-.progress-bar{
+.todayBar{
 
     width:100%;
 
-    height:14px;
+    height:10px;
 
     background:#EEF2EF;
 
@@ -177,9 +171,11 @@
 
     overflow:hidden;
 
+    margin-bottom:14px;
+
 }
 
-.progress-fill{
+.todayBarFill{
 
     height:100%;
 
@@ -187,110 +183,51 @@
 
     background:linear-gradient(
         90deg,
-        #69C38A,
+        #6CC58E,
         #355F4B
     );
 
-    transition:.35s;
+    transition:width .4s ease;
 
 }
 
 /* =======================================================
-   INFOS
+   MESSAGE
 ======================================================= */
 
-.today-infos{
+.todayMessage{
 
-    display:grid;
+    margin-bottom:18px;
 
-    grid-template-columns:repeat(2,1fr);
+    color:#6D776F;
 
-    gap:18px;
+    font-size:.90rem;
 
-    margin-top:28px;
-
-}
-
-.info-card{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:16px;
-
-    padding:18px;
-
-    border-radius:22px;
-
-    background:#FAFBFC;
-
-    border:1px solid #ECECEC;
-
-    transition:.25s;
-
-}
-
-.info-card:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 12px 24px rgba(0,0,0,.06);
-
-}
-
-.info-card span{
-
-    font-size:32px;
-
-}
-
-.info-card strong{
-
-    display:block;
-
-    color:#222;
-
-    font-size:1.15rem;
-
-    font-weight:800;
-
-}
-
-.info-card small{
-
-    display:block;
-
-    margin-top:4px;
-
-    color:#8A949F;
+    font-weight:600;
 
 }/* =======================================================
    BUTTON
 ======================================================= */
 
-.today-button{
+.todayButton{
 
     width:100%;
 
-    margin-top:28px;
-
-    padding:18px 22px;
-
     border:none;
 
-    border-radius:20px;
+    border-radius:16px;
+
+    padding:14px;
 
     background:linear-gradient(
         135deg,
         #355F4B,
-        #4E8B6C
+        #4F8A6B
     );
 
-    color:#FFF;
+    color:white;
 
-    font-size:1rem;
+    font-size:.95rem;
 
     font-weight:800;
 
@@ -301,156 +238,120 @@
         box-shadow .25s;
 
     box-shadow:
-        0 12px 24px rgba(53,95,75,.25);
+        0 10px 20px rgba(53,95,75,.18);
 
 }
 
-.today-button:hover{
+.todayButton:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 
     box-shadow:
-        0 20px 36px rgba(53,95,75,.35);
+        0 18px 32px rgba(53,95,75,.28);
 
 }
 
-.today-button:active{
+.todayButton:active{
 
     transform:scale(.98);
 
 }
 
-.today-button:disabled{
-
-    background:#A8D5B7;
-
-    color:white;
-
-    cursor:default;
-
-}
-
 /* =======================================================
-   MICRO ANIMATIONS
+   MOBILE
 ======================================================= */
 
-.today-workout{
+@media(max-width:768px){
 
-    transition:
-        transform .25s,
-        box-shadow .25s;
-
-}
-
-.today-workout:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:
-        0 30px 60px rgba(0,0,0,.10);
-
-}
-
-.today-icon{
-
-    transition:
-        transform .25s;
-
-}
-
-.today-workout:hover .today-icon{
-
-    transform:scale(1.08);
-
-}/* =======================================================
-   RESPONSIVE
-======================================================= */
-
-@media (max-width:768px){
-
-    .today-workout{
-
-        padding:22px;
-
-        border-radius:24px;
-
-    }
-
-    .today-header{
-
-        flex-direction:column;
-
-        gap:24px;
-
-        align-items:flex-start;
-
-    }
-
-    .today-left{
-
-        width:100%;
-
-    }
-
-    .today-right{
-
-        width:100%;
-
-        align-items:flex-start;
-
-    }
-
-    .today-percent{
-
-        font-size:1.8rem;
-
-    }
-
-    .progress-bar{
-
-        width:100%;
-
-    }
-
-    .today-infos{
-
-        grid-template-columns:1fr;
-
-        gap:14px;
-
-    }
-
-    .today-icon{
-
-        width:64px;
-
-        height:64px;
-
-        font-size:32px;
-
-        border-radius:18px;
-
-    }
-
-    .today-left h1{
-
-        font-size:1.65rem;
-
-    }
-
-    .today-left p{
-
-        font-size:.95rem;
-
-    }
-
-    .today-button{
-
-        margin-top:22px;
+    .todayWorkout{
 
         padding:16px;
 
-        font-size:.95rem;
+        border-radius:20px;
+
+    }
+
+    .todayTop{
+
+        margin-bottom:12px;
+
+    }
+
+    .todayBadge{
+
+        font-size:.70rem;
+
+        padding:6px 12px;
+
+    }
+
+    .todayProgress{
+
+        font-size:1.15rem;
+
+    }
+
+    .todayEmoji{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:26px;
+
+        border-radius:14px;
+
+    }
+
+    .todayTitle{
+
+        gap:12px;
+
+        margin-bottom:14px;
+
+    }
+
+    .todayTitle h2{
+
+        font-size:1.15rem;
+
+    }
+
+    .todayTitle p{
+
+        font-size:.78rem;
+
+    }
+
+    .todayInfos{
+
+        justify-content:space-between;
+
+        gap:10px;
+
+        margin-bottom:12px;
+
+    }
+
+    .todayInfo{
+
+        font-size:.82rem;
+
+    }
+
+    .todayMessage{
+
+        font-size:.80rem;
+
+        margin-bottom:14px;
+
+    }
+
+    .todayButton{
+
+        padding:12px;
+
+        font-size:.90rem;
 
     }
 

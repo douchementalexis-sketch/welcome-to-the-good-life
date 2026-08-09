@@ -1,136 +1,200 @@
 import "../styles/Planning.css";
 
-import { getTodayDate } from "../utils/date";
-import { getWorkout } from "../utils/getWorkout";
+import {
+  useNavigate,
+} from "react-router-dom";
+
+import {
+  getTodayDate,
+} from "../utils/date";
+
+import {
+  getWorkout,
+} from "../utils/getWorkout";
 
 export default function Planning() {
 
-  const today = new Date(getTodayDate());
+  const navigate =
+    useNavigate();
+
+  const today =
+    new Date(getTodayDate());
 
   const upcoming = [];
 
-  for (let i = 1; i <= 3; i++) {
+  for (
+    let i = 0;
+    i < 7;
+    i++
+  ) {
 
-    const nextDate = new Date(today);
+    const nextDate =
+      new Date(today);
 
-    nextDate.setDate(today.getDate() + i);
+    nextDate.setDate(
+      today.getDate() + i
+    );
 
     const dateString =
       `${nextDate.getFullYear()}-${String(
         nextDate.getMonth() + 1
-      ).padStart(2, "0")}-${String(
+      ).padStart(2,"0")}-${String(
         nextDate.getDate()
-      ).padStart(2, "0")}`;
+      ).padStart(2,"0")}`;
 
-    const workout = getWorkout(dateString);
+    const workout =
+      getWorkout(dateString);
+
+    let label =
+      nextDate.toLocaleDateString(
+        "fr-FR",
+        {
+          weekday:"long",
+        }
+      );
+
+    if(i===0)
+      label = "Aujourd'hui";
+
+    if(i===1)
+      label = "Demain";
 
     upcoming.push({
 
-      id: i,
+      id:i,
 
-      day:
-        nextDate.toLocaleDateString("fr-FR", {
-          weekday: "long",
-        }),
+      day:label,
 
-      title: workout.title,
+      title:
+        workout.title,
 
-      icon: workout.icon,
-
-      hour:
-        workout.id === "rest"
-          ? "Repos"
-          : "18h30",
+      icon:
+        workout.icon,
 
       duration:
-        workout.id === "rest"
-          ? "Récupération"
-          : "45 min",
 
-      type: workout.id,
+        workout.id==="rest"
+
+        ? "Repos"
+
+        : "45 min",
+
+      hour:
+
+        workout.id==="rest"
+
+        ? ""
+
+        : "18h30",
+
+      type:
+        workout.id,
 
     });
 
   }
 
-  function getColor(type: string) {
+  function getColor(type:string){
 
-    switch (type) {
+    switch(type){
 
       case "cardio":
+
         return "cardio";
 
       case "rest":
+
         return "rest";
 
       default:
+
         return "strength";
 
     }
 
   }
 
-  return (
+  return(
 
-    <section className="planning">
+    <section className="planning">      {
 
-      {upcoming.map((session) => (
+        upcoming.map((session)=>(
 
-        <article
-          key={session.id}
-          className={`planningCard ${getColor(session.type)}`}
-        >
+          <article
 
-          <div className="planningTop">
+            key={session.id}
 
-            <div className="planningEmoji">
-              {session.icon}
+            className={`planningRow ${getColor(session.type)}`}
+
+          >
+
+            <div className="planningLeft">
+
+              <div className="planningIcon">
+
+                {session.icon}
+
+              </div>
+
+              <div className="planningContent">
+
+                <span className="planningDay">
+
+                  {session.day}
+
+                </span>
+
+                <h4>
+
+                  {session.title}
+
+                </h4>
+
+                <div className="planningMeta">
+
+                  <span>
+
+                    ⏱ {session.duration}
+
+                  </span>
+
+                  {
+
+                    session.hour && (
+
+                      <span>
+
+                        🕡 {session.hour}
+
+                      </span>
+
+                    )
+
+                  }
+
+                </div>
+
+              </div>
+
             </div>
 
-            <div className="planningInfos">
+            <button
 
-              <span className="planningDay">
+              className="planningButton"
 
-                {session.day.charAt(0).toUpperCase() +
-                  session.day.slice(1)}
+              onClick={() => navigate("/workout")}
 
-              </span>
+            >
 
-              <h3>
-
-                {session.title}
-
-              </h3>
-
-            </div>
-
-            <span className="planningBadge">
-
-              {session.hour}
-
-            </span>
-
-          </div>
-
-          <div className="planningBottom">
-
-            <span>
-
-              ⏱ {session.duration}
-
-            </span>
-
-            <button>
-
-              Voir
+              ▶ Voir
 
             </button>
 
-          </div>
+          </article>
 
-        </article>
+        ))
 
-      ))}
+      }
 
     </section>
 
