@@ -1,22 +1,64 @@
 import {
+
   useContext,
+
 } from "react";
 
 import BottomNavigation from "../components/BottomNavigation";
 
 import {
+
   AuthContext,
+
 } from "../context/AuthContext";
 
+import {
+
+  AppContext,
+
+} from "../context/AppContext";
+
+import WeightSummary from "../components/profile/WeightSummary";
+
+import WeightInput from "../components/profile/WeightInput";
+
+import WeightHistory from "../components/profile/WeightHistory";
+
+import WeightChart from "../components/charts/WeightChart";
+
 import "./Home.css";
+
 import "../styles/Profile.css";
 
 export default function Profile() {
 
   const {
+
     user,
+
     logout,
-  } = useContext(AuthContext);
+
+  } = useContext(
+
+    AuthContext
+
+  );
+
+  const {
+
+    weights,
+
+    addWeight,
+
+    updateWeight,
+
+    deleteWeight,
+
+  } = useContext(
+
+    AppContext
+
+  );
 
   async function handleLogout(){
 
@@ -46,7 +88,9 @@ export default function Profile() {
 
             </p>
 
-          </div>          <div className="profileCard">
+          </div>
+
+          <div className="profileCard">
 
             <h2>
 
@@ -100,83 +144,39 @@ export default function Profile() {
 
             </h2>
 
-            <div className="evolutionGrid">
+            <WeightSummary
 
-              <div className="evolutionBox">
+              weights={weights}
 
-                <span>
+            />            <WeightInput
 
-                  ⚖️ Poids actuel
+              addWeight={addWeight}
 
-                </span>
+            />
 
-                <strong>
+            <WeightHistory
 
-                  -- kg
+              weights={weights}
 
-                </strong>
+              updateWeight={updateWeight}
 
-              </div>
+              deleteWeight={deleteWeight}
 
-              <div className="evolutionBox">
+            />
 
-                <span>
+            <hr className="profileSeparator" />
 
-                  🎯 Objectif
+            <h3>
 
-                </span>
+              📈 Evolution du poids
 
-                <strong>
+            </h3>
 
-                  55 kg
+            <WeightChart
 
-                </strong>
+              weights={weights}
 
-              </div>
-
-              <div className="evolutionBox">
-
-                <span>
-
-                  📅 Dernière pesée
-
-                </span>
-
-                <strong>
-
-                  Aucune
-
-                </strong>
-
-              </div>
-
-              <div className="evolutionBox">
-
-                <span>
-
-                  ⏳ Prochaine pesée
-
-                </span>
-
-                <strong>
-
-                  Disponible
-
-                </strong>
-
-              </div>
-
-            </div>
-
-            <button
-
-              className="profileButton"
-
-            >
-
-              ⚖️ Mettre à jour mon poids
-
-            </button>
+            />
 
           </div>
 
@@ -204,9 +204,7 @@ export default function Profile() {
 
             </button>
 
-          </div>
-
-          <div className="profileCard">
+          </div>          <div className="profileCard">
 
             <h2>
 
@@ -226,7 +224,9 @@ export default function Profile() {
 
             </button>
 
-          </div>        </section>
+          </div>
+
+        </section>
 
       </div>
 

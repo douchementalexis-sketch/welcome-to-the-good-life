@@ -1,0 +1,39 @@
+.weightChart {
+
+  width: 100%;
+
+  height: 320px;
+
+  margin-top: 20px;
+
+}
+
+.weightChartEmpty {
+
+  padding: 20px;
+
+  text-align: center;
+
+  color: #777;
+
+  font-style: italic;
+
+}
+
+.recharts-wrapper {
+
+  font-size: 13px;
+
+}
+
+.recharts-cartesian-grid line {
+
+  stroke: #e8e8e8;
+
+}
+
+.recharts-tooltip-wrapper {
+
+  outline: none;
+
+}

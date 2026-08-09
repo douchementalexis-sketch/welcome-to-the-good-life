@@ -12,6 +12,10 @@ import type {
   DayData,
 } from "../types/DayData";
 
+import type {
+  Weight,
+} from "../types/Weight";
+
 import {
   AppContext,
 } from "./AppContext";
@@ -42,6 +46,11 @@ export default function AppProvider({
     days,
     setDays,
   ] = useState<DayData[]>([]);
+
+  const [
+    weights,
+    setWeights,
+  ] = useState<Weight[]>([]);
 
   async function loadDays(){
 
@@ -114,7 +123,178 @@ export default function AppProvider({
       formatted
     );
 
-  }  async function ensureMonthDays(
+  }
+
+  async function loadWeights(){
+
+    if(!user) return;
+
+    const {
+
+      data,
+
+      error,
+
+    } =
+      await supabase
+        .from("weights")
+        .select("*")
+        .eq(
+          "user_id",
+          user.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending:true,
+          }
+        );
+
+    if(error){
+
+      console.error(
+
+        "ERREUR CHARGEMENT WEIGHTS :",
+
+        error
+
+      );
+
+      return;
+
+    }
+
+    setWeights(
+
+      (data ?? []) as Weight[]
+
+    );
+
+  }
+
+  async function addWeight(
+
+    weight:number
+
+  ){
+
+    if(!user) return;
+
+    const {
+
+      error,
+
+    } =
+      await supabase
+        .from("weights")
+        .insert({
+
+          user_id:
+            user.id,
+
+          weight,
+
+        });
+
+    if(error){
+
+      console.error(
+
+        "ERREUR AJOUT WEIGHT :",
+
+        error
+
+      );
+
+      return;
+
+    }
+
+    await loadWeights();
+
+  }
+
+  async function updateWeight(
+
+    id:string,
+
+    weight:number
+
+  ){
+
+    const {
+
+      error,
+
+    } =
+      await supabase
+        .from("weights")
+        .update({
+
+          weight,
+
+        })
+        .eq(
+          "id",
+          id
+        );
+
+    if(error){
+
+      console.error(
+
+        "ERREUR UPDATE WEIGHT :",
+
+        error
+
+      );
+
+      return;
+
+    }
+
+    await loadWeights();
+
+  }
+
+  async function deleteWeight(
+
+    id:string
+
+  ){
+
+    const {
+
+      error,
+
+    } =
+      await supabase
+        .from("weights")
+        .delete()
+        .eq(
+          "id",
+          id
+        );
+
+    if(error){
+
+      console.error(
+
+        "ERREUR DELETE WEIGHT :",
+
+        error
+
+      );
+
+      return;
+
+    }
+
+    await loadWeights();
+
+  }
+
+  async function ensureMonthDays(
 
     year:number,
 
@@ -131,9 +311,7 @@ export default function AppProvider({
         0
       ).getDate();
 
-    const rows:any[] = [];
-
-    for(
+    const rows:any[] = [];    for(
       let i = 1;
       i <= totalDays;
       i++
@@ -206,7 +384,9 @@ export default function AppProvider({
 
     }
 
-  }  async function updateDay(
+  }
+
+  async function updateDay(
 
     date:string,
 
@@ -292,7 +472,9 @@ export default function AppProvider({
 
         [],
 
-    };    const {
+    };
+
+    const {
 
       data,
 
@@ -361,7 +543,9 @@ export default function AppProvider({
       completedExercises:
         data.completed_exercises ?? [],
 
-    };    setDays(
+    };
+
+    setDays(
 
       previous => {
 
@@ -413,6 +597,14 @@ export default function AppProvider({
 
       loadDays();
 
+      loadWeights();
+
+    }else{
+
+      setDays([]);
+
+      setWeights([]);
+
     }
 
   },[user]);
@@ -423,11 +615,25 @@ export default function AppProvider({
 
       value={{
 
+        // DAYS
+
         days,
 
         updateDay,
 
         ensureMonthDays,
+
+        // WEIGHTS
+
+        weights,
+
+        loadWeights,
+
+        addWeight,
+
+        updateWeight,
+
+        deleteWeight,
 
       }}
 
