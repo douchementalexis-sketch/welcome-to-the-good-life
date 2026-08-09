@@ -1,6 +1,12 @@
 import { workouts } from "../data/programs";
 
-export function getWorkout(date: string) {
+import type {
+  Workout,
+} from "../types/Workout";
+
+export function getWorkout(
+  date: string
+): Workout {
 
   const day =
     new Date(date).getDay();
