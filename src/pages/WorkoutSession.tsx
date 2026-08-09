@@ -1,51 +1,87 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  useContext,
+} from "react";
+
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 import BottomNavigation from "../components/BottomNavigation";
+
 import WorkoutProgram from "../components/workout/WorkoutProgram";
 
-import { AppContext } from "../context/AppContext";
-import { getTodayDate } from "../utils/date";
-import { getWorkout } from "../utils/getWorkout";
+import {
+  AppContext,
+} from "../context/AppContext";
+
+import {
+  getTodayDate,
+} from "../utils/date";
+
+import {
+  getWorkout,
+} from "../utils/getWorkout";
 
 import "./Home.css";
 
 export default function WorkoutSession() {
 
-  const navigate = useNavigate();
+  const navigate =
+    useNavigate();
+
+  const location =
+    useLocation();
 
   const {
     days,
     updateDay,
   } = useContext(AppContext);
 
-  const today = getTodayDate();
+  const selectedDate =
+    location.state?.date ??
+    getTodayDate();
 
-  const workout = getWorkout(today);
+  const workout =
+    getWorkout(selectedDate);
 
-  const current = days.find(
-    (day) => day.date === today
-  );
+  const current =
+    days.find(
+      (day) =>
+        day.date === selectedDate
+    );
 
   const finished =
-    current?.workoutDone ?? false;
+    current?.workoutDone ??
+    false;
 
   const completedExercises =
-    current?.completedExercises ?? [];
+    current?.completedExercises ??
+    [];
 
   const allExercisesCompleted =
+    workout.id !== "rest" &&
+    workout.exercises.length > 0 &&
     completedExercises.length ===
-    workout.exercises.length;
+      workout.exercises.length;
 
   function validateWorkout() {
 
-    if (!allExercisesCompleted || finished) {
+    if (
+      !allExercisesCompleted ||
+      finished
+    ) {
+
       return;
+
     }
 
-    updateDay(today, {
-      workoutDone: true,
-    });
+    updateDay(
+      selectedDate,
+      {
+        workoutDone:true,
+      }
+    );
 
   }
 
@@ -57,16 +93,26 @@ export default function WorkoutSession() {
 
         <button
 
-          onClick={() => navigate("/")}
+          onClick={() =>
+            navigate("/")
+          }
 
           style={{
-            marginBottom: 20,
-            border: "none",
-            background: "transparent",
-            color: "#355F4B",
-            fontSize: 16,
-            fontWeight: 700,
-            cursor: "pointer",
+
+            marginBottom:20,
+
+            border:"none",
+
+            background:"transparent",
+
+            color:"#355F4B",
+
+            fontSize:16,
+
+            fontWeight:700,
+
+            cursor:"pointer",
+
           }}
 
         >
@@ -76,102 +122,176 @@ export default function WorkoutSession() {
         </button>
 
         <h1
+
           style={{
+
             color:"#355F4B",
+
             marginBottom:8,
+
           }}
+
         >
 
-          🏋️ Séance du jour
+          {workout.icon}{" "}
+
+          {workout.id === "rest"
+
+            ? "Jour de repos"
+
+            : workout.title
+
+          }
 
         </h1>
 
         <p
+
           style={{
+
             color:"#666",
+
             marginBottom:20,
+
           }}
+
         >
 
-          Coche chaque exercice au fur et à mesure 💪
+          {workout.id === "rest"
+
+            ? "Aujourd'hui est consacré à la récupération. 🌿"
+
+            : "Coche chaque exercice au fur et à mesure 💪"
+
+          }
 
         </p>
 
         <WorkoutProgram
-          date={today}
-        />        <div
-          style={{
-            marginTop: 40,
-            marginBottom: 30,
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
 
-          {finished ? (
+          date={selectedDate}
 
-            <button
-              disabled
-              style={{
-                background: "#2E7D32",
-                color: "white",
-                border: "none",
-                borderRadius: 16,
-                padding: "16px 28px",
-                fontSize: 17,
-                fontWeight: 700,
-                cursor: "default",
-                opacity: 0.9,
-              }}
-            >
-              ✅ Séance validée
-            </button>
+        />
 
-          ) : (
+        {
 
-            <button
+          workout.id !== "rest" && (
 
-              onClick={validateWorkout}
-
-              disabled={!allExercisesCompleted}
+            <div
 
               style={{
 
-                background:
-                  allExercisesCompleted
-                    ? "#355F4B"
-                    : "#BDBDBD",
+                marginTop:40,
 
-                color: "white",
+                marginBottom:30,
 
-                border: "none",
+                display:"flex",
 
-                borderRadius: 16,
-
-                padding: "16px 28px",
-
-                fontSize: 17,
-
-                fontWeight: 700,
-
-                cursor:
-                  allExercisesCompleted
-                    ? "pointer"
-                    : "not-allowed",
-
-                transition: "0.2s",
+                justifyContent:"center",
 
               }}
 
             >
 
-              💾 Enregistrer la séance
+              {
 
-            </button>
+                finished ? (
 
-          )}
+                  <button
 
-        </div>      </div>
+                    disabled
+
+                    style={{
+
+                      background:"#2E7D32",
+
+                      color:"white",
+
+                      border:"none",
+
+                      borderRadius:16,
+
+                      padding:"16px 28px",
+
+                      fontSize:17,
+
+                      fontWeight:700,
+
+                      cursor:"default",
+
+                      opacity:.9,
+
+                    }}
+
+                  >
+
+                    ✅ Séance validée
+
+                  </button>
+
+                ) : (
+
+                  <button
+
+                    onClick={
+                      validateWorkout
+                    }
+
+                    disabled={
+                      !allExercisesCompleted
+                    }
+
+                    style={{
+
+                      background:
+
+                        allExercisesCompleted
+
+                          ? "#355F4B"
+
+                          : "#BDBDBD",
+
+                      color:"white",
+
+                      border:"none",
+
+                      borderRadius:16,
+
+                      padding:"16px 28px",
+
+                      fontSize:17,
+
+                      fontWeight:700,
+
+                      cursor:
+
+                        allExercisesCompleted
+
+                          ? "pointer"
+
+                          : "not-allowed",
+
+                      transition:".2s",
+
+                    }}
+
+                  >
+
+                    💾 Enregistrer la séance
+
+                  </button>
+
+                )
+
+              }
+
+            </div>
+
+          )
+
+        }
+
+      </div>
 
       <BottomNavigation />
 
