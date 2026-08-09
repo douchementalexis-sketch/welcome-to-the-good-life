@@ -51,7 +51,7 @@ export default function TodayWorkout() {
     total === 0
       ? 0
       : Math.round(
-          completed / total * 100
+          (completed / total) * 100
         );
 
   const finished =
@@ -60,15 +60,15 @@ export default function TodayWorkout() {
   let motivation =
     "Aujourd'hui est un nouveau départ 💚";
 
-  if(progress >= 25)
+  if (progress >= 25)
     motivation =
       "C'est bien parti 🌸";
 
-  if(progress >= 50)
+  if (progress >= 50)
     motivation =
       "Continue comme ça 🔥";
 
-  if(progress === 100)
+  if (progress === 100)
     motivation =
       "Bravo Rachel 🎉";
 
@@ -116,7 +116,9 @@ export default function TodayWorkout() {
 
         </div>
 
-      </div>      <div className="todayInfos">
+      </div>
+
+      <div className="todayInfos">
 
         <div className="todayInfo">
 
@@ -166,7 +168,25 @@ export default function TodayWorkout() {
 
         className="todayButton"
 
-        onClick={() => navigate("/workout")}
+        onClick={() =>
+
+          navigate(
+
+            "/workout",
+
+            {
+
+              state:{
+
+                date:today,
+
+              },
+
+            }
+
+          )
+
+        }
 
       >
 
@@ -180,7 +200,9 @@ export default function TodayWorkout() {
 
         }
 
-      </button>    </section>
+      </button>
+
+    </section>
 
   );
 
