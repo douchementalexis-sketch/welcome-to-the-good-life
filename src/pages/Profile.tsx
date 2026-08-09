@@ -8,106 +8,229 @@ import {
   AuthContext,
 } from "../context/AuthContext";
 
-
+import "./Home.css";
+import "../styles/Profile.css";
 
 export default function Profile() {
-
 
   const {
     user,
     logout,
   } = useContext(AuthContext);
 
-
-
-
-
   async function handleLogout(){
-
 
     await logout();
 
-
   }
 
-
-
-
-
-
-  return (
+  return(
 
     <div className="home">
 
+      <div className="hero">
 
-      <h1>
-        👤 Profil
-      </h1>
+        <section className="profile">
 
+          <div className="profileHeader">
 
+            <h1>
 
-      <p>
-        Profil utilisateur.
-      </p>
+              👤 Profil Rachel
 
+            </h1>
 
+            <p>
 
+              Ton espace personnel 💚
 
+            </p>
 
-      {user && (
+          </div>          <div className="profileCard">
 
-        <>
+            <h2>
 
-          <p>
-            Connecté avec :
-            <br />
+              📧 Mon compte
 
-            <strong>
-              {user.email}
-            </strong>
+            </h2>
 
-          </p>
+            <div className="profileInfo">
 
+              <div className="profileInfoRow">
 
+                <span className="profileLabel">
 
+                  Adresse e-mail
 
-          <button
+                </span>
 
-            onClick={handleLogout}
+                <span className="profileData">
 
-            style={{
+                  {user?.email}
 
-              marginTop:30,
+                </span>
 
-              padding:"12px 24px",
+              </div>
 
-              borderRadius:12,
+              <div className="profileInfoRow">
 
-              border:"none",
+                <span className="profileLabel">
 
-              cursor:"pointer",
+                  Statut
 
-              fontSize:16,
+                </span>
 
-            }}
+                <span className="profileData">
 
-          >
+                  Cliente active 💚
 
-            🚪 Déconnexion
+                </span>
 
-          </button>
+              </div>
 
+            </div>
 
-        </>
+          </div>
 
-      )}
+          <div className="profileCard">
 
+            <h2>
 
+              🌱 Mon évolution
 
+            </h2>
 
+            <div className="evolutionGrid">
+
+              <div className="evolutionBox">
+
+                <span>
+
+                  ⚖️ Poids actuel
+
+                </span>
+
+                <strong>
+
+                  -- kg
+
+                </strong>
+
+              </div>
+
+              <div className="evolutionBox">
+
+                <span>
+
+                  🎯 Objectif
+
+                </span>
+
+                <strong>
+
+                  55 kg
+
+                </strong>
+
+              </div>
+
+              <div className="evolutionBox">
+
+                <span>
+
+                  📅 Dernière pesée
+
+                </span>
+
+                <strong>
+
+                  Aucune
+
+                </strong>
+
+              </div>
+
+              <div className="evolutionBox">
+
+                <span>
+
+                  ⏳ Prochaine pesée
+
+                </span>
+
+                <strong>
+
+                  Disponible
+
+                </strong>
+
+              </div>
+
+            </div>
+
+            <button
+
+              className="profileButton"
+
+            >
+
+              ⚖️ Mettre à jour mon poids
+
+            </button>
+
+          </div>
+
+          <div className="profileCard">
+
+            <h2>
+
+              📷 Photo d'évolution
+
+            </h2>
+
+            <p>
+
+              Aucune photo enregistrée.
+
+            </p>
+
+            <button
+
+              className="profileButton"
+
+            >
+
+              📷 Ajouter une photo
+
+            </button>
+
+          </div>
+
+          <div className="profileCard">
+
+            <h2>
+
+              🚪 Déconnexion
+
+            </h2>
+
+            <button
+
+              className="profileButton"
+
+              onClick={handleLogout}
+
+            >
+
+              Se déconnecter
+
+            </button>
+
+          </div>        </section>
+
+      </div>
 
       <BottomNavigation />
-
 
     </div>
 

@@ -1,0 +1,259 @@
+/* =======================================================
+   PROFILE
+======================================================= */
+
+.profile{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    padding-bottom:120px;
+
+}
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+.profileHeader{
+
+    text-align:center;
+
+}
+
+.profileHeader h1{
+
+    margin:0;
+
+    color:#355F4B;
+
+    font-size:2rem;
+
+    font-weight:900;
+
+}
+
+.profileHeader p{
+
+    margin-top:10px;
+
+    color:#7B8793;
+
+    font-size:1rem;
+
+}
+
+/* =======================================================
+   CARD
+======================================================= */
+
+.profileCard{
+
+    background:#FFFFFF;
+
+    border-radius:24px;
+
+    padding:24px;
+
+    border:1px solid #ECECEC;
+
+    box-shadow:
+
+        0 12px 35px rgba(0,0,0,.06);
+
+}
+
+.profileCard h2{
+
+    margin:0 0 18px;
+
+    color:#355F4B;
+
+    font-size:1.2rem;
+
+    font-weight:800;
+
+}
+
+.profileCard p{
+
+    margin:8px 0;
+
+    color:#58616B;
+
+    line-height:1.7;
+
+}
+
+.profileValue{
+
+    font-size:1.8rem;
+
+    font-weight:900;
+
+    color:#355F4B;
+
+}
+
+/* =======================================================
+   EVOLUTION
+======================================================= */
+
+.evolutionGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-top:20px;
+
+}
+
+.evolutionBox{
+
+    background:#F8FBF9;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:center;
+
+}
+
+.evolutionBox span{
+
+    display:block;
+
+    font-size:.85rem;
+
+    color:#7B8793;
+
+    margin-bottom:8px;
+
+}
+
+.evolutionBox strong{
+
+    font-size:1.3rem;
+
+    color:#355F4B;
+
+}
+
+/* =======================================================
+   BUTTON
+======================================================= */
+
+.profileButton{
+
+    width:100%;
+
+    margin-top:22px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#355F4B;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.profileButton:hover{
+
+    background:#28463A;
+
+}
+
+/* =======================================================
+   INFO
+======================================================= */
+
+.profileInfo{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.profileInfoRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #F0F0F0;
+
+}
+
+.profileInfoRow:last-child{
+
+    border-bottom:none;
+
+}
+
+.profileLabel{
+
+    color:#7B8793;
+
+    font-weight:600;
+
+}
+
+.profileData{
+
+    color:#355F4B;
+
+    font-weight:800;
+
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media(max-width:700px){
+
+    .evolutionGrid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .profileHeader h1{
+
+        font-size:1.7rem;
+
+    }
+
+    .profileCard{
+
+        padding:20px;
+
+    }
+
+}
