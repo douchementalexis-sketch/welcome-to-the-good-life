@@ -1,36 +1,382 @@
-.workout p {
-  margin-bottom: 12px;
-  color: var(--text-light);
-  font-size: 16px;
+/* =======================================================
+   WORKOUT
+======================================================= */
+
+.workout{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:20px;
+
 }
 
-.workout strong {
-  color: var(--text);
+.workoutCard{
+
+    background:#FFFFFF;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.06);
+
+    border:1px solid #EEF2EF;
+
 }
 
-.workout-button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 15px;
+/* =======================================================
+   HEADER
+======================================================= */
 
-  border: none;
-  border-radius: var(--radius);
+.workoutHeader{
 
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+    display:flex;
 
-  transition: .25s;
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:18px;
+
 }
 
-.workout-button:hover {
-  transform: translateY(-2px);
+.workoutIcon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    background:#F5F8F5;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    flex-shrink:0;
+
 }
 
-.workout-button.done {
-  background: #2e7d32;
+.workoutHeader h2{
+
+    margin:0;
+
+    color:#243328;
+
+    font-size:1.4rem;
+
+    font-weight:800;
+
 }
 
-.workout-button.todo {
-  background: var(--primary);
+.workoutHeader p{
+
+    margin-top:4px;
+
+    color:#7C867F;
+
+    font-size:.90rem;
+
+}/* =======================================================
+   RESUME
+======================================================= */
+
+.workoutResume{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+    padding:14px 16px;
+
+    border-radius:16px;
+
+    background:#F8FAF8;
+
+    color:#355F4B;
+
+    font-weight:700;
+
+}
+
+/* =======================================================
+   EXERCISES
+======================================================= */
+
+.exerciseList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.exerciseCard{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px 16px;
+
+    border-radius:16px;
+
+    background:#FAFBFC;
+
+    border:1px solid #EEF2EF;
+
+}
+
+.exerciseNumber{
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:50%;
+
+    background:#355F4B;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:800;
+
+    flex-shrink:0;
+
+}
+
+.exerciseInfos{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+
+}
+
+.exerciseInfos strong{
+
+    color:#243328;
+
+    font-size:1rem;
+
+}
+
+.exerciseInfos span{
+
+    color:#7B857E;
+
+    font-size:.85rem;
+
+}/* =======================================================
+   REST DAY
+======================================================= */
+
+.workoutRest{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:20px;
+
+}
+
+.workoutRest div{
+
+    padding:14px 16px;
+
+    border-radius:16px;
+
+    background:#FFF6F9;
+
+    border:1px solid #F6D8E4;
+
+    color:#5A5A5A;
+
+    font-weight:600;
+
+}
+
+/* =======================================================
+   BUTTON
+======================================================= */
+
+.workout-button{
+
+    width:100%;
+
+    margin-top:24px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:16px;
+
+    font-size:.95rem;
+
+    font-weight:800;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+.workout-button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.workout-button.todo{
+
+    background:linear-gradient(
+        135deg,
+        #355F4B,
+        #4E8B6C
+    );
+
+    box-shadow:
+        0 10px 20px rgba(53,95,75,.20);
+
+}
+
+.workout-button.done{
+
+    background:linear-gradient(
+        135deg,
+        #4CAF50,
+        #2E7D32
+    );
+
+    box-shadow:
+        0 10px 20px rgba(46,125,50,.20);
+
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media(max-width:768px){
+
+    .workout{
+
+        padding:14px;
+
+    }
+
+    .workoutCard{
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+    .workoutIcon{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:26px;
+
+        border-radius:14px;
+
+    }
+
+    .workoutHeader h2{
+
+        font-size:1.15rem;
+
+    }
+
+    .workoutHeader p{
+
+        font-size:.80rem;
+
+    }
+
+    .workoutResume{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:6px;
+
+        font-size:.85rem;
+
+    }
+
+    .exerciseCard{
+
+        padding:12px;
+
+        gap:10px;
+
+    }
+
+    .exerciseNumber{
+
+        width:30px;
+
+        height:30px;
+
+        font-size:.80rem;
+
+    }
+
+    .exerciseInfos strong{
+
+        font-size:.90rem;
+
+    }
+
+    .exerciseInfos span{
+
+        font-size:.78rem;
+
+    }
+
+    .workout-button{
+
+        padding:12px;
+
+        font-size:.90rem;
+
+    }
+
 }
