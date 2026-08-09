@@ -15,7 +15,8 @@ export default function WorkoutProgram({
   date,
 }: Props) {
 
-  const workout = getWorkout(date);
+  const workout =
+    getWorkout(date);
 
   const {
     days,
@@ -27,44 +28,73 @@ export default function WorkoutProgram({
       (d) => d.date === date
     );
 
+  /*
+   * Sécurisation des exercices terminés.
+   *
+   * Si Supabase renvoie une mauvaise valeur
+   * (objet, texte, null...), on repart sur
+   * un tableau vide afin d'éviter :
+   *
+   * completed.includes is not a function
+   */
   const completed =
-    current?.completedExercises ?? [];
+    Array.isArray(
+      current?.completedExercises
+    )
+      ? current.completedExercises
+      : [];
 
   function toggleExercise(
     exerciseName: string
   ) {
 
     const exists =
-      completed.includes(exerciseName);
+      completed.includes(
+        exerciseName
+      );
 
-    const newCompleted = exists
+    const newCompleted =
+      exists
 
-      ? completed.filter(
-          (item) => item !== exerciseName
-        )
+        ? completed.filter(
+            (item) =>
+              item !== exerciseName
+          )
 
-      : [
-          ...completed,
-          exerciseName,
-        ];
+        : [
+            ...completed,
+            exerciseName,
+          ];
 
-    updateDay(date, {
-
-      completedExercises:
-        newCompleted,
-
-    });
+    updateDay(
+      date,
+      {
+        completedExercises:
+          newCompleted,
+      }
+    );
 
   }
 
-  const percent = Math.round(
+  /*
+   * Sécurité supplémentaire :
+   * évite une division par zéro
+   * si un programme ne contient
+   * aucun exercice.
+   */
+  const percent =
+    workout.exercises.length === 0
 
-    (completed.length /
-      workout.exercises.length) *
+      ? 0
 
-      100
+      : Math.round(
 
-  );
+          (
+            completed.length /
+            workout.exercises.length
+          ) * 100
+
+        );
 
   return (
 
@@ -88,7 +118,9 @@ export default function WorkoutProgram({
 
           <span>
 
-            {completed.length} / {workout.exercises.length}
+            {completed.length} /{" "}
+
+            {workout.exercises.length}
 
           </span>
 
