@@ -38,9 +38,9 @@ export default function Planning() {
     const dateString =
       `${nextDate.getFullYear()}-${String(
         nextDate.getMonth() + 1
-      ).padStart(2,"0")}-${String(
+      ).padStart(2, "0")}-${String(
         nextDate.getDate()
-      ).padStart(2,"0")}`;
+      ).padStart(2, "0")}`;
 
     const workout =
       getWorkout(dateString);
@@ -49,43 +49,37 @@ export default function Planning() {
       nextDate.toLocaleDateString(
         "fr-FR",
         {
-          weekday:"long",
+          weekday: "long",
         }
       );
 
-    if(i===0)
+    if (i === 0)
       label = "Aujourd'hui";
 
-    if(i===1)
+    if (i === 1)
       label = "Demain";
 
     upcoming.push({
 
-      id:i,
+      id: i,
 
-      day:label,
+      date: dateString,
 
-      title:
-        workout.title,
+      day: label,
 
-      icon:
-        workout.icon,
+      title: workout.title,
+
+      icon: workout.icon,
 
       duration:
-
-        workout.id==="rest"
-
-        ? "Repos"
-
-        : "45 min",
+        workout.id === "rest"
+          ? "Repos"
+          : "45 min",
 
       hour:
-
-        workout.id==="rest"
-
-        ? ""
-
-        : "18h30",
+        workout.id === "rest"
+          ? ""
+          : "18h30",
 
       type:
         workout.id,
@@ -94,9 +88,11 @@ export default function Planning() {
 
   }
 
-  function getColor(type:string){
+  function getColor(
+    type: string
+  ) {
 
-    switch(type){
+    switch (type) {
 
       case "cardio":
 
@@ -114,11 +110,13 @@ export default function Planning() {
 
   }
 
-  return(
+  return (
 
-    <section className="planning">      {
+    <section className="planning">
 
-        upcoming.map((session)=>(
+      {
+
+        upcoming.map((session) => (
 
           <article
 
@@ -152,21 +150,45 @@ export default function Planning() {
 
                 <div className="planningMeta">
 
-                  <span>
-
-                    ⏱ {session.duration}
-
-                  </span>
-
                   {
 
-                    session.hour && (
+                    session.type === "rest"
+
+                    ? (
 
                       <span>
 
-                        🕡 {session.hour}
+                        🌿 Récupération
 
                       </span>
+
+                    )
+
+                    : (
+
+                      <>
+
+                        <span>
+
+                          ⏱ {session.duration}
+
+                        </span>
+
+                        {
+
+                          session.hour && (
+
+                            <span>
+
+                              🕡 {session.hour}
+
+                            </span>
+
+                          )
+
+                        }
+
+                      </>
 
                     )
 
@@ -178,17 +200,55 @@ export default function Planning() {
 
             </div>
 
-            <button
+            {
 
-              className="planningButton"
+              session.type === "rest"
 
-              onClick={() => navigate("/workout")}
+              ? (
 
-            >
+                <span className="planningRest">
 
-              ▶ Voir
+                  🌿 Repos
 
-            </button>
+                </span>
+
+              )
+
+              : (
+
+                <button
+
+                  className="planningButton"
+
+                  onClick={() =>
+
+                    navigate(
+
+                      "/workout",
+
+                      {
+
+                        state: {
+
+                          date: session.date,
+
+                        },
+
+                      }
+
+                    )
+
+                  }
+
+                >
+
+                  ▶ Voir
+
+                </button>
+
+              )
+
+            }
 
           </article>
 

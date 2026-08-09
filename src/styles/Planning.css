@@ -28,8 +28,7 @@
 
     border:1px solid rgba(0,0,0,.05);
 
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.05);
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
 
 }
 
@@ -38,6 +37,10 @@
     transform:translateY(-2px);
 
 }
+
+/* =======================================================
+   THEMES
+======================================================= */
 
 .strength{
 
@@ -55,7 +58,9 @@
 
     background:#FFF3F7;
 
-}/* =======================================================
+}
+
+/* =======================================================
    LEFT
 ======================================================= */
 
@@ -91,8 +96,7 @@
 
     flex-shrink:0;
 
-    box-shadow:
-        0 4px 10px rgba(0,0,0,.05);
+    box-shadow:0 4px 10px rgba(0,0,0,.05);
 
 }
 
@@ -144,7 +148,9 @@
 
     font-weight:600;
 
-}/* =======================================================
+}
+
+/* =======================================================
    BUTTON
 ======================================================= */
 
@@ -179,6 +185,34 @@
     background:#28463A;
 
     transform:translateY(-2px);
+
+}
+
+/* =======================================================
+   REST BADGE
+======================================================= */
+
+.planningRest{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:#FFEAF2;
+
+    color:#D56D92;
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    white-space:nowrap;
 
 }
 
@@ -241,6 +275,20 @@
         padding:8px 12px;
 
         font-size:.75rem;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .planningRest{
+
+        width:100%;
+
+        margin-top:12px;
+
+        padding:12px;
 
     }
 
