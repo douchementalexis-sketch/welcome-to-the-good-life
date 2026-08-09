@@ -57,6 +57,9 @@ export default function TodayWorkout() {
   const finished =
     current?.workoutDone ?? false;
 
+  const isRest =
+    workout.id === "rest";
+
   let motivation =
     "Aujourd'hui est un nouveau départ 💚";
 
@@ -71,9 +74,6 @@ export default function TodayWorkout() {
   if (progress === 100)
     motivation =
       "Bravo Rachel 🎉";
-
-  const isRest =
-    workout.id === "rest";
 
   return (
 
@@ -201,53 +201,49 @@ export default function TodayWorkout() {
 
             </div>
 
+            <button
+
+              className="todayButton"
+
+              onClick={() =>
+
+                navigate(
+
+                  "/workout",
+
+                  {
+
+                    state:{
+
+                      date:today,
+
+                    },
+
+                  }
+
+                )
+
+              }
+
+            >
+
+              {
+
+                finished
+
+                  ? "✅ Séance terminée"
+
+                  : "▶ Commencer la séance"
+
+              }
+
+            </button>
+
           </>
 
         )
 
       }
-
-      <button
-
-        className="todayButton"
-
-        onClick={() =>
-
-          navigate(
-
-            "/workout",
-
-            {
-
-              state:{
-
-                date:today,
-
-              },
-
-            }
-
-          )
-
-        }
-
-      >
-
-        {
-
-          isRest
-
-            ? "🌿 Voir la journée"
-
-            : finished
-
-              ? "✅ Séance terminée"
-
-              : "▶ Commencer la séance"
-
-        }
-
-      </button>
 
     </section>
 
