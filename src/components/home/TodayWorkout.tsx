@@ -72,6 +72,9 @@ export default function TodayWorkout() {
     motivation =
       "Bravo Rachel 🎉";
 
+  const isRest =
+    workout.id === "rest";
+
   return (
 
     <section className="todayWorkout">
@@ -84,11 +87,19 @@ export default function TodayWorkout() {
 
         </div>
 
-        <div className="todayProgress">
+        {
 
-          {progress}%
+          !isRest && (
 
-        </div>
+            <div className="todayProgress">
+
+              {progress}%
+
+            </div>
+
+          )
+
+        }
 
       </div>
 
@@ -118,51 +129,83 @@ export default function TodayWorkout() {
 
       </div>
 
-      <div className="todayInfos">
+      {
 
-        <div className="todayInfo">
+        isRest
 
-          <span>⏱</span>
+        ? (
 
-          <strong>45 min</strong>
+          <div className="todayMessage">
 
-        </div>
+            💚 Aujourd'hui est une journée de récupération.
 
-        <div className="todayInfo">
+            <br />
 
-          <span>💪</span>
+            Repose-toi, hydrate-toi et profite de ta journée.
 
-          <strong>
+          </div>
 
-            {total} exercices
+        )
 
-          </strong>
+        : (
 
-        </div>
+          <>
 
-      </div>
+            <div className="todayInfos">
 
-      <div className="todayBar">
+              <div className="todayInfo">
 
-        <div
+                <span>⏱</span>
 
-          className="todayBarFill"
+                <strong>
 
-          style={{
+                  45 min
 
-            width:`${progress}%`,
+                </strong>
 
-          }}
+              </div>
 
-        />
+              <div className="todayInfo">
 
-      </div>
+                <span>💪</span>
 
-      <div className="todayMessage">
+                <strong>
 
-        {motivation}
+                  {total} exercices
 
-      </div>
+                </strong>
+
+              </div>
+
+            </div>
+
+            <div className="todayBar">
+
+              <div
+
+                className="todayBarFill"
+
+                style={{
+
+                  width:`${progress}%`,
+
+                }}
+
+              />
+
+            </div>
+
+            <div className="todayMessage">
+
+              {motivation}
+
+            </div>
+
+          </>
+
+        )
+
+      }
 
       <button
 
@@ -192,11 +235,15 @@ export default function TodayWorkout() {
 
         {
 
-          finished
+          isRest
 
-            ? "✅ Séance terminée"
+            ? "🌿 Voir la journée"
 
-            : "▶ Commencer la séance"
+            : finished
+
+              ? "✅ Séance terminée"
+
+              : "▶ Commencer la séance"
 
         }
 

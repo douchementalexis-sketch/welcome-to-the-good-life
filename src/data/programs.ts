@@ -137,23 +137,15 @@ export const workouts: Record<string, Workout> = {
   },
 
   rest: {
+
     id: "rest",
-    title: "Repos",
+
+    title: "Jour de repos",
+
     icon: "😴",
-    exercises: [
-      {
-        name: "Repos",
-      },
-      {
-        name: "Hydratation",
-      },
-      {
-        name: "Étirements",
-      },
-      {
-        name: "Profiter de la journée ❤️",
-      },
-    ],
+
+    exercises: [],
+
   },
 
 };
