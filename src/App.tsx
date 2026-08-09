@@ -27,7 +27,7 @@ import Profile from "./pages/Profile";
 import WorkoutSession from "./pages/WorkoutSession";
 import CoachDashboard from "./pages/CoachDashboard";
 import ClientFollowUp from "./pages/ClientFollowUp";
-
+import Program from "./pages/Program";
 function HomeRedirect() {
 
   const {
@@ -131,7 +131,14 @@ export default function App() {
                   </ProtectedRoute>
                 }
               />
-
+<Route
+  path="/program"
+  element={
+    <ProtectedRoute>
+      <Program />
+    </ProtectedRoute>
+  }
+/>
               <Route
                 path="/client-followup"
                 element={

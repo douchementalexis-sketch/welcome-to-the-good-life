@@ -1,6 +1,6 @@
 import BottomNavigation from "../components/BottomNavigation";
 
-import "../styles/Home.css";
+import "./Home.css";
 import "../styles/Program.css";
 
 export default function Program() {
