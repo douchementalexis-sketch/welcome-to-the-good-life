@@ -1,0 +1,292 @@
+/* =======================================================
+   PROGRAM
+======================================================= */
+
+.program{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+.programHeader{
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+.programHeader h1{
+
+    margin:0;
+
+    color:#355F4B;
+
+    font-size:2.2rem;
+
+    font-weight:900;
+
+}
+
+.programHeader p{
+
+    margin-top:10px;
+
+    color:#7B8793;
+
+    font-size:1rem;
+
+    font-style:italic;
+
+}
+
+/* =======================================================
+   SIGNATURE
+======================================================= */
+
+.programSignature{
+
+    max-width:520px;
+
+    margin:24px auto 0;
+
+    padding:18px 24px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        135deg,
+        #ECFFF2,
+        #F8FFF9
+    );
+
+    border:1px solid #D9F2DF;
+
+    color:#355F4B;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    line-height:1.7;
+
+    text-align:center;
+
+    box-shadow:
+        0 10px 24px rgba(53,95,75,.08);
+
+}
+
+/* =======================================================
+   GRID
+======================================================= */
+
+.programGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+/* =======================================================
+   CARD
+======================================================= */
+
+.programCard{
+
+    background:#FFFFFF;
+
+    border-radius:26px;
+
+    padding:26px;
+
+    border:1px solid #ECECEC;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.06);
+
+    transition:.25s;
+
+}
+
+.programCard:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.08);
+
+}
+
+.programCard h2{
+
+    margin:0 0 18px;
+
+    color:#355F4B;
+
+    font-size:1.25rem;
+
+    font-weight:800;
+
+}
+
+.programCard strong{
+
+    color:#1E293B;
+
+    font-size:1.15rem;
+
+}
+
+.programCard p{
+
+    margin:12px 0;
+
+    line-height:1.8;
+
+    color:#58616B;
+
+}
+
+.programCard ul{
+
+    margin-top:18px;
+
+    padding-left:22px;
+
+}
+
+.programCard li{
+
+    margin-bottom:14px;
+
+    color:#58616B;
+
+    line-height:1.7;
+
+}
+
+/* =======================================================
+   TABLE
+======================================================= */
+
+.planningTable{
+
+    display:grid;
+
+    grid-template-columns:180px 1fr;
+
+    gap:14px 20px;
+
+    margin-top:10px;
+
+}
+
+.planningTable div{
+
+    padding:12px 14px;
+
+    border-radius:14px;
+
+    background:#F8FAFB;
+
+    font-weight:700;
+
+    color:#355F4B;
+
+}
+
+/* =======================================================
+   QUOTE
+======================================================= */
+
+.programQuote{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #ECFFF2,
+
+        #F9FFF9
+
+    );
+
+    border:2px solid #D9F2DF;
+
+}
+
+.programQuote p{
+
+    font-size:1.05rem;
+
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media(max-width:900px){
+
+    .programGrid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .planningTable{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .programHeader h1{
+
+        font-size:1.8rem;
+
+    }
+
+    .programHeader p{
+
+        font-size:.95rem;
+
+    }
+
+    .programSignature{
+
+        padding:16px;
+
+        font-size:.9rem;
+
+    }
+
+    .programCard{
+
+        padding:20px;
+
+        border-radius:20px;
+
+    }
+
+    .programCard h2{
+
+        font-size:1.05rem;
+
+    }
+
+}
